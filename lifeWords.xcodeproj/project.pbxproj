@@ -19,6 +19,7 @@
 		4F2BA4601619CCA200B2B461 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA45E1619CCA200B2B461 /* MainStoryboard_iPhone.storyboard */; };
 		4F2BA4631619CCA200B2B461 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA4611619CCA200B2B461 /* MainStoryboard_iPad.storyboard */; };
 		4F2BA4661619CCA200B2B461 /* lifeWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4651619CCA200B2B461 /* lifeWordsViewController.m */; };
+		4F2BA46E1619CCFE00B2B461 /* lifeWordsLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA46D1619CCFE00B2B461 /* lifeWordsLoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		4F2BA4621619CCA200B2B461 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		4F2BA4641619CCA200B2B461 /* lifeWordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lifeWordsViewController.h; sourceTree = "<group>"; };
 		4F2BA4651619CCA200B2B461 /* lifeWordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lifeWordsViewController.m; sourceTree = "<group>"; };
+		4F2BA46C1619CCFE00B2B461 /* lifeWordsLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lifeWordsLoginViewController.h; sourceTree = "<group>"; };
+		4F2BA46D1619CCFE00B2B461 /* lifeWordsLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lifeWordsLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,7 @@
 				4F2BA4611619CCA200B2B461 /* MainStoryboard_iPad.storyboard */,
 				4F2BA4641619CCA200B2B461 /* lifeWordsViewController.h */,
 				4F2BA4651619CCA200B2B461 /* lifeWordsViewController.m */,
+				4F2BA46F1619CD0500B2B461 /* Login View */,
 				4F2BA44D1619CCA100B2B461 /* Supporting Files */,
 			);
 			path = lifeWords;
@@ -108,6 +112,15 @@
 				4F2BA45C1619CCA200B2B461 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4F2BA46F1619CD0500B2B461 /* Login View */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA46C1619CCFE00B2B461 /* lifeWordsLoginViewController.h */,
+				4F2BA46D1619CCFE00B2B461 /* lifeWordsLoginViewController.m */,
+			);
+			name = "Login View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +194,7 @@
 				4F2BA4531619CCA100B2B461 /* main.m in Sources */,
 				4F2BA4571619CCA100B2B461 /* lifeWordsAppDelegate.m in Sources */,
 				4F2BA4661619CCA200B2B461 /* lifeWordsViewController.m in Sources */,
+				4F2BA46E1619CCFE00B2B461 /* lifeWordsLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
