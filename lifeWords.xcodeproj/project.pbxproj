@@ -23,6 +23,15 @@
 		4F2BA476161B1F5B00B2B461 /* logo_lifeWords.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA472161B1F5B00B2B461 /* logo_lifeWords.png */; };
 		4F2BA477161B1F5B00B2B461 /* leaf_tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA474161B1F5B00B2B461 /* leaf_tree.jpg */; };
 		4F2BA478161B1F5B00B2B461 /* leaf_tree_blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA475161B1F5B00B2B461 /* leaf_tree_blur.jpg */; };
+		4F2BA4931621B78E00B2B461 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA47D1621B78E00B2B461 /* NSAlert+MKNetworkKitAdditions.m */; };
+		4F2BA4941621B78E00B2B461 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA47F1621B78E00B2B461 /* NSData+Base64.m */; };
+		4F2BA4951621B78E00B2B461 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4811621B78E00B2B461 /* NSDate+RFC1123.m */; };
+		4F2BA4961621B78E00B2B461 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4831621B78E00B2B461 /* NSDictionary+RequestEncoding.m */; };
+		4F2BA4971621B78E00B2B461 /* NSString+JUSSNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4851621B78E00B2B461 /* NSString+JUSSNetworkKitAdditions.m */; };
+		4F2BA4981621B78E00B2B461 /* UIAlertView+JUSSNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4871621B78E00B2B461 /* UIAlertView+JUSSNetworkKitAdditions.m */; };
+		4F2BA4991621B78E00B2B461 /* JUSSNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4891621B78E00B2B461 /* JUSSNetworkEngine.m */; };
+		4F2BA49A1621B78E00B2B461 /* JUSSNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA48C1621B78E00B2B461 /* JUSSNetworkOperation.m */; };
+		4F2BA49B1621B78E00B2B461 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA48F1621B78E00B2B461 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +57,25 @@
 		4F2BA472161B1F5B00B2B461 /* logo_lifeWords.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_lifeWords.png; sourceTree = "<group>"; };
 		4F2BA474161B1F5B00B2B461 /* leaf_tree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leaf_tree.jpg; sourceTree = "<group>"; };
 		4F2BA475161B1F5B00B2B461 /* leaf_tree_blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leaf_tree_blur.jpg; sourceTree = "<group>"; };
+		4F2BA47C1621B78E00B2B461 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		4F2BA47D1621B78E00B2B461 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		4F2BA47E1621B78E00B2B461 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		4F2BA47F1621B78E00B2B461 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		4F2BA4801621B78E00B2B461 /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
+		4F2BA4811621B78E00B2B461 /* NSDate+RFC1123.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RFC1123.m"; sourceTree = "<group>"; };
+		4F2BA4821621B78E00B2B461 /* NSDictionary+RequestEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+RequestEncoding.h"; sourceTree = "<group>"; };
+		4F2BA4831621B78E00B2B461 /* NSDictionary+RequestEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+RequestEncoding.m"; sourceTree = "<group>"; };
+		4F2BA4841621B78E00B2B461 /* NSString+JUSSNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JUSSNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		4F2BA4851621B78E00B2B461 /* NSString+JUSSNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JUSSNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		4F2BA4861621B78E00B2B461 /* UIAlertView+JUSSNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+JUSSNetworkKitAdditions.h"; sourceTree = "<group>"; };
+		4F2BA4871621B78E00B2B461 /* UIAlertView+JUSSNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+JUSSNetworkKitAdditions.m"; sourceTree = "<group>"; };
+		4F2BA4881621B78E00B2B461 /* JUSSNetworkEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUSSNetworkEngine.h; sourceTree = "<group>"; };
+		4F2BA4891621B78E00B2B461 /* JUSSNetworkEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUSSNetworkEngine.m; sourceTree = "<group>"; };
+		4F2BA48A1621B78E00B2B461 /* JUSSNetworkKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUSSNetworkKit.h; sourceTree = "<group>"; };
+		4F2BA48B1621B78E00B2B461 /* JUSSNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUSSNetworkOperation.h; sourceTree = "<group>"; };
+		4F2BA48C1621B78E00B2B461 /* JUSSNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUSSNetworkOperation.m; sourceTree = "<group>"; };
+		4F2BA48E1621B78E00B2B461 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4F2BA48F1621B78E00B2B461 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +130,7 @@
 				4F2BA4651619CCA200B2B461 /* lifeWordsViewController.m */,
 				4F2BA46F1619CD0500B2B461 /* Login View */,
 				4F2BA470161B1F5B00B2B461 /* Graphics */,
+				4F2BA4791621B78E00B2B461 /* Custom Framework */,
 				4F2BA44D1619CCA100B2B461 /* Supporting Files */,
 			);
 			path = lifeWords;
@@ -154,6 +183,57 @@
 				4F2BA475161B1F5B00B2B461 /* leaf_tree_blur.jpg */,
 			);
 			path = "Theme Wallpaper";
+			sourceTree = "<group>";
+		};
+		4F2BA4791621B78E00B2B461 /* Custom Framework */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA47A1621B78E00B2B461 /* JUSSNetworkKit */,
+			);
+			name = "Custom Framework";
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		4F2BA47A1621B78E00B2B461 /* JUSSNetworkKit */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA47B1621B78E00B2B461 /* Categories */,
+				4F2BA4881621B78E00B2B461 /* JUSSNetworkEngine.h */,
+				4F2BA4891621B78E00B2B461 /* JUSSNetworkEngine.m */,
+				4F2BA48A1621B78E00B2B461 /* JUSSNetworkKit.h */,
+				4F2BA48B1621B78E00B2B461 /* JUSSNetworkOperation.h */,
+				4F2BA48C1621B78E00B2B461 /* JUSSNetworkOperation.m */,
+				4F2BA48D1621B78E00B2B461 /* Reachability */,
+			);
+			path = JUSSNetworkKit;
+			sourceTree = "<group>";
+		};
+		4F2BA47B1621B78E00B2B461 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA47C1621B78E00B2B461 /* NSAlert+MKNetworkKitAdditions.h */,
+				4F2BA47D1621B78E00B2B461 /* NSAlert+MKNetworkKitAdditions.m */,
+				4F2BA47E1621B78E00B2B461 /* NSData+Base64.h */,
+				4F2BA47F1621B78E00B2B461 /* NSData+Base64.m */,
+				4F2BA4801621B78E00B2B461 /* NSDate+RFC1123.h */,
+				4F2BA4811621B78E00B2B461 /* NSDate+RFC1123.m */,
+				4F2BA4821621B78E00B2B461 /* NSDictionary+RequestEncoding.h */,
+				4F2BA4831621B78E00B2B461 /* NSDictionary+RequestEncoding.m */,
+				4F2BA4841621B78E00B2B461 /* NSString+JUSSNetworkKitAdditions.h */,
+				4F2BA4851621B78E00B2B461 /* NSString+JUSSNetworkKitAdditions.m */,
+				4F2BA4861621B78E00B2B461 /* UIAlertView+JUSSNetworkKitAdditions.h */,
+				4F2BA4871621B78E00B2B461 /* UIAlertView+JUSSNetworkKitAdditions.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		4F2BA48D1621B78E00B2B461 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA48E1621B78E00B2B461 /* Reachability.h */,
+				4F2BA48F1621B78E00B2B461 /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +311,15 @@
 				4F2BA4571619CCA100B2B461 /* lifeWordsAppDelegate.m in Sources */,
 				4F2BA4661619CCA200B2B461 /* lifeWordsViewController.m in Sources */,
 				4F2BA46E1619CCFE00B2B461 /* lifeWordsLoginViewController.m in Sources */,
+				4F2BA4931621B78E00B2B461 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
+				4F2BA4941621B78E00B2B461 /* NSData+Base64.m in Sources */,
+				4F2BA4951621B78E00B2B461 /* NSDate+RFC1123.m in Sources */,
+				4F2BA4961621B78E00B2B461 /* NSDictionary+RequestEncoding.m in Sources */,
+				4F2BA4971621B78E00B2B461 /* NSString+JUSSNetworkKitAdditions.m in Sources */,
+				4F2BA4981621B78E00B2B461 /* UIAlertView+JUSSNetworkKitAdditions.m in Sources */,
+				4F2BA4991621B78E00B2B461 /* JUSSNetworkEngine.m in Sources */,
+				4F2BA49A1621B78E00B2B461 /* JUSSNetworkOperation.m in Sources */,
+				4F2BA49B1621B78E00B2B461 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
