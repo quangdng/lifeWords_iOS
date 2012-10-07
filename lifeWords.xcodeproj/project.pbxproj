@@ -32,6 +32,7 @@
 		4F2BA4991621B78E00B2B461 /* JUSSNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4891621B78E00B2B461 /* JUSSNetworkEngine.m */; };
 		4F2BA49A1621B78E00B2B461 /* JUSSNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA48C1621B78E00B2B461 /* JUSSNetworkOperation.m */; };
 		4F2BA49B1621B78E00B2B461 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA48F1621B78E00B2B461 /* Reachability.m */; };
+		4F2BA4A01621B7E200B2B461 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA49F1621B7E200B2B461 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,8 @@
 		4F2BA48C1621B78E00B2B461 /* JUSSNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUSSNetworkOperation.m; sourceTree = "<group>"; };
 		4F2BA48E1621B78E00B2B461 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		4F2BA48F1621B78E00B2B461 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4F2BA49E1621B7E200B2B461 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		4F2BA49F1621B7E200B2B461 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +191,7 @@
 		4F2BA4791621B78E00B2B461 /* Custom Framework */ = {
 			isa = PBXGroup;
 			children = (
+				4F2BA49D1621B7E200B2B461 /* MBProgressHUD */,
 				4F2BA47A1621B78E00B2B461 /* JUSSNetworkKit */,
 			);
 			name = "Custom Framework";
@@ -234,6 +238,15 @@
 				4F2BA48F1621B78E00B2B461 /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		4F2BA49D1621B7E200B2B461 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA49E1621B7E200B2B461 /* MBProgressHUD.h */,
+				4F2BA49F1621B7E200B2B461 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +333,7 @@
 				4F2BA4991621B78E00B2B461 /* JUSSNetworkEngine.m in Sources */,
 				4F2BA49A1621B78E00B2B461 /* JUSSNetworkOperation.m in Sources */,
 				4F2BA49B1621B78E00B2B461 /* Reachability.m in Sources */,
+				4F2BA4A01621B7E200B2B461 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
