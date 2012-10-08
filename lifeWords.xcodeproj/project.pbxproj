@@ -33,6 +33,7 @@
 		4F2BA49A1621B78E00B2B461 /* JUSSNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA48C1621B78E00B2B461 /* JUSSNetworkOperation.m */; };
 		4F2BA49B1621B78E00B2B461 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA48F1621B78E00B2B461 /* Reachability.m */; };
 		4F2BA4A01621B7E200B2B461 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA49F1621B7E200B2B461 /* MBProgressHUD.m */; };
+		4F2BA4A516230A0100B2B461 /* OLGhostAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4A416230A0100B2B461 /* OLGhostAlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,8 @@
 		4F2BA48F1621B78E00B2B461 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4F2BA49E1621B7E200B2B461 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4F2BA49F1621B7E200B2B461 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		4F2BA4A316230A0100B2B461 /* OLGhostAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OLGhostAlertView.h; sourceTree = "<group>"; };
+		4F2BA4A416230A0100B2B461 /* OLGhostAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OLGhostAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +136,8 @@
 				4F2BA4651619CCA200B2B461 /* lifeWordsViewController.m */,
 				4F2BA46F1619CD0500B2B461 /* Login View */,
 				4F2BA470161B1F5B00B2B461 /* Graphics */,
-				4F2BA4791621B78E00B2B461 /* Custom Framework */,
+				4F2BA4A116230A0100B2B461 /* Custom Objects */,
+				4F2BA4791621B78E00B2B461 /* Custom Frameworks */,
 				4F2BA44D1619CCA100B2B461 /* Supporting Files */,
 			);
 			path = lifeWords;
@@ -188,13 +192,13 @@
 			path = "Theme Wallpaper";
 			sourceTree = "<group>";
 		};
-		4F2BA4791621B78E00B2B461 /* Custom Framework */ = {
+		4F2BA4791621B78E00B2B461 /* Custom Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				4F2BA49D1621B7E200B2B461 /* MBProgressHUD */,
 				4F2BA47A1621B78E00B2B461 /* JUSSNetworkKit */,
 			);
-			name = "Custom Framework";
+			name = "Custom Frameworks";
 			path = Framework;
 			sourceTree = "<group>";
 		};
@@ -247,6 +251,24 @@
 				4F2BA49F1621B7E200B2B461 /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		4F2BA4A116230A0100B2B461 /* Custom Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA4A216230A0100B2B461 /* AlertView */,
+			);
+			name = "Custom Objects";
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		4F2BA4A216230A0100B2B461 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA4A316230A0100B2B461 /* OLGhostAlertView.h */,
+				4F2BA4A416230A0100B2B461 /* OLGhostAlertView.m */,
+			);
+			path = AlertView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +356,7 @@
 				4F2BA49A1621B78E00B2B461 /* JUSSNetworkOperation.m in Sources */,
 				4F2BA49B1621B78E00B2B461 /* Reachability.m in Sources */,
 				4F2BA4A01621B7E200B2B461 /* MBProgressHUD.m in Sources */,
+				4F2BA4A516230A0100B2B461 /* OLGhostAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
