@@ -52,6 +52,7 @@
 		4F2BA4E2162EE97100B2B461 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA4E1162EE97100B2B461 /* Icon@2x.png */; };
 		4F2BA4E4162EE97E00B2B461 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA4E3162EE97E00B2B461 /* Icon-72.png */; };
 		4F2BA4E6162EE98100B2B461 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA4E5162EE98100B2B461 /* Icon-72@2x.png */; };
+		4F2BA4E9163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4E8163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +123,8 @@
 		4F2BA4E1162EE97100B2B461 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4F2BA4E3162EE97E00B2B461 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		4F2BA4E5162EE98100B2B461 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		4F2BA4E7163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lifeWordsPhotoFilteringViewController.h; sourceTree = "<group>"; };
+		4F2BA4E8163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lifeWordsPhotoFilteringViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,7 @@
 				4F2BA46F1619CD0500B2B461 /* Login View */,
 				4F2BA4B01626FF4100B2B461 /* Sign Up View */,
 				4F2BA4DE162C461A00B2B461 /* Main View */,
+				4F2BA4EA163581C300B2B461 /* Photo Filtering */,
 				4F2BA470161B1F5B00B2B461 /* Graphics */,
 				4F2BA4A116230A0100B2B461 /* Custom Objects */,
 				4F2BA4791621B78E00B2B461 /* Custom Frameworks */,
@@ -366,6 +370,15 @@
 			name = "Main View";
 			sourceTree = "<group>";
 		};
+		4F2BA4EA163581C300B2B461 /* Photo Filtering */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA4E7163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.h */,
+				4F2BA4E8163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m */,
+			);
+			name = "Photo Filtering";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -470,6 +483,7 @@
 				4F2BA4AC16245BFA00B2B461 /* lifeWordsNetworkOperations.m in Sources */,
 				4F2BA4AF1626FF3D00B2B461 /* lifeWordsSignUpViewController.m in Sources */,
 				4F2BA4DD162C461400B2B461 /* lifeWordsMainViewController.m in Sources */,
+				4F2BA4E9163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
