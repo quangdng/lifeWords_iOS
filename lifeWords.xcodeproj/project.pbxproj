@@ -53,6 +53,8 @@
 		4F2BA4E4162EE97E00B2B461 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA4E3162EE97E00B2B461 /* Icon-72.png */; };
 		4F2BA4E6162EE98100B2B461 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA4E5162EE98100B2B461 /* Icon-72@2x.png */; };
 		4F2BA4E9163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4E8163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m */; };
+		4F2BA4F0163D6B0900B2B461 /* UIGlossyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4ED163D6B0900B2B461 /* UIGlossyButton.m */; };
+		4F2BA4F1163D6B0900B2B461 /* UIView+LayerEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4EF163D6B0900B2B461 /* UIView+LayerEffects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +127,10 @@
 		4F2BA4E5162EE98100B2B461 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		4F2BA4E7163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lifeWordsPhotoFilteringViewController.h; sourceTree = "<group>"; };
 		4F2BA4E8163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lifeWordsPhotoFilteringViewController.m; sourceTree = "<group>"; };
+		4F2BA4EC163D6B0900B2B461 /* UIGlossyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGlossyButton.h; sourceTree = "<group>"; };
+		4F2BA4ED163D6B0900B2B461 /* UIGlossyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGlossyButton.m; sourceTree = "<group>"; };
+		4F2BA4EE163D6B0900B2B461 /* UIView+LayerEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LayerEffects.h"; sourceTree = "<group>"; };
+		4F2BA4EF163D6B0900B2B461 /* UIView+LayerEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LayerEffects.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +314,7 @@
 		4F2BA4A116230A0100B2B461 /* Custom Objects */ = {
 			isa = PBXGroup;
 			children = (
+				4F2BA4EB163D6B0900B2B461 /* UIGlossyButton */,
 				4F2BA4A216230A0100B2B461 /* AlertView */,
 			);
 			name = "Custom Objects";
@@ -377,6 +384,17 @@
 				4F2BA4E8163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m */,
 			);
 			name = "Photo Filtering";
+			sourceTree = "<group>";
+		};
+		4F2BA4EB163D6B0900B2B461 /* UIGlossyButton */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA4EC163D6B0900B2B461 /* UIGlossyButton.h */,
+				4F2BA4ED163D6B0900B2B461 /* UIGlossyButton.m */,
+				4F2BA4EE163D6B0900B2B461 /* UIView+LayerEffects.h */,
+				4F2BA4EF163D6B0900B2B461 /* UIView+LayerEffects.m */,
+			);
+			path = UIGlossyButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,6 +502,8 @@
 				4F2BA4AF1626FF3D00B2B461 /* lifeWordsSignUpViewController.m in Sources */,
 				4F2BA4DD162C461400B2B461 /* lifeWordsMainViewController.m in Sources */,
 				4F2BA4E9163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m in Sources */,
+				4F2BA4F0163D6B0900B2B461 /* UIGlossyButton.m in Sources */,
+				4F2BA4F1163D6B0900B2B461 /* UIView+LayerEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
