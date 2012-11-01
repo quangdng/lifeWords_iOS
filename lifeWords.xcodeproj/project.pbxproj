@@ -55,6 +55,94 @@
 		4F2BA4E9163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4E8163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m */; };
 		4F2BA4F0163D6B0900B2B461 /* UIGlossyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4ED163D6B0900B2B461 /* UIGlossyButton.m */; };
 		4F2BA4F1163D6B0900B2B461 /* UIView+LayerEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4EF163D6B0900B2B461 /* UIView+LayerEffects.m */; };
+		4F2BA59E1642B16D00B2B461 /* AgedFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4F51642B16C00B2B461 /* AgedFX.m */; };
+		4F2BA59F1642B16D00B2B461 /* AlaskaFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4F71642B16C00B2B461 /* AlaskaFX.m */; };
+		4F2BA5A01642B16D00B2B461 /* AltamonteFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4F91642B16C00B2B461 /* AltamonteFX.m */; };
+		4F2BA5A11642B16D00B2B461 /* AvatarFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4FB1642B16C00B2B461 /* AvatarFX.m */; };
+		4F2BA5A21642B16D00B2B461 /* BilboaFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4FD1642B16C00B2B461 /* BilboaFX.m */; };
+		4F2BA5A31642B16D00B2B461 /* BlackAndWhiteGrainedFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4FF1642B16C00B2B461 /* BlackAndWhiteGrainedFX.m */; };
+		4F2BA5A41642B16D00B2B461 /* BlackAndWhiteLuminoFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5011642B16C00B2B461 /* BlackAndWhiteLuminoFX.m */; };
+		4F2BA5A51642B16D00B2B461 /* ComicDarkFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5031642B16C00B2B461 /* ComicDarkFX.m */; };
+		4F2BA5A61642B16D00B2B461 /* ComicSharpFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5051642B16C00B2B461 /* ComicSharpFX.m */; };
+		4F2BA5A71642B16D00B2B461 /* DarkGrungeFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5071642B16C00B2B461 /* DarkGrungeFX.m */; };
+		4F2BA5A81642B16D00B2B461 /* DawnFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5091642B16C00B2B461 /* DawnFX.m */; };
+		4F2BA5A91642B16D00B2B461 /* DaytonaFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA50B1642B16C00B2B461 /* DaytonaFX.m */; };
+		4F2BA5AA1642B16D00B2B461 /* DerbyFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA50D1642B16C00B2B461 /* DerbyFX.m */; };
+		4F2BA5AB1642B16D00B2B461 /* DuskFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA50F1642B16C00B2B461 /* DuskFX.m */; };
+		4F2BA5AC1642B16D00B2B461 /* EnhanceFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5111642B16C00B2B461 /* EnhanceFX.m */; };
+		4F2BA5AD1642B16D00B2B461 /* FX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5131642B16C00B2B461 /* FX.m */; };
+		4F2BA5AE1642B16D00B2B461 /* GrungeRaysBlueFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5151642B16C00B2B461 /* GrungeRaysBlueFX.m */; };
+		4F2BA5AF1642B16D00B2B461 /* GrungeRaysGreenFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5171642B16C00B2B461 /* GrungeRaysGreenFX.m */; };
+		4F2BA5B01642B16D00B2B461 /* GrungeRaysRedFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5191642B16C00B2B461 /* GrungeRaysRedFX.m */; };
+		4F2BA5B11642B16D00B2B461 /* GrungeRaysSapiaFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA51B1642B16C00B2B461 /* GrungeRaysSapiaFX.m */; };
+		4F2BA5B21642B16D00B2B461 /* HalftoneComicFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA51D1642B16C00B2B461 /* HalftoneComicFX.m */; };
+		4F2BA5B31642B16D00B2B461 /* HalftoneDarkFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA51F1642B16C00B2B461 /* HalftoneDarkFX.m */; };
+		4F2BA5B41642B16D00B2B461 /* HalftoneSharpFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5211642B16C00B2B461 /* HalftoneSharpFX.m */; };
+		4F2BA5B51642B16D00B2B461 /* LantanaFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5231642B16C00B2B461 /* LantanaFX.m */; };
+		4F2BA5B61642B16D00B2B461 /* LindaleFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5251642B16C00B2B461 /* LindaleFX.m */; };
+		4F2BA5B71642B16D00B2B461 /* MarineFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5271642B16C00B2B461 /* MarineFX.m */; };
+		4F2BA5B81642B16D00B2B461 /* MarsFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5291642B16C00B2B461 /* MarsFX.m */; };
+		4F2BA5B91642B16D00B2B461 /* NapaFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA52B1642B16C00B2B461 /* NapaFX.m */; };
+		4F2BA5BA1642B16D00B2B461 /* OldDirtyFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA52D1642B16C00B2B461 /* OldDirtyFX.m */; };
+		4F2BA5BB1642B16D00B2B461 /* PaperTossFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA52F1642B16D00B2B461 /* PaperTossFX.m */; };
+		4F2BA5BC1642B16D00B2B461 /* RedNoirFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5321642B16D00B2B461 /* RedNoirFX.m */; };
+		4F2BA5BD1642B16D00B2B461 /* SapphireNoirFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5341642B16D00B2B461 /* SapphireNoirFX.m */; };
+		4F2BA5BE1642B16D00B2B461 /* SenibelFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5361642B16D00B2B461 /* SenibelFX.m */; };
+		4F2BA5BF1642B16D00B2B461 /* SepiaNoirFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5381642B16D00B2B461 /* SepiaNoirFX.m */; };
+		4F2BA5C01642B16D00B2B461 /* SocorroFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA53A1642B16D00B2B461 /* SocorroFX.m */; };
+		4F2BA5C11642B16D00B2B461 /* SonomaFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA53C1642B16D00B2B461 /* SonomaFX.m */; };
+		4F2BA5C21642B16D00B2B461 /* VividFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA53E1642B16D00B2B461 /* VividFX.m */; };
+		4F2BA5C31642B16D00B2B461 /* WinterFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5401642B16D00B2B461 /* WinterFX.m */; };
+		4F2BA5C41642B16D00B2B461 /* YellowNoirFX.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5421642B16D00B2B461 /* YellowNoirFX.m */; };
+		4F2BA5C51642B16D00B2B461 /* AdditionCompositingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5451642B16D00B2B461 /* AdditionCompositingFilter.m */; };
+		4F2BA5C61642B16D00B2B461 /* AffineTransformFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5471642B16D00B2B461 /* AffineTransformFilter.m */; };
+		4F2BA5C71642B16D00B2B461 /* ColorBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5491642B16D00B2B461 /* ColorBlendModeFilter.m */; };
+		4F2BA5C81642B16D00B2B461 /* ColorBurnBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA54B1642B16D00B2B461 /* ColorBurnBlendModeFilter.m */; };
+		4F2BA5C91642B16D00B2B461 /* ColorControlsFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA54D1642B16D00B2B461 /* ColorControlsFilter.m */; };
+		4F2BA5CA1642B16D00B2B461 /* ColorCubeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA54F1642B16D00B2B461 /* ColorCubeFilter.m */; };
+		4F2BA5CB1642B16D00B2B461 /* ColorDodgeBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5511642B16D00B2B461 /* ColorDodgeBlendModeFilter.m */; };
+		4F2BA5CC1642B16D00B2B461 /* ColorInvertFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5531642B16D00B2B461 /* ColorInvertFilter.m */; };
+		4F2BA5CD1642B16D00B2B461 /* ColorMapFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5551642B16D00B2B461 /* ColorMapFilter.m */; };
+		4F2BA5CE1642B16D00B2B461 /* ColorMatrixFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5571642B16D00B2B461 /* ColorMatrixFilter.m */; };
+		4F2BA5CF1642B16D00B2B461 /* ColorMonochromeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5591642B16D00B2B461 /* ColorMonochromeFilter.m */; };
+		4F2BA5D01642B16D00B2B461 /* CropFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA55B1642B16D00B2B461 /* CropFilter.m */; };
+		4F2BA5D11642B16D00B2B461 /* DarkenBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA55D1642B16D00B2B461 /* DarkenBlendModeFilter.m */; };
+		4F2BA5D21642B16D00B2B461 /* DifferenceBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA55F1642B16D00B2B461 /* DifferenceBlendModeFilter.m */; };
+		4F2BA5D31642B16D00B2B461 /* EnhanceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5611642B16D00B2B461 /* EnhanceFilter.m */; };
+		4F2BA5D41642B16D00B2B461 /* ExclusionBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5631642B16D00B2B461 /* ExclusionBlendModeFilter.m */; };
+		4F2BA5D51642B16D00B2B461 /* ExposureAdjustFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5651642B16D00B2B461 /* ExposureAdjustFilter.m */; };
+		4F2BA5D61642B16D00B2B461 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5671642B16D00B2B461 /* Filter.m */; };
+		4F2BA5D71642B16D00B2B461 /* GammaAdjustFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5691642B16D00B2B461 /* GammaAdjustFilter.m */; };
+		4F2BA5D81642B16D00B2B461 /* HardLightBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA56B1642B16D00B2B461 /* HardLightBlendModeFilter.m */; };
+		4F2BA5D91642B16D00B2B461 /* HighlightShadowAdjustFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA56D1642B16D00B2B461 /* HighlightShadowAdjustFilter.m */; };
+		4F2BA5DA1642B16D00B2B461 /* HueAdjustFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA56F1642B16D00B2B461 /* HueAdjustFilter.m */; };
+		4F2BA5DB1642B16D00B2B461 /* HueBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5711642B16D00B2B461 /* HueBlendModeFilter.m */; };
+		4F2BA5DC1642B16D00B2B461 /* LightenBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5731642B16D00B2B461 /* LightenBlendModeFilter.m */; };
+		4F2BA5DD1642B16D00B2B461 /* LuminosityBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5751642B16D00B2B461 /* LuminosityBlendModeFilter.m */; };
+		4F2BA5DE1642B16D00B2B461 /* MaximumCompositingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5771642B16D00B2B461 /* MaximumCompositingFilter.m */; };
+		4F2BA5DF1642B16D00B2B461 /* MinimumCompositingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5791642B16D00B2B461 /* MinimumCompositingFilter.m */; };
+		4F2BA5E01642B16D00B2B461 /* MultiplyBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA57B1642B16D00B2B461 /* MultiplyBlendModeFilter.m */; };
+		4F2BA5E11642B16D00B2B461 /* MultiplyCompositingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA57D1642B16D00B2B461 /* MultiplyCompositingFilter.m */; };
+		4F2BA5E21642B16D00B2B461 /* OverlayBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA57F1642B16D00B2B461 /* OverlayBlendModeFilter.m */; };
+		4F2BA5E31642B16D00B2B461 /* SaturationBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5811642B16D00B2B461 /* SaturationBlendModeFilter.m */; };
+		4F2BA5E41642B16D00B2B461 /* ScreenBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5831642B16D00B2B461 /* ScreenBlendModeFilter.m */; };
+		4F2BA5E51642B16D00B2B461 /* SepiaToneFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5851642B16D00B2B461 /* SepiaToneFilter.m */; };
+		4F2BA5E61642B16D00B2B461 /* SoftLightBlendModeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5871642B16D00B2B461 /* SoftLightBlendModeFilter.m */; };
+		4F2BA5E71642B16D00B2B461 /* SourceAtopCompositingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5891642B16D00B2B461 /* SourceAtopCompositingFilter.m */; };
+		4F2BA5E81642B16D00B2B461 /* TemperatureAndTintFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA58B1642B16D00B2B461 /* TemperatureAndTintFilter.m */; };
+		4F2BA5E91642B16D00B2B461 /* ToneCurveFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA58D1642B16D00B2B461 /* ToneCurveFilter.m */; };
+		4F2BA5EA1642B16D00B2B461 /* VibranceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA58F1642B16D00B2B461 /* VibranceFilter.m */; };
+		4F2BA5EB1642B16D00B2B461 /* WhitePointAdjustFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA5911642B16D00B2B461 /* WhitePointAdjustFilter.m */; };
+		4F2BA5EC1642B16D00B2B461 /* dots.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA5931642B16D00B2B461 /* dots.png */; };
+		4F2BA5ED1642B16D00B2B461 /* grunge.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA5941642B16D00B2B461 /* grunge.png */; };
+		4F2BA5EE1642B16D00B2B461 /* grunge1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA5951642B16D00B2B461 /* grunge1.jpg */; };
+		4F2BA5EF1642B16D00B2B461 /* grunge2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA5961642B16D00B2B461 /* grunge2.png */; };
+		4F2BA5F01642B16D00B2B461 /* grunge3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA5971642B16D00B2B461 /* grunge3.png */; };
+		4F2BA5F11642B16D00B2B461 /* grunge4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA5981642B16D00B2B461 /* grunge4.jpeg */; };
+		4F2BA5F21642B16D00B2B461 /* grunge5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA5991642B16D00B2B461 /* grunge5.png */; };
+		4F2BA5F31642B16D00B2B461 /* grunge6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA59A1642B16D00B2B461 /* grunge6.png */; };
+		4F2BA5F41642B16D00B2B461 /* papertoss.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA59B1642B16D00B2B461 /* papertoss.png */; };
+		4F2BA5F51642B16D00B2B461 /* UIImage+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA59D1642B16D00B2B461 /* UIImage+Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +219,174 @@
 		4F2BA4ED163D6B0900B2B461 /* UIGlossyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIGlossyButton.m; sourceTree = "<group>"; };
 		4F2BA4EE163D6B0900B2B461 /* UIView+LayerEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LayerEffects.h"; sourceTree = "<group>"; };
 		4F2BA4EF163D6B0900B2B461 /* UIView+LayerEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LayerEffects.m"; sourceTree = "<group>"; };
+		4F2BA4F41642B16C00B2B461 /* AgedFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgedFX.h; sourceTree = "<group>"; };
+		4F2BA4F51642B16C00B2B461 /* AgedFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgedFX.m; sourceTree = "<group>"; };
+		4F2BA4F61642B16C00B2B461 /* AlaskaFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlaskaFX.h; sourceTree = "<group>"; };
+		4F2BA4F71642B16C00B2B461 /* AlaskaFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlaskaFX.m; sourceTree = "<group>"; };
+		4F2BA4F81642B16C00B2B461 /* AltamonteFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AltamonteFX.h; sourceTree = "<group>"; };
+		4F2BA4F91642B16C00B2B461 /* AltamonteFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AltamonteFX.m; sourceTree = "<group>"; };
+		4F2BA4FA1642B16C00B2B461 /* AvatarFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarFX.h; sourceTree = "<group>"; };
+		4F2BA4FB1642B16C00B2B461 /* AvatarFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarFX.m; sourceTree = "<group>"; };
+		4F2BA4FC1642B16C00B2B461 /* BilboaFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BilboaFX.h; sourceTree = "<group>"; };
+		4F2BA4FD1642B16C00B2B461 /* BilboaFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BilboaFX.m; sourceTree = "<group>"; };
+		4F2BA4FE1642B16C00B2B461 /* BlackAndWhiteGrainedFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackAndWhiteGrainedFX.h; sourceTree = "<group>"; };
+		4F2BA4FF1642B16C00B2B461 /* BlackAndWhiteGrainedFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackAndWhiteGrainedFX.m; sourceTree = "<group>"; };
+		4F2BA5001642B16C00B2B461 /* BlackAndWhiteLuminoFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackAndWhiteLuminoFX.h; sourceTree = "<group>"; };
+		4F2BA5011642B16C00B2B461 /* BlackAndWhiteLuminoFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackAndWhiteLuminoFX.m; sourceTree = "<group>"; };
+		4F2BA5021642B16C00B2B461 /* ComicDarkFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicDarkFX.h; sourceTree = "<group>"; };
+		4F2BA5031642B16C00B2B461 /* ComicDarkFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicDarkFX.m; sourceTree = "<group>"; };
+		4F2BA5041642B16C00B2B461 /* ComicSharpFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComicSharpFX.h; sourceTree = "<group>"; };
+		4F2BA5051642B16C00B2B461 /* ComicSharpFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComicSharpFX.m; sourceTree = "<group>"; };
+		4F2BA5061642B16C00B2B461 /* DarkGrungeFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkGrungeFX.h; sourceTree = "<group>"; };
+		4F2BA5071642B16C00B2B461 /* DarkGrungeFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkGrungeFX.m; sourceTree = "<group>"; };
+		4F2BA5081642B16C00B2B461 /* DawnFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DawnFX.h; sourceTree = "<group>"; };
+		4F2BA5091642B16C00B2B461 /* DawnFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DawnFX.m; sourceTree = "<group>"; };
+		4F2BA50A1642B16C00B2B461 /* DaytonaFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaytonaFX.h; sourceTree = "<group>"; };
+		4F2BA50B1642B16C00B2B461 /* DaytonaFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaytonaFX.m; sourceTree = "<group>"; };
+		4F2BA50C1642B16C00B2B461 /* DerbyFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DerbyFX.h; sourceTree = "<group>"; };
+		4F2BA50D1642B16C00B2B461 /* DerbyFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DerbyFX.m; sourceTree = "<group>"; };
+		4F2BA50E1642B16C00B2B461 /* DuskFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DuskFX.h; sourceTree = "<group>"; };
+		4F2BA50F1642B16C00B2B461 /* DuskFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DuskFX.m; sourceTree = "<group>"; };
+		4F2BA5101642B16C00B2B461 /* EnhanceFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnhanceFX.h; sourceTree = "<group>"; };
+		4F2BA5111642B16C00B2B461 /* EnhanceFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnhanceFX.m; sourceTree = "<group>"; };
+		4F2BA5121642B16C00B2B461 /* FX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FX.h; sourceTree = "<group>"; };
+		4F2BA5131642B16C00B2B461 /* FX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FX.m; sourceTree = "<group>"; };
+		4F2BA5141642B16C00B2B461 /* GrungeRaysBlueFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrungeRaysBlueFX.h; sourceTree = "<group>"; };
+		4F2BA5151642B16C00B2B461 /* GrungeRaysBlueFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrungeRaysBlueFX.m; sourceTree = "<group>"; };
+		4F2BA5161642B16C00B2B461 /* GrungeRaysGreenFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrungeRaysGreenFX.h; sourceTree = "<group>"; };
+		4F2BA5171642B16C00B2B461 /* GrungeRaysGreenFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrungeRaysGreenFX.m; sourceTree = "<group>"; };
+		4F2BA5181642B16C00B2B461 /* GrungeRaysRedFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrungeRaysRedFX.h; sourceTree = "<group>"; };
+		4F2BA5191642B16C00B2B461 /* GrungeRaysRedFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrungeRaysRedFX.m; sourceTree = "<group>"; };
+		4F2BA51A1642B16C00B2B461 /* GrungeRaysSapiaFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrungeRaysSapiaFX.h; sourceTree = "<group>"; };
+		4F2BA51B1642B16C00B2B461 /* GrungeRaysSapiaFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrungeRaysSapiaFX.m; sourceTree = "<group>"; };
+		4F2BA51C1642B16C00B2B461 /* HalftoneComicFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalftoneComicFX.h; sourceTree = "<group>"; };
+		4F2BA51D1642B16C00B2B461 /* HalftoneComicFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalftoneComicFX.m; sourceTree = "<group>"; };
+		4F2BA51E1642B16C00B2B461 /* HalftoneDarkFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalftoneDarkFX.h; sourceTree = "<group>"; };
+		4F2BA51F1642B16C00B2B461 /* HalftoneDarkFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalftoneDarkFX.m; sourceTree = "<group>"; };
+		4F2BA5201642B16C00B2B461 /* HalftoneSharpFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalftoneSharpFX.h; sourceTree = "<group>"; };
+		4F2BA5211642B16C00B2B461 /* HalftoneSharpFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HalftoneSharpFX.m; sourceTree = "<group>"; };
+		4F2BA5221642B16C00B2B461 /* LantanaFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LantanaFX.h; sourceTree = "<group>"; };
+		4F2BA5231642B16C00B2B461 /* LantanaFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LantanaFX.m; sourceTree = "<group>"; };
+		4F2BA5241642B16C00B2B461 /* LindaleFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LindaleFX.h; sourceTree = "<group>"; };
+		4F2BA5251642B16C00B2B461 /* LindaleFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LindaleFX.m; sourceTree = "<group>"; };
+		4F2BA5261642B16C00B2B461 /* MarineFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarineFX.h; sourceTree = "<group>"; };
+		4F2BA5271642B16C00B2B461 /* MarineFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarineFX.m; sourceTree = "<group>"; };
+		4F2BA5281642B16C00B2B461 /* MarsFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsFX.h; sourceTree = "<group>"; };
+		4F2BA5291642B16C00B2B461 /* MarsFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarsFX.m; sourceTree = "<group>"; };
+		4F2BA52A1642B16C00B2B461 /* NapaFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NapaFX.h; sourceTree = "<group>"; };
+		4F2BA52B1642B16C00B2B461 /* NapaFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NapaFX.m; sourceTree = "<group>"; };
+		4F2BA52C1642B16C00B2B461 /* OldDirtyFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldDirtyFX.h; sourceTree = "<group>"; };
+		4F2BA52D1642B16C00B2B461 /* OldDirtyFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldDirtyFX.m; sourceTree = "<group>"; };
+		4F2BA52E1642B16C00B2B461 /* PaperTossFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperTossFX.h; sourceTree = "<group>"; };
+		4F2BA52F1642B16D00B2B461 /* PaperTossFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperTossFX.m; sourceTree = "<group>"; };
+		4F2BA5301642B16D00B2B461 /* PhotoFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoFX.h; sourceTree = "<group>"; };
+		4F2BA5311642B16D00B2B461 /* RedNoirFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedNoirFX.h; sourceTree = "<group>"; };
+		4F2BA5321642B16D00B2B461 /* RedNoirFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedNoirFX.m; sourceTree = "<group>"; };
+		4F2BA5331642B16D00B2B461 /* SapphireNoirFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SapphireNoirFX.h; sourceTree = "<group>"; };
+		4F2BA5341642B16D00B2B461 /* SapphireNoirFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SapphireNoirFX.m; sourceTree = "<group>"; };
+		4F2BA5351642B16D00B2B461 /* SenibelFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenibelFX.h; sourceTree = "<group>"; };
+		4F2BA5361642B16D00B2B461 /* SenibelFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenibelFX.m; sourceTree = "<group>"; };
+		4F2BA5371642B16D00B2B461 /* SepiaNoirFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SepiaNoirFX.h; sourceTree = "<group>"; };
+		4F2BA5381642B16D00B2B461 /* SepiaNoirFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SepiaNoirFX.m; sourceTree = "<group>"; };
+		4F2BA5391642B16D00B2B461 /* SocorroFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocorroFX.h; sourceTree = "<group>"; };
+		4F2BA53A1642B16D00B2B461 /* SocorroFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocorroFX.m; sourceTree = "<group>"; };
+		4F2BA53B1642B16D00B2B461 /* SonomaFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SonomaFX.h; sourceTree = "<group>"; };
+		4F2BA53C1642B16D00B2B461 /* SonomaFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SonomaFX.m; sourceTree = "<group>"; };
+		4F2BA53D1642B16D00B2B461 /* VividFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VividFX.h; sourceTree = "<group>"; };
+		4F2BA53E1642B16D00B2B461 /* VividFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VividFX.m; sourceTree = "<group>"; };
+		4F2BA53F1642B16D00B2B461 /* WinterFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinterFX.h; sourceTree = "<group>"; };
+		4F2BA5401642B16D00B2B461 /* WinterFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinterFX.m; sourceTree = "<group>"; };
+		4F2BA5411642B16D00B2B461 /* YellowNoirFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YellowNoirFX.h; sourceTree = "<group>"; };
+		4F2BA5421642B16D00B2B461 /* YellowNoirFX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YellowNoirFX.m; sourceTree = "<group>"; };
+		4F2BA5441642B16D00B2B461 /* AdditionCompositingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdditionCompositingFilter.h; sourceTree = "<group>"; };
+		4F2BA5451642B16D00B2B461 /* AdditionCompositingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdditionCompositingFilter.m; sourceTree = "<group>"; };
+		4F2BA5461642B16D00B2B461 /* AffineTransformFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AffineTransformFilter.h; sourceTree = "<group>"; };
+		4F2BA5471642B16D00B2B461 /* AffineTransformFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AffineTransformFilter.m; sourceTree = "<group>"; };
+		4F2BA5481642B16D00B2B461 /* ColorBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA5491642B16D00B2B461 /* ColorBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA54A1642B16D00B2B461 /* ColorBurnBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorBurnBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA54B1642B16D00B2B461 /* ColorBurnBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorBurnBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA54C1642B16D00B2B461 /* ColorControlsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorControlsFilter.h; sourceTree = "<group>"; };
+		4F2BA54D1642B16D00B2B461 /* ColorControlsFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorControlsFilter.m; sourceTree = "<group>"; };
+		4F2BA54E1642B16D00B2B461 /* ColorCubeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCubeFilter.h; sourceTree = "<group>"; };
+		4F2BA54F1642B16D00B2B461 /* ColorCubeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCubeFilter.m; sourceTree = "<group>"; };
+		4F2BA5501642B16D00B2B461 /* ColorDodgeBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorDodgeBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA5511642B16D00B2B461 /* ColorDodgeBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorDodgeBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5521642B16D00B2B461 /* ColorInvertFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorInvertFilter.h; sourceTree = "<group>"; };
+		4F2BA5531642B16D00B2B461 /* ColorInvertFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorInvertFilter.m; sourceTree = "<group>"; };
+		4F2BA5541642B16D00B2B461 /* ColorMapFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMapFilter.h; sourceTree = "<group>"; };
+		4F2BA5551642B16D00B2B461 /* ColorMapFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMapFilter.m; sourceTree = "<group>"; };
+		4F2BA5561642B16D00B2B461 /* ColorMatrixFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMatrixFilter.h; sourceTree = "<group>"; };
+		4F2BA5571642B16D00B2B461 /* ColorMatrixFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMatrixFilter.m; sourceTree = "<group>"; };
+		4F2BA5581642B16D00B2B461 /* ColorMonochromeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorMonochromeFilter.h; sourceTree = "<group>"; };
+		4F2BA5591642B16D00B2B461 /* ColorMonochromeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorMonochromeFilter.m; sourceTree = "<group>"; };
+		4F2BA55A1642B16D00B2B461 /* CropFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropFilter.h; sourceTree = "<group>"; };
+		4F2BA55B1642B16D00B2B461 /* CropFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropFilter.m; sourceTree = "<group>"; };
+		4F2BA55C1642B16D00B2B461 /* DarkenBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkenBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA55D1642B16D00B2B461 /* DarkenBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkenBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA55E1642B16D00B2B461 /* DifferenceBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DifferenceBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA55F1642B16D00B2B461 /* DifferenceBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DifferenceBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5601642B16D00B2B461 /* EnhanceFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnhanceFilter.h; sourceTree = "<group>"; };
+		4F2BA5611642B16D00B2B461 /* EnhanceFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnhanceFilter.m; sourceTree = "<group>"; };
+		4F2BA5621642B16D00B2B461 /* ExclusionBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExclusionBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA5631642B16D00B2B461 /* ExclusionBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExclusionBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5641642B16D00B2B461 /* ExposureAdjustFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExposureAdjustFilter.h; sourceTree = "<group>"; };
+		4F2BA5651642B16D00B2B461 /* ExposureAdjustFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExposureAdjustFilter.m; sourceTree = "<group>"; };
+		4F2BA5661642B16D00B2B461 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
+		4F2BA5671642B16D00B2B461 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
+		4F2BA5681642B16D00B2B461 /* GammaAdjustFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GammaAdjustFilter.h; sourceTree = "<group>"; };
+		4F2BA5691642B16D00B2B461 /* GammaAdjustFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GammaAdjustFilter.m; sourceTree = "<group>"; };
+		4F2BA56A1642B16D00B2B461 /* HardLightBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HardLightBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA56B1642B16D00B2B461 /* HardLightBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HardLightBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA56C1642B16D00B2B461 /* HighlightShadowAdjustFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightShadowAdjustFilter.h; sourceTree = "<group>"; };
+		4F2BA56D1642B16D00B2B461 /* HighlightShadowAdjustFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightShadowAdjustFilter.m; sourceTree = "<group>"; };
+		4F2BA56E1642B16D00B2B461 /* HueAdjustFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueAdjustFilter.h; sourceTree = "<group>"; };
+		4F2BA56F1642B16D00B2B461 /* HueAdjustFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueAdjustFilter.m; sourceTree = "<group>"; };
+		4F2BA5701642B16D00B2B461 /* HueBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HueBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA5711642B16D00B2B461 /* HueBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HueBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5721642B16D00B2B461 /* LightenBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightenBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA5731642B16D00B2B461 /* LightenBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightenBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5741642B16D00B2B461 /* LuminosityBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuminosityBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA5751642B16D00B2B461 /* LuminosityBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuminosityBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5761642B16D00B2B461 /* MaximumCompositingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaximumCompositingFilter.h; sourceTree = "<group>"; };
+		4F2BA5771642B16D00B2B461 /* MaximumCompositingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaximumCompositingFilter.m; sourceTree = "<group>"; };
+		4F2BA5781642B16D00B2B461 /* MinimumCompositingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinimumCompositingFilter.h; sourceTree = "<group>"; };
+		4F2BA5791642B16D00B2B461 /* MinimumCompositingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinimumCompositingFilter.m; sourceTree = "<group>"; };
+		4F2BA57A1642B16D00B2B461 /* MultiplyBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplyBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA57B1642B16D00B2B461 /* MultiplyBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplyBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA57C1642B16D00B2B461 /* MultiplyCompositingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiplyCompositingFilter.h; sourceTree = "<group>"; };
+		4F2BA57D1642B16D00B2B461 /* MultiplyCompositingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiplyCompositingFilter.m; sourceTree = "<group>"; };
+		4F2BA57E1642B16D00B2B461 /* OverlayBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA57F1642B16D00B2B461 /* OverlayBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5801642B16D00B2B461 /* SaturationBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaturationBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA5811642B16D00B2B461 /* SaturationBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaturationBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5821642B16D00B2B461 /* ScreenBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA5831642B16D00B2B461 /* ScreenBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5841642B16D00B2B461 /* SepiaToneFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SepiaToneFilter.h; sourceTree = "<group>"; };
+		4F2BA5851642B16D00B2B461 /* SepiaToneFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SepiaToneFilter.m; sourceTree = "<group>"; };
+		4F2BA5861642B16D00B2B461 /* SoftLightBlendModeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftLightBlendModeFilter.h; sourceTree = "<group>"; };
+		4F2BA5871642B16D00B2B461 /* SoftLightBlendModeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftLightBlendModeFilter.m; sourceTree = "<group>"; };
+		4F2BA5881642B16D00B2B461 /* SourceAtopCompositingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceAtopCompositingFilter.h; sourceTree = "<group>"; };
+		4F2BA5891642B16D00B2B461 /* SourceAtopCompositingFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceAtopCompositingFilter.m; sourceTree = "<group>"; };
+		4F2BA58A1642B16D00B2B461 /* TemperatureAndTintFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemperatureAndTintFilter.h; sourceTree = "<group>"; };
+		4F2BA58B1642B16D00B2B461 /* TemperatureAndTintFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemperatureAndTintFilter.m; sourceTree = "<group>"; };
+		4F2BA58C1642B16D00B2B461 /* ToneCurveFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToneCurveFilter.h; sourceTree = "<group>"; };
+		4F2BA58D1642B16D00B2B461 /* ToneCurveFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToneCurveFilter.m; sourceTree = "<group>"; };
+		4F2BA58E1642B16D00B2B461 /* VibranceFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VibranceFilter.h; sourceTree = "<group>"; };
+		4F2BA58F1642B16D00B2B461 /* VibranceFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VibranceFilter.m; sourceTree = "<group>"; };
+		4F2BA5901642B16D00B2B461 /* WhitePointAdjustFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhitePointAdjustFilter.h; sourceTree = "<group>"; };
+		4F2BA5911642B16D00B2B461 /* WhitePointAdjustFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhitePointAdjustFilter.m; sourceTree = "<group>"; };
+		4F2BA5931642B16D00B2B461 /* dots.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dots.png; sourceTree = "<group>"; };
+		4F2BA5941642B16D00B2B461 /* grunge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grunge.png; sourceTree = "<group>"; };
+		4F2BA5951642B16D00B2B461 /* grunge1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grunge1.jpg; sourceTree = "<group>"; };
+		4F2BA5961642B16D00B2B461 /* grunge2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grunge2.png; sourceTree = "<group>"; };
+		4F2BA5971642B16D00B2B461 /* grunge3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grunge3.png; sourceTree = "<group>"; };
+		4F2BA5981642B16D00B2B461 /* grunge4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grunge4.jpeg; sourceTree = "<group>"; };
+		4F2BA5991642B16D00B2B461 /* grunge5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grunge5.png; sourceTree = "<group>"; };
+		4F2BA59A1642B16D00B2B461 /* grunge6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grunge6.png; sourceTree = "<group>"; };
+		4F2BA59B1642B16D00B2B461 /* papertoss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = papertoss.png; sourceTree = "<group>"; };
+		4F2BA59C1642B16D00B2B461 /* UIImage+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Helpers.h"; sourceTree = "<group>"; };
+		4F2BA59D1642B16D00B2B461 /* UIImage+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Helpers.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +509,7 @@
 		4F2BA4791621B78E00B2B461 /* Custom Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F2BA4F21642B16C00B2B461 /* PhotoFX */,
 				4F2BA49D1621B7E200B2B461 /* MBProgressHUD */,
 				4F2BA47A1621B78E00B2B461 /* JUSSNetworkKit */,
 			);
@@ -397,6 +654,205 @@
 			path = UIGlossyButton;
 			sourceTree = "<group>";
 		};
+		4F2BA4F21642B16C00B2B461 /* PhotoFX */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA4F31642B16C00B2B461 /* Effects */,
+				4F2BA5431642B16D00B2B461 /* Filters */,
+				4F2BA5921642B16D00B2B461 /* Textures */,
+				4F2BA59C1642B16D00B2B461 /* UIImage+Helpers.h */,
+				4F2BA59D1642B16D00B2B461 /* UIImage+Helpers.m */,
+			);
+			path = PhotoFX;
+			sourceTree = "<group>";
+		};
+		4F2BA4F31642B16C00B2B461 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA4F41642B16C00B2B461 /* AgedFX.h */,
+				4F2BA4F51642B16C00B2B461 /* AgedFX.m */,
+				4F2BA4F61642B16C00B2B461 /* AlaskaFX.h */,
+				4F2BA4F71642B16C00B2B461 /* AlaskaFX.m */,
+				4F2BA4F81642B16C00B2B461 /* AltamonteFX.h */,
+				4F2BA4F91642B16C00B2B461 /* AltamonteFX.m */,
+				4F2BA4FA1642B16C00B2B461 /* AvatarFX.h */,
+				4F2BA4FB1642B16C00B2B461 /* AvatarFX.m */,
+				4F2BA4FC1642B16C00B2B461 /* BilboaFX.h */,
+				4F2BA4FD1642B16C00B2B461 /* BilboaFX.m */,
+				4F2BA4FE1642B16C00B2B461 /* BlackAndWhiteGrainedFX.h */,
+				4F2BA4FF1642B16C00B2B461 /* BlackAndWhiteGrainedFX.m */,
+				4F2BA5001642B16C00B2B461 /* BlackAndWhiteLuminoFX.h */,
+				4F2BA5011642B16C00B2B461 /* BlackAndWhiteLuminoFX.m */,
+				4F2BA5021642B16C00B2B461 /* ComicDarkFX.h */,
+				4F2BA5031642B16C00B2B461 /* ComicDarkFX.m */,
+				4F2BA5041642B16C00B2B461 /* ComicSharpFX.h */,
+				4F2BA5051642B16C00B2B461 /* ComicSharpFX.m */,
+				4F2BA5061642B16C00B2B461 /* DarkGrungeFX.h */,
+				4F2BA5071642B16C00B2B461 /* DarkGrungeFX.m */,
+				4F2BA5081642B16C00B2B461 /* DawnFX.h */,
+				4F2BA5091642B16C00B2B461 /* DawnFX.m */,
+				4F2BA50A1642B16C00B2B461 /* DaytonaFX.h */,
+				4F2BA50B1642B16C00B2B461 /* DaytonaFX.m */,
+				4F2BA50C1642B16C00B2B461 /* DerbyFX.h */,
+				4F2BA50D1642B16C00B2B461 /* DerbyFX.m */,
+				4F2BA50E1642B16C00B2B461 /* DuskFX.h */,
+				4F2BA50F1642B16C00B2B461 /* DuskFX.m */,
+				4F2BA5101642B16C00B2B461 /* EnhanceFX.h */,
+				4F2BA5111642B16C00B2B461 /* EnhanceFX.m */,
+				4F2BA5121642B16C00B2B461 /* FX.h */,
+				4F2BA5131642B16C00B2B461 /* FX.m */,
+				4F2BA5141642B16C00B2B461 /* GrungeRaysBlueFX.h */,
+				4F2BA5151642B16C00B2B461 /* GrungeRaysBlueFX.m */,
+				4F2BA5161642B16C00B2B461 /* GrungeRaysGreenFX.h */,
+				4F2BA5171642B16C00B2B461 /* GrungeRaysGreenFX.m */,
+				4F2BA5181642B16C00B2B461 /* GrungeRaysRedFX.h */,
+				4F2BA5191642B16C00B2B461 /* GrungeRaysRedFX.m */,
+				4F2BA51A1642B16C00B2B461 /* GrungeRaysSapiaFX.h */,
+				4F2BA51B1642B16C00B2B461 /* GrungeRaysSapiaFX.m */,
+				4F2BA51C1642B16C00B2B461 /* HalftoneComicFX.h */,
+				4F2BA51D1642B16C00B2B461 /* HalftoneComicFX.m */,
+				4F2BA51E1642B16C00B2B461 /* HalftoneDarkFX.h */,
+				4F2BA51F1642B16C00B2B461 /* HalftoneDarkFX.m */,
+				4F2BA5201642B16C00B2B461 /* HalftoneSharpFX.h */,
+				4F2BA5211642B16C00B2B461 /* HalftoneSharpFX.m */,
+				4F2BA5221642B16C00B2B461 /* LantanaFX.h */,
+				4F2BA5231642B16C00B2B461 /* LantanaFX.m */,
+				4F2BA5241642B16C00B2B461 /* LindaleFX.h */,
+				4F2BA5251642B16C00B2B461 /* LindaleFX.m */,
+				4F2BA5261642B16C00B2B461 /* MarineFX.h */,
+				4F2BA5271642B16C00B2B461 /* MarineFX.m */,
+				4F2BA5281642B16C00B2B461 /* MarsFX.h */,
+				4F2BA5291642B16C00B2B461 /* MarsFX.m */,
+				4F2BA52A1642B16C00B2B461 /* NapaFX.h */,
+				4F2BA52B1642B16C00B2B461 /* NapaFX.m */,
+				4F2BA52C1642B16C00B2B461 /* OldDirtyFX.h */,
+				4F2BA52D1642B16C00B2B461 /* OldDirtyFX.m */,
+				4F2BA52E1642B16C00B2B461 /* PaperTossFX.h */,
+				4F2BA52F1642B16D00B2B461 /* PaperTossFX.m */,
+				4F2BA5301642B16D00B2B461 /* PhotoFX.h */,
+				4F2BA5311642B16D00B2B461 /* RedNoirFX.h */,
+				4F2BA5321642B16D00B2B461 /* RedNoirFX.m */,
+				4F2BA5331642B16D00B2B461 /* SapphireNoirFX.h */,
+				4F2BA5341642B16D00B2B461 /* SapphireNoirFX.m */,
+				4F2BA5351642B16D00B2B461 /* SenibelFX.h */,
+				4F2BA5361642B16D00B2B461 /* SenibelFX.m */,
+				4F2BA5371642B16D00B2B461 /* SepiaNoirFX.h */,
+				4F2BA5381642B16D00B2B461 /* SepiaNoirFX.m */,
+				4F2BA5391642B16D00B2B461 /* SocorroFX.h */,
+				4F2BA53A1642B16D00B2B461 /* SocorroFX.m */,
+				4F2BA53B1642B16D00B2B461 /* SonomaFX.h */,
+				4F2BA53C1642B16D00B2B461 /* SonomaFX.m */,
+				4F2BA53D1642B16D00B2B461 /* VividFX.h */,
+				4F2BA53E1642B16D00B2B461 /* VividFX.m */,
+				4F2BA53F1642B16D00B2B461 /* WinterFX.h */,
+				4F2BA5401642B16D00B2B461 /* WinterFX.m */,
+				4F2BA5411642B16D00B2B461 /* YellowNoirFX.h */,
+				4F2BA5421642B16D00B2B461 /* YellowNoirFX.m */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
+		4F2BA5431642B16D00B2B461 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA5441642B16D00B2B461 /* AdditionCompositingFilter.h */,
+				4F2BA5451642B16D00B2B461 /* AdditionCompositingFilter.m */,
+				4F2BA5461642B16D00B2B461 /* AffineTransformFilter.h */,
+				4F2BA5471642B16D00B2B461 /* AffineTransformFilter.m */,
+				4F2BA5481642B16D00B2B461 /* ColorBlendModeFilter.h */,
+				4F2BA5491642B16D00B2B461 /* ColorBlendModeFilter.m */,
+				4F2BA54A1642B16D00B2B461 /* ColorBurnBlendModeFilter.h */,
+				4F2BA54B1642B16D00B2B461 /* ColorBurnBlendModeFilter.m */,
+				4F2BA54C1642B16D00B2B461 /* ColorControlsFilter.h */,
+				4F2BA54D1642B16D00B2B461 /* ColorControlsFilter.m */,
+				4F2BA54E1642B16D00B2B461 /* ColorCubeFilter.h */,
+				4F2BA54F1642B16D00B2B461 /* ColorCubeFilter.m */,
+				4F2BA5501642B16D00B2B461 /* ColorDodgeBlendModeFilter.h */,
+				4F2BA5511642B16D00B2B461 /* ColorDodgeBlendModeFilter.m */,
+				4F2BA5521642B16D00B2B461 /* ColorInvertFilter.h */,
+				4F2BA5531642B16D00B2B461 /* ColorInvertFilter.m */,
+				4F2BA5541642B16D00B2B461 /* ColorMapFilter.h */,
+				4F2BA5551642B16D00B2B461 /* ColorMapFilter.m */,
+				4F2BA5561642B16D00B2B461 /* ColorMatrixFilter.h */,
+				4F2BA5571642B16D00B2B461 /* ColorMatrixFilter.m */,
+				4F2BA5581642B16D00B2B461 /* ColorMonochromeFilter.h */,
+				4F2BA5591642B16D00B2B461 /* ColorMonochromeFilter.m */,
+				4F2BA55A1642B16D00B2B461 /* CropFilter.h */,
+				4F2BA55B1642B16D00B2B461 /* CropFilter.m */,
+				4F2BA55C1642B16D00B2B461 /* DarkenBlendModeFilter.h */,
+				4F2BA55D1642B16D00B2B461 /* DarkenBlendModeFilter.m */,
+				4F2BA55E1642B16D00B2B461 /* DifferenceBlendModeFilter.h */,
+				4F2BA55F1642B16D00B2B461 /* DifferenceBlendModeFilter.m */,
+				4F2BA5601642B16D00B2B461 /* EnhanceFilter.h */,
+				4F2BA5611642B16D00B2B461 /* EnhanceFilter.m */,
+				4F2BA5621642B16D00B2B461 /* ExclusionBlendModeFilter.h */,
+				4F2BA5631642B16D00B2B461 /* ExclusionBlendModeFilter.m */,
+				4F2BA5641642B16D00B2B461 /* ExposureAdjustFilter.h */,
+				4F2BA5651642B16D00B2B461 /* ExposureAdjustFilter.m */,
+				4F2BA5661642B16D00B2B461 /* Filter.h */,
+				4F2BA5671642B16D00B2B461 /* Filter.m */,
+				4F2BA5681642B16D00B2B461 /* GammaAdjustFilter.h */,
+				4F2BA5691642B16D00B2B461 /* GammaAdjustFilter.m */,
+				4F2BA56A1642B16D00B2B461 /* HardLightBlendModeFilter.h */,
+				4F2BA56B1642B16D00B2B461 /* HardLightBlendModeFilter.m */,
+				4F2BA56C1642B16D00B2B461 /* HighlightShadowAdjustFilter.h */,
+				4F2BA56D1642B16D00B2B461 /* HighlightShadowAdjustFilter.m */,
+				4F2BA56E1642B16D00B2B461 /* HueAdjustFilter.h */,
+				4F2BA56F1642B16D00B2B461 /* HueAdjustFilter.m */,
+				4F2BA5701642B16D00B2B461 /* HueBlendModeFilter.h */,
+				4F2BA5711642B16D00B2B461 /* HueBlendModeFilter.m */,
+				4F2BA5721642B16D00B2B461 /* LightenBlendModeFilter.h */,
+				4F2BA5731642B16D00B2B461 /* LightenBlendModeFilter.m */,
+				4F2BA5741642B16D00B2B461 /* LuminosityBlendModeFilter.h */,
+				4F2BA5751642B16D00B2B461 /* LuminosityBlendModeFilter.m */,
+				4F2BA5761642B16D00B2B461 /* MaximumCompositingFilter.h */,
+				4F2BA5771642B16D00B2B461 /* MaximumCompositingFilter.m */,
+				4F2BA5781642B16D00B2B461 /* MinimumCompositingFilter.h */,
+				4F2BA5791642B16D00B2B461 /* MinimumCompositingFilter.m */,
+				4F2BA57A1642B16D00B2B461 /* MultiplyBlendModeFilter.h */,
+				4F2BA57B1642B16D00B2B461 /* MultiplyBlendModeFilter.m */,
+				4F2BA57C1642B16D00B2B461 /* MultiplyCompositingFilter.h */,
+				4F2BA57D1642B16D00B2B461 /* MultiplyCompositingFilter.m */,
+				4F2BA57E1642B16D00B2B461 /* OverlayBlendModeFilter.h */,
+				4F2BA57F1642B16D00B2B461 /* OverlayBlendModeFilter.m */,
+				4F2BA5801642B16D00B2B461 /* SaturationBlendModeFilter.h */,
+				4F2BA5811642B16D00B2B461 /* SaturationBlendModeFilter.m */,
+				4F2BA5821642B16D00B2B461 /* ScreenBlendModeFilter.h */,
+				4F2BA5831642B16D00B2B461 /* ScreenBlendModeFilter.m */,
+				4F2BA5841642B16D00B2B461 /* SepiaToneFilter.h */,
+				4F2BA5851642B16D00B2B461 /* SepiaToneFilter.m */,
+				4F2BA5861642B16D00B2B461 /* SoftLightBlendModeFilter.h */,
+				4F2BA5871642B16D00B2B461 /* SoftLightBlendModeFilter.m */,
+				4F2BA5881642B16D00B2B461 /* SourceAtopCompositingFilter.h */,
+				4F2BA5891642B16D00B2B461 /* SourceAtopCompositingFilter.m */,
+				4F2BA58A1642B16D00B2B461 /* TemperatureAndTintFilter.h */,
+				4F2BA58B1642B16D00B2B461 /* TemperatureAndTintFilter.m */,
+				4F2BA58C1642B16D00B2B461 /* ToneCurveFilter.h */,
+				4F2BA58D1642B16D00B2B461 /* ToneCurveFilter.m */,
+				4F2BA58E1642B16D00B2B461 /* VibranceFilter.h */,
+				4F2BA58F1642B16D00B2B461 /* VibranceFilter.m */,
+				4F2BA5901642B16D00B2B461 /* WhitePointAdjustFilter.h */,
+				4F2BA5911642B16D00B2B461 /* WhitePointAdjustFilter.m */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		4F2BA5921642B16D00B2B461 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA5931642B16D00B2B461 /* dots.png */,
+				4F2BA5941642B16D00B2B461 /* grunge.png */,
+				4F2BA5951642B16D00B2B461 /* grunge1.jpg */,
+				4F2BA5961642B16D00B2B461 /* grunge2.png */,
+				4F2BA5971642B16D00B2B461 /* grunge3.png */,
+				4F2BA5981642B16D00B2B461 /* grunge4.jpeg */,
+				4F2BA5991642B16D00B2B461 /* grunge5.png */,
+				4F2BA59A1642B16D00B2B461 /* grunge6.png */,
+				4F2BA59B1642B16D00B2B461 /* papertoss.png */,
+			);
+			path = Textures;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -472,6 +928,15 @@
 				4F2BA4E2162EE97100B2B461 /* Icon@2x.png in Resources */,
 				4F2BA4E4162EE97E00B2B461 /* Icon-72.png in Resources */,
 				4F2BA4E6162EE98100B2B461 /* Icon-72@2x.png in Resources */,
+				4F2BA5EC1642B16D00B2B461 /* dots.png in Resources */,
+				4F2BA5ED1642B16D00B2B461 /* grunge.png in Resources */,
+				4F2BA5EE1642B16D00B2B461 /* grunge1.jpg in Resources */,
+				4F2BA5EF1642B16D00B2B461 /* grunge2.png in Resources */,
+				4F2BA5F01642B16D00B2B461 /* grunge3.png in Resources */,
+				4F2BA5F11642B16D00B2B461 /* grunge4.jpeg in Resources */,
+				4F2BA5F21642B16D00B2B461 /* grunge5.png in Resources */,
+				4F2BA5F31642B16D00B2B461 /* grunge6.png in Resources */,
+				4F2BA5F41642B16D00B2B461 /* papertoss.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +969,85 @@
 				4F2BA4E9163581BC00B2B461 /* lifeWordsPhotoFilteringViewController.m in Sources */,
 				4F2BA4F0163D6B0900B2B461 /* UIGlossyButton.m in Sources */,
 				4F2BA4F1163D6B0900B2B461 /* UIView+LayerEffects.m in Sources */,
+				4F2BA59E1642B16D00B2B461 /* AgedFX.m in Sources */,
+				4F2BA59F1642B16D00B2B461 /* AlaskaFX.m in Sources */,
+				4F2BA5A01642B16D00B2B461 /* AltamonteFX.m in Sources */,
+				4F2BA5A11642B16D00B2B461 /* AvatarFX.m in Sources */,
+				4F2BA5A21642B16D00B2B461 /* BilboaFX.m in Sources */,
+				4F2BA5A31642B16D00B2B461 /* BlackAndWhiteGrainedFX.m in Sources */,
+				4F2BA5A41642B16D00B2B461 /* BlackAndWhiteLuminoFX.m in Sources */,
+				4F2BA5A51642B16D00B2B461 /* ComicDarkFX.m in Sources */,
+				4F2BA5A61642B16D00B2B461 /* ComicSharpFX.m in Sources */,
+				4F2BA5A71642B16D00B2B461 /* DarkGrungeFX.m in Sources */,
+				4F2BA5A81642B16D00B2B461 /* DawnFX.m in Sources */,
+				4F2BA5A91642B16D00B2B461 /* DaytonaFX.m in Sources */,
+				4F2BA5AA1642B16D00B2B461 /* DerbyFX.m in Sources */,
+				4F2BA5AB1642B16D00B2B461 /* DuskFX.m in Sources */,
+				4F2BA5AC1642B16D00B2B461 /* EnhanceFX.m in Sources */,
+				4F2BA5AD1642B16D00B2B461 /* FX.m in Sources */,
+				4F2BA5AE1642B16D00B2B461 /* GrungeRaysBlueFX.m in Sources */,
+				4F2BA5AF1642B16D00B2B461 /* GrungeRaysGreenFX.m in Sources */,
+				4F2BA5B01642B16D00B2B461 /* GrungeRaysRedFX.m in Sources */,
+				4F2BA5B11642B16D00B2B461 /* GrungeRaysSapiaFX.m in Sources */,
+				4F2BA5B21642B16D00B2B461 /* HalftoneComicFX.m in Sources */,
+				4F2BA5B31642B16D00B2B461 /* HalftoneDarkFX.m in Sources */,
+				4F2BA5B41642B16D00B2B461 /* HalftoneSharpFX.m in Sources */,
+				4F2BA5B51642B16D00B2B461 /* LantanaFX.m in Sources */,
+				4F2BA5B61642B16D00B2B461 /* LindaleFX.m in Sources */,
+				4F2BA5B71642B16D00B2B461 /* MarineFX.m in Sources */,
+				4F2BA5B81642B16D00B2B461 /* MarsFX.m in Sources */,
+				4F2BA5B91642B16D00B2B461 /* NapaFX.m in Sources */,
+				4F2BA5BA1642B16D00B2B461 /* OldDirtyFX.m in Sources */,
+				4F2BA5BB1642B16D00B2B461 /* PaperTossFX.m in Sources */,
+				4F2BA5BC1642B16D00B2B461 /* RedNoirFX.m in Sources */,
+				4F2BA5BD1642B16D00B2B461 /* SapphireNoirFX.m in Sources */,
+				4F2BA5BE1642B16D00B2B461 /* SenibelFX.m in Sources */,
+				4F2BA5BF1642B16D00B2B461 /* SepiaNoirFX.m in Sources */,
+				4F2BA5C01642B16D00B2B461 /* SocorroFX.m in Sources */,
+				4F2BA5C11642B16D00B2B461 /* SonomaFX.m in Sources */,
+				4F2BA5C21642B16D00B2B461 /* VividFX.m in Sources */,
+				4F2BA5C31642B16D00B2B461 /* WinterFX.m in Sources */,
+				4F2BA5C41642B16D00B2B461 /* YellowNoirFX.m in Sources */,
+				4F2BA5C51642B16D00B2B461 /* AdditionCompositingFilter.m in Sources */,
+				4F2BA5C61642B16D00B2B461 /* AffineTransformFilter.m in Sources */,
+				4F2BA5C71642B16D00B2B461 /* ColorBlendModeFilter.m in Sources */,
+				4F2BA5C81642B16D00B2B461 /* ColorBurnBlendModeFilter.m in Sources */,
+				4F2BA5C91642B16D00B2B461 /* ColorControlsFilter.m in Sources */,
+				4F2BA5CA1642B16D00B2B461 /* ColorCubeFilter.m in Sources */,
+				4F2BA5CB1642B16D00B2B461 /* ColorDodgeBlendModeFilter.m in Sources */,
+				4F2BA5CC1642B16D00B2B461 /* ColorInvertFilter.m in Sources */,
+				4F2BA5CD1642B16D00B2B461 /* ColorMapFilter.m in Sources */,
+				4F2BA5CE1642B16D00B2B461 /* ColorMatrixFilter.m in Sources */,
+				4F2BA5CF1642B16D00B2B461 /* ColorMonochromeFilter.m in Sources */,
+				4F2BA5D01642B16D00B2B461 /* CropFilter.m in Sources */,
+				4F2BA5D11642B16D00B2B461 /* DarkenBlendModeFilter.m in Sources */,
+				4F2BA5D21642B16D00B2B461 /* DifferenceBlendModeFilter.m in Sources */,
+				4F2BA5D31642B16D00B2B461 /* EnhanceFilter.m in Sources */,
+				4F2BA5D41642B16D00B2B461 /* ExclusionBlendModeFilter.m in Sources */,
+				4F2BA5D51642B16D00B2B461 /* ExposureAdjustFilter.m in Sources */,
+				4F2BA5D61642B16D00B2B461 /* Filter.m in Sources */,
+				4F2BA5D71642B16D00B2B461 /* GammaAdjustFilter.m in Sources */,
+				4F2BA5D81642B16D00B2B461 /* HardLightBlendModeFilter.m in Sources */,
+				4F2BA5D91642B16D00B2B461 /* HighlightShadowAdjustFilter.m in Sources */,
+				4F2BA5DA1642B16D00B2B461 /* HueAdjustFilter.m in Sources */,
+				4F2BA5DB1642B16D00B2B461 /* HueBlendModeFilter.m in Sources */,
+				4F2BA5DC1642B16D00B2B461 /* LightenBlendModeFilter.m in Sources */,
+				4F2BA5DD1642B16D00B2B461 /* LuminosityBlendModeFilter.m in Sources */,
+				4F2BA5DE1642B16D00B2B461 /* MaximumCompositingFilter.m in Sources */,
+				4F2BA5DF1642B16D00B2B461 /* MinimumCompositingFilter.m in Sources */,
+				4F2BA5E01642B16D00B2B461 /* MultiplyBlendModeFilter.m in Sources */,
+				4F2BA5E11642B16D00B2B461 /* MultiplyCompositingFilter.m in Sources */,
+				4F2BA5E21642B16D00B2B461 /* OverlayBlendModeFilter.m in Sources */,
+				4F2BA5E31642B16D00B2B461 /* SaturationBlendModeFilter.m in Sources */,
+				4F2BA5E41642B16D00B2B461 /* ScreenBlendModeFilter.m in Sources */,
+				4F2BA5E51642B16D00B2B461 /* SepiaToneFilter.m in Sources */,
+				4F2BA5E61642B16D00B2B461 /* SoftLightBlendModeFilter.m in Sources */,
+				4F2BA5E71642B16D00B2B461 /* SourceAtopCompositingFilter.m in Sources */,
+				4F2BA5E81642B16D00B2B461 /* TemperatureAndTintFilter.m in Sources */,
+				4F2BA5E91642B16D00B2B461 /* ToneCurveFilter.m in Sources */,
+				4F2BA5EA1642B16D00B2B461 /* VibranceFilter.m in Sources */,
+				4F2BA5EB1642B16D00B2B461 /* WhitePointAdjustFilter.m in Sources */,
+				4F2BA5F51642B16D00B2B461 /* UIImage+Helpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
