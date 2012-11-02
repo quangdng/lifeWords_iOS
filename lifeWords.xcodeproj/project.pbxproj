@@ -221,6 +221,7 @@
 		4F2BA6901642B25F00B2B461 /* Winter@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA6421642B25F00B2B461 /* Winter@2x.jpg */; };
 		4F2BA6911642B25F00B2B461 /* YellowNoir.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA6431642B25F00B2B461 /* YellowNoir.jpg */; };
 		4F2BA6921642B25F00B2B461 /* YellowNoir@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA6441642B25F00B2B461 /* YellowNoir@2x.jpg */; };
+		4F2BA6961644042F00B2B461 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA6951644042F00B2B461 /* ODRefreshControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -543,6 +544,8 @@
 		4F2BA6421642B25F00B2B461 /* Winter@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Winter@2x.jpg"; sourceTree = "<group>"; };
 		4F2BA6431642B25F00B2B461 /* YellowNoir.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = YellowNoir.jpg; sourceTree = "<group>"; };
 		4F2BA6441642B25F00B2B461 /* YellowNoir@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "YellowNoir@2x.jpg"; sourceTree = "<group>"; };
+		4F2BA6941644042F00B2B461 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
+		4F2BA6951644042F00B2B461 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -728,6 +731,7 @@
 		4F2BA4A116230A0100B2B461 /* Custom Objects */ = {
 			isa = PBXGroup;
 			children = (
+				4F2BA6931644042F00B2B461 /* ODRefreshControl */,
 				4F2BA4EB163D6B0900B2B461 /* UIGlossyButton */,
 				4F2BA4A216230A0100B2B461 /* AlertView */,
 			);
@@ -1095,6 +1099,15 @@
 			path = FilteredThumbnails;
 			sourceTree = "<group>";
 		};
+		4F2BA6931644042F00B2B461 /* ODRefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA6941644042F00B2B461 /* ODRefreshControl.h */,
+				4F2BA6951644042F00B2B461 /* ODRefreshControl.m */,
+			);
+			path = ODRefreshControl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1368,6 +1381,7 @@
 				4F2BA5EA1642B16D00B2B461 /* VibranceFilter.m in Sources */,
 				4F2BA5EB1642B16D00B2B461 /* WhitePointAdjustFilter.m in Sources */,
 				4F2BA5F51642B16D00B2B461 /* UIImage+Helpers.m in Sources */,
+				4F2BA6961644042F00B2B461 /* ODRefreshControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
