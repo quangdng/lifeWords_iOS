@@ -18,7 +18,6 @@
 		4F2BA45D1619CCA200B2B461 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA45C1619CCA200B2B461 /* Default-568h@2x.png */; };
 		4F2BA4601619CCA200B2B461 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA45E1619CCA200B2B461 /* MainStoryboard_iPhone.storyboard */; };
 		4F2BA4631619CCA200B2B461 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA4611619CCA200B2B461 /* MainStoryboard_iPad.storyboard */; };
-		4F2BA4661619CCA200B2B461 /* lifeWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA4651619CCA200B2B461 /* lifeWordsViewController.m */; };
 		4F2BA46E1619CCFE00B2B461 /* lifeWordsLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA46D1619CCFE00B2B461 /* lifeWordsLoginViewController.m */; };
 		4F2BA476161B1F5B00B2B461 /* logo_lifeWords.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA472161B1F5B00B2B461 /* logo_lifeWords.png */; };
 		4F2BA477161B1F5B00B2B461 /* leaf_tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA474161B1F5B00B2B461 /* leaf_tree.jpg */; };
@@ -222,6 +221,7 @@
 		4F2BA6911642B25F00B2B461 /* YellowNoir.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA6431642B25F00B2B461 /* YellowNoir.jpg */; };
 		4F2BA6921642B25F00B2B461 /* YellowNoir@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA6441642B25F00B2B461 /* YellowNoir@2x.jpg */; };
 		4F2BA6961644042F00B2B461 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA6951644042F00B2B461 /* ODRefreshControl.m */; };
+		4F2BA6991646A77900B2B461 /* lifeWordsNavigationControllerOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA6981646A77900B2B461 /* lifeWordsNavigationControllerOrientation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -240,8 +240,6 @@
 		4F2BA45C1619CCA200B2B461 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4F2BA45F1619CCA200B2B461 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		4F2BA4621619CCA200B2B461 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		4F2BA4641619CCA200B2B461 /* lifeWordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lifeWordsViewController.h; sourceTree = "<group>"; };
-		4F2BA4651619CCA200B2B461 /* lifeWordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lifeWordsViewController.m; sourceTree = "<group>"; };
 		4F2BA46C1619CCFE00B2B461 /* lifeWordsLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lifeWordsLoginViewController.h; sourceTree = "<group>"; };
 		4F2BA46D1619CCFE00B2B461 /* lifeWordsLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lifeWordsLoginViewController.m; sourceTree = "<group>"; };
 		4F2BA472161B1F5B00B2B461 /* logo_lifeWords.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_lifeWords.png; sourceTree = "<group>"; };
@@ -546,6 +544,8 @@
 		4F2BA6441642B25F00B2B461 /* YellowNoir@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "YellowNoir@2x.jpg"; sourceTree = "<group>"; };
 		4F2BA6941644042F00B2B461 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
 		4F2BA6951644042F00B2B461 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
+		4F2BA6971646A77900B2B461 /* lifeWordsNavigationControllerOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lifeWordsNavigationControllerOrientation.h; sourceTree = "<group>"; };
+		4F2BA6981646A77900B2B461 /* lifeWordsNavigationControllerOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lifeWordsNavigationControllerOrientation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -600,8 +600,7 @@
 				4F2BA4561619CCA100B2B461 /* lifeWordsAppDelegate.m */,
 				4F2BA45E1619CCA200B2B461 /* MainStoryboard_iPhone.storyboard */,
 				4F2BA4611619CCA200B2B461 /* MainStoryboard_iPad.storyboard */,
-				4F2BA4641619CCA200B2B461 /* lifeWordsViewController.h */,
-				4F2BA4651619CCA200B2B461 /* lifeWordsViewController.m */,
+				4F2BA69A1646A78300B2B461 /* Navigation Controller */,
 				4F2BA4A616245BFA00B2B461 /* Network */,
 				4F2BA46F1619CD0500B2B461 /* Login View */,
 				4F2BA4B01626FF4100B2B461 /* Sign Up View */,
@@ -1108,6 +1107,15 @@
 			path = ODRefreshControl;
 			sourceTree = "<group>";
 		};
+		4F2BA69A1646A78300B2B461 /* Navigation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA6971646A77900B2B461 /* lifeWordsNavigationControllerOrientation.h */,
+				4F2BA6981646A77900B2B461 /* lifeWordsNavigationControllerOrientation.m */,
+			);
+			name = "Navigation Controller";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1282,7 +1290,6 @@
 			files = (
 				4F2BA4531619CCA100B2B461 /* main.m in Sources */,
 				4F2BA4571619CCA100B2B461 /* lifeWordsAppDelegate.m in Sources */,
-				4F2BA4661619CCA200B2B461 /* lifeWordsViewController.m in Sources */,
 				4F2BA46E1619CCFE00B2B461 /* lifeWordsLoginViewController.m in Sources */,
 				4F2BA4931621B78E00B2B461 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				4F2BA4941621B78E00B2B461 /* NSData+Base64.m in Sources */,
@@ -1382,6 +1389,7 @@
 				4F2BA5EB1642B16D00B2B461 /* WhitePointAdjustFilter.m in Sources */,
 				4F2BA5F51642B16D00B2B461 /* UIImage+Helpers.m in Sources */,
 				4F2BA6961644042F00B2B461 /* ODRefreshControl.m in Sources */,
+				4F2BA6991646A77900B2B461 /* lifeWordsNavigationControllerOrientation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
