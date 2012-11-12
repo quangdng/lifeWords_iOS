@@ -252,6 +252,9 @@
 		4F2BA6E4164BEF1C00B2B461 /* popover-arrow-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA6CF164BEF1C00B2B461 /* popover-arrow-top@2x.png */; };
 		4F2BA6E5164BEF1C00B2B461 /* popover-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA6D0164BEF1C00B2B461 /* popover-background.png */; };
 		4F2BA6E6164BEF1C00B2B461 /* popover-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2BA6D1164BEF1C00B2B461 /* popover-background@2x.png */; };
+		4F2BA6F0165135AD00B2B461 /* SWSnapshotStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA6E9165135AD00B2B461 /* SWSnapshotStackView.m */; };
+		4F2BA6F1165135AD00B2B461 /* YLBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA6ED165135AD00B2B461 /* YLBackgroundView.m */; };
+		4F2BA6F2165135AD00B2B461 /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA6EF165135AD00B2B461 /* YLProgressBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -613,6 +616,13 @@
 		4F2BA6CF164BEF1C00B2B461 /* popover-arrow-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover-arrow-top@2x.png"; sourceTree = "<group>"; };
 		4F2BA6D0164BEF1C00B2B461 /* popover-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover-background.png"; sourceTree = "<group>"; };
 		4F2BA6D1164BEF1C00B2B461 /* popover-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popover-background@2x.png"; sourceTree = "<group>"; };
+		4F2BA6E8165135AD00B2B461 /* SWSnapshotStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSnapshotStackView.h; sourceTree = "<group>"; };
+		4F2BA6E9165135AD00B2B461 /* SWSnapshotStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSnapshotStackView.m; sourceTree = "<group>"; };
+		4F2BA6EB165135AD00B2B461 /* ARCMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacro.h; sourceTree = "<group>"; };
+		4F2BA6EC165135AD00B2B461 /* YLBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLBackgroundView.h; sourceTree = "<group>"; };
+		4F2BA6ED165135AD00B2B461 /* YLBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLBackgroundView.m; sourceTree = "<group>"; };
+		4F2BA6EE165135AD00B2B461 /* YLProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLProgressBar.h; sourceTree = "<group>"; };
+		4F2BA6EF165135AD00B2B461 /* YLProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLProgressBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -801,6 +811,8 @@
 		4F2BA4A116230A0100B2B461 /* Custom Objects */ = {
 			isa = PBXGroup;
 			children = (
+				4F2BA6E7165135AD00B2B461 /* StackView */,
+				4F2BA6EA165135AD00B2B461 /* YLProgressBar */,
 				4F2BA6B0164BEEBB00B2B461 /* KSCustomPopoverBackgroundView */,
 				4F2BA69B164A9C7600B2B461 /* SPUserResizableView */,
 				4F2BA69E164A9C7600B2B461 /* WaveformImageView */,
@@ -1292,6 +1304,27 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		4F2BA6E7165135AD00B2B461 /* StackView */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA6E8165135AD00B2B461 /* SWSnapshotStackView.h */,
+				4F2BA6E9165135AD00B2B461 /* SWSnapshotStackView.m */,
+			);
+			path = StackView;
+			sourceTree = "<group>";
+		};
+		4F2BA6EA165135AD00B2B461 /* YLProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA6EB165135AD00B2B461 /* ARCMacro.h */,
+				4F2BA6EC165135AD00B2B461 /* YLBackgroundView.h */,
+				4F2BA6ED165135AD00B2B461 /* YLBackgroundView.m */,
+				4F2BA6EE165135AD00B2B461 /* YLProgressBar.h */,
+				4F2BA6EF165135AD00B2B461 /* YLProgressBar.m */,
+			);
+			path = YLProgressBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1596,6 +1629,9 @@
 				4F2BA6B3164BEEBB00B2B461 /* KSCustomPopoverBackgroundView.m in Sources */,
 				4F2BA6B8164BEEE400B2B461 /* lifeWordsMusicDetailViewController.m in Sources */,
 				4F2BA6B9164BEEE400B2B461 /* lifeWordsMusicSelectViewController.m in Sources */,
+				4F2BA6F0165135AD00B2B461 /* SWSnapshotStackView.m in Sources */,
+				4F2BA6F1165135AD00B2B461 /* YLBackgroundView.m in Sources */,
+				4F2BA6F2165135AD00B2B461 /* YLProgressBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
