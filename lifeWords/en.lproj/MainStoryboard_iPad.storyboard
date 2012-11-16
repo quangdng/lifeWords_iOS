@@ -1062,6 +1062,119 @@
         <image name="no_avatar.jpeg" width="160" height="160"/>
         <image name="separator.png" width="200" height="1"/>
     </resources>
+    <classes>
+        <class className="SWSnapshotStackView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SWSnapshotStackView.h"/>
+        </class>
+        <class className="UIGlossyButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIGlossyButton.h"/>
+        </class>
+        <class className="YLProgressBar" superclassName="UIProgressView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/YLProgressBar.h"/>
+        </class>
+        <class className="lifeWordsLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissKeyboard:"/>
+                <relationship kind="action" name="loginButtonClicked:"/>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="loginBox" candidateClass="UIView"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="userEmail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userPassword" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="lifeWordsMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsMainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showActionSheet:"/>
+                <relationship kind="action" name="test:"/>
+                <relationship kind="outlet" name="container" candidateClass="SWSnapshotStackView"/>
+                <relationship kind="outlet" name="friendsBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="makeCardButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="myToolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="profilePhoto" candidateClass="SWSnapshotStackView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="wallpaper" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="lifeWordsMusicDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsMusicDetailViewController.h"/>
+        </class>
+        <class className="lifeWordsMusicSelectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsMusicSelectViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="lifeWordsNavigationControllerOrientation" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsNavigationControllerOrientation.h"/>
+        </class>
+        <class className="lifeWordsPhotoFilteringViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsPhotoFilteringViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="container" candidateClass="SWSnapshotStackView"/>
+                <relationship kind="outlet" name="corePhoto" candidateClass="SWSnapshotStackView"/>
+                <relationship kind="outlet" name="photo" candidateClass="UIImage"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="wallpaper" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="lifeWordsSignUpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsSignUpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissKeyboard"/>
+                <relationship kind="action" name="dismissView:"/>
+                <relationship kind="action" name="emailTapped:"/>
+                <relationship kind="action" name="nicknameTapped:"/>
+                <relationship kind="action" name="passwordTapped:"/>
+                <relationship kind="action" name="showActionSheet:"/>
+                <relationship kind="action" name="signUpButtonClicked:"/>
+                <relationship kind="action" name="verifyPasswordTapped:"/>
+                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="nickname" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="photo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="photoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="signUpBox" candidateClass="UIView"/>
+                <relationship kind="outlet" name="signUpButton" candidateClass="UIGlossyButton"/>
+                <relationship kind="outlet" name="verifyPassword" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="lifeWordsSoundEffectsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsSoundEffectsViewController.h"/>
+        </class>
+        <class className="lifeWordsTimeLineViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsTimeLineViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="effectsBtnClicked:"/>
+                <relationship kind="action" name="musicBtnClicked:"/>
+                <relationship kind="action" name="recordAcceptBtnClicked:"/>
+                <relationship kind="action" name="recordBtnClicked:"/>
+                <relationship kind="action" name="recordCancelBtnClicked:"/>
+                <relationship kind="action" name="recordPlayBtnClicked:"/>
+                <relationship kind="action" name="recordRecBtnClicked:"/>
+                <relationship kind="action" name="test:"/>
+                <relationship kind="outlet" name="cardDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cardLength" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cardTitle" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="container" candidateClass="SWSnapshotStackView"/>
+                <relationship kind="outlet" name="effectsBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="musicBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="musicView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="recordAcceptBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="recordBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="recordCancelBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="recordMeter1" candidateClass="YLProgressBar"/>
+                <relationship kind="outlet" name="recordMeter2" candidateClass="YLProgressBar"/>
+                <relationship kind="outlet" name="recordPlayBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="recordRecBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="recordView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="wallpaper" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
