@@ -257,6 +257,7 @@
 		4F2BA6F2165135AD00B2B461 /* YLProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA6EF165135AD00B2B461 /* YLProgressBar.m */; };
 		4F2BA6F61653D93400B2B461 /* AVAudioPlayer+PGFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA6F51653D93400B2B461 /* AVAudioPlayer+PGFade.m */; };
 		4F2BA6FA1653D9A500B2B461 /* JSBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA6F91653D9A500B2B461 /* JSBadgeView.m */; };
+		4F2BA70116567D1D00B2B461 /* lifeWordsSoundEffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BA70016567D1C00B2B461 /* lifeWordsSoundEffectsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -629,6 +630,8 @@
 		4F2BA6F51653D93400B2B461 /* AVAudioPlayer+PGFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAudioPlayer+PGFade.m"; sourceTree = "<group>"; };
 		4F2BA6F81653D9A500B2B461 /* JSBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
 		4F2BA6F91653D9A500B2B461 /* JSBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
+		4F2BA6FF16567D1C00B2B461 /* lifeWordsSoundEffectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lifeWordsSoundEffectsViewController.h; sourceTree = "<group>"; };
+		4F2BA70016567D1C00B2B461 /* lifeWordsSoundEffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lifeWordsSoundEffectsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1234,6 +1237,7 @@
 				4F2BA6A3164A9C9000B2B461 /* lifeWordsTimeLineViewController.h */,
 				4F2BA6A4164A9C9000B2B461 /* lifeWordsTimeLineViewController.m */,
 				4F2BA6BA164BEEE700B2B461 /* Music Selection */,
+				4F2BA6FE16552B6900B2B461 /* Sound Effect */,
 				4F2BA6AF164BEEA100B2B461 /* Model */,
 			);
 			name = "Time Line View";
@@ -1349,6 +1353,15 @@
 				4F2BA6F91653D9A500B2B461 /* JSBadgeView.m */,
 			);
 			path = JSBadgeView;
+			sourceTree = "<group>";
+		};
+		4F2BA6FE16552B6900B2B461 /* Sound Effect */ = {
+			isa = PBXGroup;
+			children = (
+				4F2BA6FF16567D1C00B2B461 /* lifeWordsSoundEffectsViewController.h */,
+				4F2BA70016567D1C00B2B461 /* lifeWordsSoundEffectsViewController.m */,
+			);
+			name = "Sound Effect";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1660,6 +1673,7 @@
 				4F2BA6F2165135AD00B2B461 /* YLProgressBar.m in Sources */,
 				4F2BA6F61653D93400B2B461 /* AVAudioPlayer+PGFade.m in Sources */,
 				4F2BA6FA1653D9A500B2B461 /* JSBadgeView.m in Sources */,
+				4F2BA70116567D1D00B2B461 /* lifeWordsSoundEffectsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
