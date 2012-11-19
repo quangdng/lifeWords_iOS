@@ -39,6 +39,15 @@
 {
     [super viewDidLoad];
     
+    [self startAudioSession];
+    
+    self.musicView.layer.cornerRadius = 10;
+    self.effectView.layer.cornerRadius = 10;
+    self.voiceView.layer.cornerRadius = 10;
+    
+    // Set photo
+    [self.cardPhoto setImage:self.photo];
+    
     // Set the wallpaper
     [self.wallpaper setImage:[UIImage imageNamed:@"leaf_tree.jpg"]];
     
@@ -65,23 +74,6 @@
     // and put the button in the nav bar
     [self.navigationItem setLeftBarButtonItem:barbutton];
     
-        
-    // Set record settings
-    recordURL = [self recordURL];
-    
-    // Recording settings
-	NSMutableDictionary *settings = [NSMutableDictionary dictionary];
-	[settings setValue: [NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
-	[settings setValue: [NSNumber numberWithFloat:16000.0] forKey:AVSampleRateKey];
-	[settings setValue: [NSNumber numberWithInt: 1] forKey:AVNumberOfChannelsKey]; // mono
-	[settings setValue: [NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
-	[settings setValue: [NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
-	[settings setValue: [NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
-    
-    recorder = [[AVAudioRecorder alloc] initWithURL:recordURL settings:settings error:nil];
-    recorder.meteringEnabled = YES;
-    [recorder prepareToRecord];
-    
     
     // Set current date for date textbox
     NSDate *date = [NSDate date];
@@ -102,12 +94,10 @@
     [gestureRecognizer setDelegate:self];
     [self.view addGestureRecognizer:gestureRecognizer];
     
-    //NSURL *url = [[NSBundle mainBundle] URLForResource:@"Doll" withExtension:@"mp3"];
-    //NSLog(@"%@", url.absoluteString);
-    //AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
-    //WaveformImageView *imageView = [[WaveformImageView alloc] initWithUrl:url];
-    //self.test.image = imageView.image;
-	// Do any additional setup after loading the view.
+    // Set music, effect, voice start time
+    musicStartTime = 0;
+    effectStartTime = 0;
+    voiceStartTime = 0;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -129,6 +119,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self setMusicPlayer:nil];
     [self setEffectPlayer:nil];
@@ -145,6 +136,7 @@
 
 
 - (void)viewDidUnload {
+    [super viewDidUnload];
     [self setCoreDatabase:nil];
     [self setMusicBtn:nil];
     [self setPopover:nil];
@@ -164,7 +156,14 @@
     [self setContainer:nil];
     [self setWallpaper:nil];
     [self setMusicView:nil];
-    [super viewDidUnload];
+    [self setEffectView:nil];
+    [self setPhoto:nil];
+    [self setCardPhoto:nil];
+    [self setVoiceView:nil];
+    [self setMusicPlayer:nil];
+    [self setEffectPlayer:nil];
+    [self setVoicePlayer:nil];
+    
 }
 
 
@@ -185,10 +184,68 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (BOOL) startAudioSession
+{
+	// Prepare the audio session
+	NSError *error;
+	AVAudioSession *session = [AVAudioSession sharedInstance];
+	
+	if (![session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error])
+	{
+		NSLog(@"Error setting session category: %@", error.localizedFailureReason);
+		return NO;
+	}
+	
+	if (![session setActive:YES error:&error])
+	{
+		NSLog(@"Error activating audio session: %@", error.localizedFailureReason);
+		return NO;
+	}
+	
+	return session.inputIsAvailable;
+}
+
 #pragma mark - Time Line Components
 - (IBAction)test:(id)sender {
-    [self.musicPlayer playWithFadeDuration:10];
-    [self.effectPlayer playWithFadeDuration:5];
+    musicTimer = [NSTimer scheduledTimerWithTimeInterval:musicLength target:self selector:@selector(stopMusic) userInfo:nil repeats:NO];
+    effectTimer = [NSTimer scheduledTimerWithTimeInterval:effectLength target:self selector:@selector(stopEffect) userInfo:nil repeats:NO];
+    voiceTimer = [NSTimer scheduledTimerWithTimeInterval:voiceLength target:self selector:@selector(stopVoice) userInfo:nil repeats:NO];
+    NSTimer *aTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(displayVolume) userInfo:nil repeats:YES];
+    [aTimer fire];
+}
+
+- (void) displayVolume {
+    NSLog(@"Music Volume %f, Effect Volume %f", [self.musicPlayer volume], [self.effectPlayer volume]);
+}
+
+- (void) playMusic{
+    [self.musicPlayer playWithFadeDurationWithDelay:5 delay:musicStartTime];
+}
+
+- (void) playEffect {
+    [self.effectPlayer playWithFadeDurationWithDelay:5 delay:effectStartTime];
+}
+
+- (void) playVoice{
+    [self.voicePlayer playWithFadeDurationWithDelay:5 delay:voiceStartTime];
+}
+
+- (void) stopMusic {
+    [self.musicPlayer stopWithFadeDuration:3];
+    [musicTimer invalidate];
+    musicTimer = nil;
+}
+
+- (void) stopEffect {
+    [self.effectPlayer stopWithFadeDuration:3];
+    [effectTimer invalidate];
+    effectTimer = nil;
+}
+
+- (void) stopVoice {
+    [self.voicePlayer stopWithFadeDuration:3];
+    [voiceTimer invalidate];
+    voiceTimer = nil;
 }
 
 - (IBAction)musicBtnClicked:(id)sender {
@@ -211,14 +268,14 @@
 - (void) handleNotificationFromMusicSelect: (NSNotification *)pNotification {
     [self.popover dismissPopoverAnimated:YES];
     
-    
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
-    HUD.labelText = @"Processing...";
+    HUD.labelText = @"Processing Music...";
     HUD.dimBackground = YES;
     HUD.minSize = CGSizeMake(140.f, 140.f);
     [HUD showAnimated:YES whileExecutingBlock:^{
-        NSString *musicString = [pNotification object];
+        NSString *musicString = [[pNotification object] objectAtIndex:0];
+        musicLength = [self convertTimeToSec:[[pNotification object] objectAtIndex:1]];
         musicComponent = [[NSBundle mainBundle] URLForResource:musicString withExtension:@"mp3"];
         NSError *error;
         self.musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:musicComponent error:&error];
@@ -226,34 +283,68 @@
         [self.musicPlayer prepareToPlay];
         
         // Generate Audio Wave
+        if (musicAudioWave) {
+            [[[self.musicView subviews] objectAtIndex:0] removeFromSuperview];
+        }
         musicAudioWave = [[SPUserResizableView alloc] initWithFrame:CGRectMake(0, 0, self.musicView.frame
-                                                                                                    .size.width / 2, self.musicView.frame
+                                                                                                    .size.width * musicLength / 180, self.musicView.frame
                                                                                                     .size.height)];
-        
+        musicAudioWave.tag = 0;
+
         WaveformImageView *wave = [[WaveformImageView alloc] initWithUrl:musicComponent];
-        UIImageView *waveView = [[UIImageView alloc] initWithImage:wave.image];
-        [musicAudioWave setContentView:waveView];
+        UIImage *image = [wave.image resize:musicAudioWave.frame.size];
+        UIImageView *waveView = [[UIImageView alloc] initWithImage:image];
+        waveView.layer.cornerRadius = 10;
+        waveView.clipsToBounds = YES;
+        musicAudioWave.contentView = waveView;
         musicAudioWave.delegate = self;
-        [musicAudioWave showEditingHandles];
         currentlyEditingView = musicAudioWave;
         lastEditedView = musicAudioWave;
-
     } completionBlock:^{
         [HUD removeFromSuperview];
+        HUD = nil;
         [self.musicView addSubview:musicAudioWave];
-
     }];
 }
 
 
 - (void) handleNotificationFromEffectSelect: (NSNotification *)pNotification {
     [self.popover dismissPopoverAnimated:YES];
-    NSString *soundEffectString = [pNotification object];
-    soundEffectComponent = [[NSBundle mainBundle] URLForResource:soundEffectString withExtension:@"mp3"];
-    NSError *error;
-    self.effectPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundEffectComponent error:&error];
-    [self.effectPlayer setVolume:0.5];
-    [self.effectPlayer prepareToPlay];
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = @"Processing Effect...";
+    HUD.dimBackground = YES;
+    HUD.minSize = CGSizeMake(140.f, 140.f);
+    [HUD showAnimated:YES whileExecutingBlock:^{
+        NSString *soundEffectString = [[pNotification object] objectAtIndex:0];
+        effectLength = [self convertTimeToSec:[[pNotification object] objectAtIndex:1]];
+        soundEffectComponent = [[NSBundle mainBundle] URLForResource:soundEffectString withExtension:@"mp3"];
+        NSError *error;
+        self.effectPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundEffectComponent error:&error];
+        [self.effectPlayer setVolume:0.5];
+        [self.effectPlayer prepareToPlay];
+        
+        // Generate Audio Wave
+        if (effectAudioWave) {
+            [[[self.effectView subviews] objectAtIndex:0] removeFromSuperview];
+        }
+        effectAudioWave = [[SPUserResizableView alloc] initWithFrame:CGRectMake(0, 0, self.effectView.frame
+                                                                               .size.width * effectLength / 180, self.effectView.frame
+                                                                               .size.height)];
+        effectAudioWave.tag = 1;
+        WaveformImageView *wave = [[WaveformImageView alloc] initWithUrl:soundEffectComponent];
+        UIImage *image = [wave.image resize:effectAudioWave.frame.size];
+        UIImageView *waveView = [[UIImageView alloc] initWithImage:image];
+        effectAudioWave.contentView = waveView;
+        effectAudioWave.delegate = self;
+        currentlyEditingView = effectAudioWave;
+        lastEditedView = effectAudioWave;
+    } completionBlock:^{
+        [HUD removeFromSuperview];
+        HUD = nil;
+        [self.effectView addSubview:effectAudioWave];
+    }];
+        
 }
 
 #pragma mark - UIPopoverControllerDelegate
@@ -281,6 +372,7 @@
     {
         [manager removeItemAtPath:outputPath error:nil];
     }
+    voiceComponent = outputURL;
     return outputURL;
 }
 
@@ -289,7 +381,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         [self.recordView setFrame:CGRectMake(768, self.recordView.frame.origin.y, self.recordView.frame.size.width, self.recordView.frame.size.height)];
     } completion:^(BOOL finished) {
-        
+        recorderPlayer = nil;
     }];
 }
 
@@ -331,6 +423,52 @@
 }
 
 - (IBAction)recordAcceptBtnClicked:(id)sender {
+    recorderPlayer = nil;
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.recordView setFrame:CGRectMake(768, self.recordView.frame.origin.y, self.recordView.frame.size.width, self.recordView.frame.size.height)];
+    } completion:^(BOOL finished) {
+        recorderPlayer = nil;
+    }];
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = @"Processing Voice...";
+    HUD.dimBackground = YES;
+    HUD.minSize = CGSizeMake(140.f, 140.f);
+    [HUD showAnimated:YES whileExecutingBlock:^{
+        NSError *error;
+        self.voicePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:voiceComponent error:&error];
+        [self.voicePlayer setVolume:1];
+        [self.voicePlayer prepareToPlay];
+        
+        // Generate Voice Wave
+        if (voiceAudioWave) {
+            [[[self.voiceView subviews] objectAtIndex:0] removeFromSuperview];
+        }
+        float voiceWidth = 0;
+        if (self.voiceView.frame.size.width * voiceLength / 180 < 48) {
+            voiceWidth = 48;
+        }
+        else {
+            voiceWidth = self.voiceView.frame.size.width * voiceLength / 180;
+        }
+        voiceAudioWave = [[SPUserResizableView alloc] initWithFrame:CGRectMake(0, 0, voiceWidth, self.voiceView.frame
+                                                                               .size.height)];
+        voiceAudioWave.tag = 2;
+        WaveformImageView *wave = [[WaveformImageView alloc] initWithUrl:voiceComponent];
+        UIImage *image = [wave.image resize:voiceAudioWave.frame.size];
+        UIImageView *waveView = [[UIImageView alloc] initWithImage:image];
+        voiceAudioWave.contentView = waveView;
+        voiceAudioWave.delegate = self;
+        currentlyEditingView = voiceAudioWave;
+        lastEditedView = voiceAudioWave;
+    } completionBlock:^{
+        [HUD removeFromSuperview];
+        HUD = nil;
+        [self.voiceView addSubview:voiceAudioWave];
+    }];
+
+    
 }
 
 - (IBAction)recordRecBtnClicked:(id)sender {
@@ -338,9 +476,12 @@
     
     if ([recorder isRecording])
     {
+        voiceLength = [recorder currentTime];
+        NSLog(@"%f", voiceLength);
         [recorder stop];
         [recorderTimer invalidate];
         recorderTimer = nil;
+        recorder = nil;
         [self.recordRecBtn setTitle:@"Record" forState:UIControlStateNormal];
         [self.recordPlayBtn setEnabled:YES];
         [self.recordAcceptBtn setEnabled:YES];
@@ -355,6 +496,22 @@
     }
     else
     {
+        // Set record settings
+        recordURL = [self recordURL];
+        
+        // Recording settings
+        NSMutableDictionary *settings = [NSMutableDictionary dictionary];
+        [settings setValue: [NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
+        [settings setValue: [NSNumber numberWithFloat:16000.0] forKey:AVSampleRateKey];
+        [settings setValue: [NSNumber numberWithInt: 1] forKey:AVNumberOfChannelsKey]; // mono
+        [settings setValue: [NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
+        [settings setValue: [NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
+        [settings setValue: [NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
+        
+        recorder = [[AVAudioRecorder alloc] initWithURL:recordURL settings:settings error:nil];
+        recorder.meteringEnabled = YES;
+        [recorder prepareToRecord];
+        
         recorderTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateMeters) userInfo:nil repeats:YES];
         [recorderTimer fire];
         [recorder recordForDuration:180];
@@ -440,6 +597,25 @@
 }
 
 - (void)userResizableViewDidEndEditing:(SPUserResizableView *)userResizableView {
+    switch (userResizableView.tag) {
+        case 0:
+            NSLog(@"%f", userResizableView.frame.origin.x);
+            musicStartTime = userResizableView.frame.origin.x;
+            musicLength = userResizableView.frame.size.width;
+            break;
+        case 1:
+            NSLog(@"%f", userResizableView.frame.origin.x);
+            effectStartTime = userResizableView.frame.origin.x;
+            effectLength = userResizableView.frame.size.width;
+            break;
+        case 2:
+            NSLog(@"%f", userResizableView.frame.origin.x);
+            voiceStartTime = userResizableView.frame.origin.x;
+            voiceLength = userResizableView.frame.size.width;
+            break;
+        default:
+            break;
+    }
     lastEditedView = userResizableView;
 }
 
@@ -457,5 +633,14 @@
     // edited view. We wouldn't want to dismiss an editing session in progress.
     [lastEditedView hideEditingHandles];
 }
+
+#pragma mark - Helpers
+- (float) convertTimeToSec: (NSString *)time
+{
+    NSArray *sec = [time componentsSeparatedByString:@":"];
+    float sum = [[sec objectAtIndex:0] intValue] * 60 + [[sec objectAtIndex:1] intValue];
+    return sum;
+}
+
 
 @end

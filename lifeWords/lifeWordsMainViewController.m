@@ -110,6 +110,8 @@
 - (NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
 }
+
+
 #pragma mark - Image Picker for the profile photo
 
 - (void)pickImage:(BOOL)camera

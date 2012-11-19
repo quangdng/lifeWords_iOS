@@ -30,8 +30,22 @@
     NSString *userEmail;
     NSString *color;
     
-    // Resizeable View
+    // Timeline Constant
     SPUserResizableView *musicAudioWave;
+    float musicStartTime;
+    float musicLength;
+    NSTimer *musicTimer;
+    NSTimer *musicStopTimer;
+    SPUserResizableView *effectAudioWave;
+    float effectStartTime;
+    float effectLength;
+    NSTimer *effectTimer;
+    NSTimer *effectStopTimer;
+    SPUserResizableView *voiceAudioWave;
+    float voiceStartTime;
+    float voiceLength;
+    NSTimer *voiceTimer;
+    NSTimer *voiceStopTimer;
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
 }
@@ -42,12 +56,13 @@
 #pragma mark - Decoration
 @property (strong, nonatomic) IBOutlet SWSnapshotStackView *container;
 @property (strong, nonatomic) IBOutlet UIImageView *wallpaper;
-@property (strong, nonatomic) IBOutlet UIView *musicView;
 
 
 #pragma mark - Data Elements
 @property (strong, nonatomic) NSUserDefaults *coreDatabase;
 @property (strong, nonatomic) NSString *currentCardPath;
+@property (strong, nonatomic) UIImage *photo;
+@property (strong, nonatomic) IBOutlet SWSnapshotStackView *cardPhoto;
 @property (strong, nonatomic) IBOutlet UITextField *cardTitle;
 @property (strong, nonatomic) IBOutlet UITextField *cardDate;
 @property (strong, nonatomic) IBOutlet UITextField *cardLength;
@@ -58,7 +73,9 @@
 @property (strong, nonatomic) AVAudioPlayer *musicPlayer;
 @property (strong, nonatomic) AVAudioPlayer *effectPlayer;
 @property (strong, nonatomic) AVAudioPlayer *voicePlayer;
-
+@property (strong, nonatomic) IBOutlet UIView *musicView;
+@property (strong, nonatomic) IBOutlet UIView *effectView;
+@property (strong, nonatomic) IBOutlet UIView *voiceView;
 
 // Record View
 @property (strong, nonatomic) IBOutlet UIView *recordView;

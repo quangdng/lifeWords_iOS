@@ -132,7 +132,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Music Selected" object:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+    NSString *name = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    NSString *time = [tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text;
+    
+    NSArray *musicInfo = [[NSArray alloc] initWithObjects:name, time, nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Music Selected" object:musicInfo];
 }
 
 

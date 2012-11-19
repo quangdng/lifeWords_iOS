@@ -194,10 +194,12 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
 
 - (void)showEditingHandles {
     [borderView setHidden:NO];
+    [borderView setNeedsDisplay];
 }
 
 - (void)hideEditingHandles {
     [borderView setHidden:YES];
+    [borderView setNeedsDisplay];
 }
 
 - (void)resizeUsingTouchLocation:(CGPoint)touchPoint {
@@ -236,7 +238,6 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
         newX = self.frame.origin.x;
     }
     
-    NSLog(@"Fucking asdasdasd  %f", newWidth);
     
     if (newWidth > self.maxWidth) {
         
@@ -276,6 +277,7 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
 }
 
 - (void)translateUsingTouchLocation:(CGPoint)touchPoint {
+    [borderView setNeedsDisplay];
     CGPoint newCenter = CGPointMake(self.center.x + touchPoint.x - touchStart.x, self.center.y);
     if (self.preventsPositionOutsideSuperview) {
         // Ensure the translation won't cause the view to move offscreen.

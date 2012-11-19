@@ -41,7 +41,7 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-    return [self.visibleViewController supportedInterfaceOrientations];
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 

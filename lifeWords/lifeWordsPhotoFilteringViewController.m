@@ -33,6 +33,7 @@
 
 - (void) loadView {
     [super loadView];
+    
     //self.navigationItem.hidesBackButton = YES;
 }
 - (void)viewDidLoad
@@ -54,8 +55,8 @@
     
     // Set the core photo
     self.photo = [self.photo normalizedImage];
-    originalPhoto = self.corePhoto.image;
-    filteredPhoto = self.corePhoto.image;
+    originalPhoto = self.photo;
+    filteredPhoto = self.photo;
     [self.corePhoto setImage:self.photo];
     [self.corePhoto setDisplayAsStack:NO];
     [self effectPanel];
@@ -118,13 +119,12 @@
 }
 
 - (BOOL)shouldAutorotate {
-    return NO;
+    return YES;
 }
 
 - (NSUInteger)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskPortrait;
+    return UIInterfaceOrientationMaskAll;
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -158,9 +158,10 @@
         UIImageView *thImage;
         UILabel *tv;
         
-        thumRect = CGRectMake(lastX, 0, 72, 51);
+        thumRect = CGRectMake(lastX, 5, 72, 51);
         thImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 74, 53)];
         thImage.layer.cornerRadius = 10.0f;
+        thImage.clipsToBounds = YES;
         tv = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 74, 20)];
         
         UIControl *thumbImageButton = [[UIControl alloc] initWithFrame:thumRect];
@@ -420,6 +421,7 @@
     if ([segue.identifier isEqualToString:@"toTimeLine"]) {
         lifeWordsTimeLineViewController *vc = [segue destinationViewController];
         [vc setCurrentCardPath:currentCardPath];
+        [vc setPhoto:filteredPhoto];
     }
 }
 

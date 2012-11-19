@@ -90,7 +90,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Effect Selected" object:[tableView cellForRowAtIndexPath:indexPath].textLabel.text];
+    NSString *name = [tableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    NSString *time = [tableView cellForRowAtIndexPath:indexPath].detailTextLabel.text;
+    
+    NSArray *effectInfo = [[NSArray alloc] initWithObjects:name, time, nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Effect Selected" object:effectInfo];
 }
 
 @end
