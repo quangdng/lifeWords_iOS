@@ -43,7 +43,7 @@
     rect.origin.y = 0;
     
     CGColorRef leftcolor = [[UIColor whiteColor] CGColor];
-    CGColorRef rightcolor = [[UIColor redColor] CGColor];
+    CGColorRef rightcolor = [[UIColor whiteColor] CGColor];
     
     CGContextFillRect(context, rect);
     

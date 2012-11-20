@@ -48,6 +48,8 @@
     NSTimer *voiceStopTimer;
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
+    
+    NSTimer *indicatorTimer;
 }
 
 @property (nonatomic, strong) UIPopoverController *popover;
@@ -68,6 +70,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *cardLength;
 
 #pragma mark - The Time Line
+@property (strong, nonatomic) IBOutlet UIView *timeLineIndicator;
 @property (strong, nonatomic) IBOutlet UIButton *musicBtn;
 @property (strong, nonatomic) IBOutlet UIButton *effectsBtn;
 @property (strong, nonatomic) AVAudioPlayer *musicPlayer;
