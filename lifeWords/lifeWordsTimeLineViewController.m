@@ -223,10 +223,6 @@
     musicStopTimer = [NSTimer scheduledTimerWithTimeInterval:musicStartTime + musicLength target:self selector:@selector(stopMusic) userInfo:nil repeats:NO];
     effectStopTimer = [NSTimer scheduledTimerWithTimeInterval:effectStartTime + effectLength target:self selector:@selector(stopEffect) userInfo:nil repeats:NO];
     voiceStopTimer = [NSTimer scheduledTimerWithTimeInterval:voiceStartTime + voiceLength target:self selector:@selector(stopVoice) userInfo:nil repeats:NO];
-    
-    
-    //NSTimer *aTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(displayVolume) userInfo:nil repeats:YES];
-    //[aTimer fire];
 }
 
 - (void) displayVolume {
@@ -332,21 +328,30 @@
 - (void) handleNotificationFromMusicSelect: (NSNotification *)pNotification {
     [self.popover dismissPopoverAnimated:YES];
     
+    // Add HUD activity indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.labelText = @"Processing Music...";
     HUD.dimBackground = YES;
     HUD.minSize = CGSizeMake(140.f, 140.f);
     [HUD showAnimated:YES whileExecutingBlock:^{
+        
+        // Get info from notification object
         NSString *musicString = [[pNotification object] objectAtIndex:0];
+       
+        
+        // Set music variables & initiate music player
         musicLength = [self convertTimeToSec:[[pNotification object] objectAtIndex:1]];
         musicComponent = [[NSBundle mainBundle] URLForResource:musicString withExtension:@"mp3"];
+        musicStartTime = 0;
+        
         NSError *error;
         self.musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:musicComponent error:&error];
         [self.musicPlayer setVolume:1];
         [self.musicPlayer prepareToPlay];
         
-        // Generate Audio Wave
+        
+        // Audio wave container
         if (musicAudioWave) {
             [[[self.musicView subviews] objectAtIndex:0] removeFromSuperview];
         }
@@ -354,53 +359,72 @@
                                                                                                     .size.width * musicLength / 180.f, self.musicView.frame
                                                                                                     .size.height)];
         musicAudioWave.tag = 0;
-
+        
+        // Generate Audio Wave
         WaveformImageView *wave = [[WaveformImageView alloc] initWithUrl:musicComponent];
         UIImage *image = [wave.image resize:musicAudioWave.frame.size];
         UIImageView *waveView = [[UIImageView alloc] initWithImage:image];
         waveView.layer.cornerRadius = 10;
         waveView.clipsToBounds = YES;
-        
-        UIView *contentView = [[UIView alloc] initWithFrame:waveView.frame];
+        waveView.layer.borderColor = [UIColor blackColor].CGColor;
+        waveView.layer.borderWidth = 1;
+       
+        // Add overlay view
+        UIView *overlayView = [[UIView alloc] initWithFrame:waveView.frame];
         UIColor *overlayColor = [[UIColor alloc]initWithRed: 0.337938 green: 0.595800 blue: 0.176782 alpha:1];
-        [contentView setBackgroundColor:overlayColor];
-        contentView.layer.cornerRadius = 10.0f;
-        contentView.clipsToBounds = YES;
-        contentView.alpha = 0.5;
+        [overlayView setBackgroundColor:overlayColor];
+        overlayView.layer.cornerRadius = 10.0f;
+        overlayView.clipsToBounds = YES;
+        overlayView.alpha = 0.5;
+        [waveView addSubview:overlayView];
         
-        [waveView addSubview:contentView];
-        
+        // Add wave view and beautify it
         musicAudioWave.contentView = waveView;
+        musicAudioWave.layer.shadowColor = [[UIColor blackColor] CGColor];
+        musicAudioWave.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+        musicAudioWave.layer.shadowRadius = 1.0f;
+        musicAudioWave.layer.shadowOpacity = 1.0f;
         
-        musicAudioWave.delegate = self;
-        currentlyEditingView = musicAudioWave;
-        lastEditedView = musicAudioWave;
     } completionBlock:^{
         [HUD removeFromSuperview];
         HUD = nil;
+        
+        // Set delegation and stuffs
+        musicAudioWave.delegate = self;
+        currentlyEditingView = musicAudioWave;
+        lastEditedView = musicAudioWave;
+        
+        // Add music view
         [self.musicView addSubview:musicAudioWave];
-        musicStartTime = 0;
     }];
 }
 
 
 - (void) handleNotificationFromEffectSelect: (NSNotification *)pNotification {
     [self.popover dismissPopoverAnimated:YES];
+    
+    // Add HUD activity indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.labelText = @"Processing Effect...";
     HUD.dimBackground = YES;
     HUD.minSize = CGSizeMake(140.f, 140.f);
     [HUD showAnimated:YES whileExecutingBlock:^{
+        
+        // Get info from notification object
         NSString *soundEffectString = [[pNotification object] objectAtIndex:0];
+        
+        // Set music variables & initiate music player
         effectLength = [self convertTimeToSec:[[pNotification object] objectAtIndex:1]];
         soundEffectComponent = [[NSBundle mainBundle] URLForResource:soundEffectString withExtension:@"mp3"];
+        effectStartTime = 0;
+        
         NSError *error;
         self.effectPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundEffectComponent error:&error];
         [self.effectPlayer setVolume:0.5];
         [self.effectPlayer prepareToPlay];
         
-        // Generate Audio Wave
+        // Audio wave container
         if (effectAudioWave) {
             [[[self.effectView subviews] objectAtIndex:0] removeFromSuperview];
         }
@@ -408,21 +432,46 @@
                                                                                .size.width * effectLength / 180.f, self.effectView.frame
                                                                                .size.height)];
         effectAudioWave.tag = 1;
+        
+        // Generate Audio Wave
         WaveformImageView *wave = [[WaveformImageView alloc] initWithUrl:soundEffectComponent];
         UIImage *image = [wave.image resize:effectAudioWave.frame.size];
         UIImageView *waveView = [[UIImageView alloc] initWithImage:image];
         waveView.layer.cornerRadius = 10;
         waveView.clipsToBounds = YES;
         
+        // Add overlay view
+        UIView *overlayView = [[UIView alloc] initWithFrame:waveView.frame];
+        UIColor *overlayColor = [[UIColor alloc]initWithRed: 1.000000 green: 0.550810 blue: 0.099465 alpha: 1 ];
+        [overlayView setBackgroundColor:overlayColor];
+        overlayView.alpha = 0.5;
+        [waveView addSubview:overlayView];
+        
+        // Add label
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(waveView.frame.origin.x, waveView.frame.origin.y, waveView.frame.size.width / 5, waveView.frame.size.height)];
+        label.backgroundColor = [UIColor whiteColor];
+        
+        
+        
+        // Add wave view and beautify it
         effectAudioWave.contentView = waveView;
+        effectAudioWave.layer.shadowColor = [[UIColor blackColor] CGColor];
+        effectAudioWave.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+        effectAudioWave.layer.shadowRadius = 1.0f;
+        effectAudioWave.layer.shadowOpacity = 1.0f;
+        
+    } completionBlock:^{
+        
+        [HUD removeFromSuperview];
+        HUD = nil;
+        
+        // Set delegation and stuffs
         effectAudioWave.delegate = self;
         currentlyEditingView = effectAudioWave;
         lastEditedView = effectAudioWave;
-    } completionBlock:^{
-        [HUD removeFromSuperview];
-        HUD = nil;
+        
+        // Add effect view
         [self.effectView addSubview:effectAudioWave];
-        effectStartTime = 0;
     }];
         
 }

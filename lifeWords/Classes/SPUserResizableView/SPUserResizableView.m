@@ -70,7 +70,7 @@ static SPUserResizableViewAnchorPoint SPUserResizableViewMiddleRightAnchorPoint 
     CGContextSaveGState(context);
     
     // (1) Draw the bounding box.
-    CGContextSetLineWidth(context, 2.0);
+    CGContextSetLineWidth(context, 3.0);
     UIColor * color = [[UIColor alloc]initWithRed: 0.219034 green: 0.598590 blue: 0.815217 alpha: 1 ];
     CGContextSetStrokeColorWithColor(context, color.CGColor);
     

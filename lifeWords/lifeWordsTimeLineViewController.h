@@ -32,16 +32,19 @@
     
     // Timeline Constant
     SPUserResizableView *musicAudioWave;
+    UIImage *musicWave;
     float musicStartTime;
     float musicLength;
     NSTimer *musicTimer;
     NSTimer *musicStopTimer;
     SPUserResizableView *effectAudioWave;
+    UIImage *effectWave;
     float effectStartTime;
     float effectLength;
     NSTimer *effectTimer;
     NSTimer *effectStopTimer;
     SPUserResizableView *voiceAudioWave;
+    UIImage *voiceWave;
     float voiceStartTime;
     float voiceLength;
     NSTimer *voiceTimer;

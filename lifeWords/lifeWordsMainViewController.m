@@ -54,7 +54,7 @@
     
     // Hide Navigation Bar
     [self.navigationController.navigationBar setHidden:YES];
-
+    
     // Set background image
     [self.wallpaper setImage:[UIImage imageNamed:@"leaf_tree.jpg"]];
     
@@ -66,8 +66,6 @@
     // Set toolbar background
     UIImage *navBarImg = [UIImage imageNamed:[NSString stringWithFormat:@"%@ipad-menubar-right.png", color]];
     [self.myToolBar setBackgroundImage:navBarImg forToolbarPosition:UIToolbarPositionTop barMetrics:UIBarMetricsDefault];
-    
-    
     
     // Refresh Contents
     [self refresh];
