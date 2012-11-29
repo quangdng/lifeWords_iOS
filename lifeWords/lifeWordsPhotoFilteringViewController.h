@@ -25,10 +25,13 @@
 #pragma mark - Photo Elements
 @property (strong, nonatomic) IBOutlet UIImage *photo;
 @property (strong, nonatomic) IBOutlet SWSnapshotStackView *corePhoto;
+@property (strong, nonatomic) IBOutlet UIView *toolbar;
 
 #pragma mark - Decoration
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet SWSnapshotStackView *container;
 @property (strong, nonatomic) IBOutlet UIImageView *wallpaper;
 @property (strong, nonatomic) NSUserDefaults *coreDatabase;
+
+#pragma mark - Action
+- (IBAction)restore:(id)sender;
 @end

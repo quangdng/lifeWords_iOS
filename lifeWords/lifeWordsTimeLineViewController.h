@@ -32,19 +32,16 @@
     
     // Timeline Constant
     SPUserResizableView *musicAudioWave;
-    UIImage *musicWave;
     float musicStartTime;
     float musicLength;
     NSTimer *musicTimer;
     NSTimer *musicStopTimer;
     SPUserResizableView *effectAudioWave;
-    UIImage *effectWave;
     float effectStartTime;
     float effectLength;
     NSTimer *effectTimer;
     NSTimer *effectStopTimer;
     SPUserResizableView *voiceAudioWave;
-    UIImage *voiceWave;
     float voiceStartTime;
     float voiceLength;
     NSTimer *voiceTimer;
@@ -59,7 +56,6 @@
 
 
 #pragma mark - Decoration
-@property (strong, nonatomic) IBOutlet SWSnapshotStackView *container;
 @property (strong, nonatomic) IBOutlet UIImageView *wallpaper;
 
 
@@ -82,6 +78,7 @@
 @property (strong, nonatomic) IBOutlet UIView *musicView;
 @property (strong, nonatomic) IBOutlet UIView *effectView;
 @property (strong, nonatomic) IBOutlet UIView *voiceView;
+@property (strong, nonatomic) IBOutlet UIImageView *timeLineBackground;
 
 // Record View
 @property (strong, nonatomic) IBOutlet UIView *recordView;

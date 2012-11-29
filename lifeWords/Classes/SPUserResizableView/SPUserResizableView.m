@@ -150,6 +150,7 @@ static SPUserResizableViewAnchorPoint SPUserResizableViewMiddleRightAnchorPoint 
     [contentView removeFromSuperview];
     contentView = newContentView;
     contentView.frame = CGRectInset(self.bounds, kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2, kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2);
+    contentView.contentMode = UIViewContentModeTopLeft;
     [self addSubview:contentView];
     
     // Ensure the border view is always on top by removing it and adding it to the end of the subview list.

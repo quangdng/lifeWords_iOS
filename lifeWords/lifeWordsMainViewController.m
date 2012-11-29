@@ -45,6 +45,7 @@
     
     // Add UI refresh control
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.scrollView];
+    [refreshControl setTintColor:[UIColor colorWithRed:0.597058 green:0.815217 blue:0.107755 alpha:1]];
     [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [refreshControl setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
 }
@@ -58,10 +59,6 @@
     // Set background image
     [self.wallpaper setImage:[UIImage imageNamed:@"leaf_tree.jpg"]];
     
-    // Set stack container
-    [self.container setDisplayAsStack:YES];
-    [self.container setImage:[UIImage imageNamed:@"container.jpg"]];
-    [self.container setAlpha:0.7];
     
     // Set toolbar background
     UIImage *navBarImg = [UIImage imageNamed:[NSString stringWithFormat:@"%@ipad-menubar-right.png", color]];
@@ -92,8 +89,8 @@
     [self setMakeCardButton:nil];
     [self setFriendsBtn:nil];
     [self setMyToolBar:nil];
-    [self setContainer:nil];
     [self setWallpaper:nil];
+    [self setContainer:nil];
     [super viewDidUnload];
 }
 
@@ -157,7 +154,7 @@
 - (IBAction)test:(id)sender {
     // Push View Controller
     lifeWordsPhotoFilteringViewController *nextView = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"photoFilteringView"];
-    [UIView animateWithDuration:1.5
+    [UIView animateWithDuration:0.75
                      animations:^{
                          [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                          [self.navigationController pushViewController:nextView animated:NO];
@@ -184,17 +181,6 @@
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [picker dismissModalViewControllerAnimated:NO];
-    } else {
-        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera ) {
-            [picker dismissModalViewControllerAnimated:NO];
-        }
-        else {
-            [self.popover dismissPopoverAnimated:NO];
-        }
-    }
-    
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
     chosenPhoto = image;
@@ -206,8 +192,19 @@
                      animations:^{
                          [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                          [self.navigationController pushViewController:nextView animated:NO];
-                         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+                         [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:self.navigationController.view cache:NO];
                      }];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [picker dismissModalViewControllerAnimated:NO];
+    } else {
+        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera ) {
+            [picker dismissModalViewControllerAnimated:NO];
+        }
+        else {
+            [self.popover dismissPopoverAnimated:NO];
+        }
+    }
 }
 
 

@@ -7,6 +7,8 @@
 //
 
 #define XMAX	20.0f
+#define kSPUserResizableViewGlobalInset 5.0
+#define kSPUserResizableViewInteractiveBorderSize 10.0
 
 #import "lifeWordsTimeLineViewController.h"
 #import "lifeWordsMusicSelectViewController.h"
@@ -48,11 +50,6 @@
     
     // Set the wallpaper
     [self.wallpaper setImage:[UIImage imageNamed:@"leaf_tree.jpg"]];
-    
-    // Set background image
-    [self.container setImage:[UIImage imageNamed:@"container_photo.jpg"]];
-    [self.container setAlpha:0.7];
-    [self.container setDisplayAsStack:YES];
     
     // Prevent the view to dim
     [UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -96,10 +93,18 @@
     [gestureRecognizer setDelegate:self];
     [self.view addGestureRecognizer:gestureRecognizer];
     
-    // Set music, effect, voice start time, timeline indicator
+    // Set timeline indicator
     self.timeLineIndicator.hidden = NO;
     CGRect indicatorRect = CGRectMake(self.musicView.frame.origin.x + 4, self.timeLineIndicator.frame.origin.y, self.timeLineIndicator.frame.size.width, self.timeLineIndicator.frame.size.height);
     self.timeLineIndicator.frame = indicatorRect;
+    self.timeLineIndicator.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.timeLineIndicator.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+    self.timeLineIndicator.layer.shadowRadius = 1.0f;
+    self.timeLineIndicator.layer.shadowOpacity = 1.0f;
+    
+    // Set timeline container
+    self.timeLineBackground.layer.cornerRadius = 10;
+    self.timeLineBackground.clipsToBounds =  YES;
     
 }
 
@@ -140,6 +145,7 @@
 
 - (void)viewDidUnload {
     [self setTimeLineIndicator:nil];
+    [self setTimeLineBackground:nil];
     [super viewDidUnload];
     [self setCoreDatabase:nil];
     [self setMusicBtn:nil];
@@ -157,7 +163,6 @@
     [self setRecordAcceptBtn:nil];
     [self setRecordRecBtn:nil];
     [self setCurrentCardPath:nil];
-    [self setContainer:nil];
     [self setWallpaper:nil];
     [self setMusicView:nil];
     [self setEffectView:nil];
@@ -327,6 +332,7 @@
 
 - (void) handleNotificationFromMusicSelect: (NSNotification *)pNotification {
     [self.popover dismissPopoverAnimated:YES];
+    self.musicBtn.selected = NO;
     
     // Add HUD activity indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -362,7 +368,8 @@
         
         // Generate Audio Wave
         WaveformImageView *wave = [[WaveformImageView alloc] initWithUrl:musicComponent];
-        UIImage *image = [wave.image resize:musicAudioWave.frame.size];
+        CGRect frame = CGRectInset(musicAudioWave.bounds, kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2, kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2);
+        UIImage *image = [wave.image resize:frame.size];
         UIImageView *waveView = [[UIImageView alloc] initWithImage:image];
         waveView.layer.cornerRadius = 10;
         waveView.clipsToBounds = YES;
@@ -402,6 +409,7 @@
 
 - (void) handleNotificationFromEffectSelect: (NSNotification *)pNotification {
     [self.popover dismissPopoverAnimated:YES];
+    self.effectsBtn.selected = NO;
     
     // Add HUD activity indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -435,7 +443,8 @@
         
         // Generate Audio Wave
         WaveformImageView *wave = [[WaveformImageView alloc] initWithUrl:soundEffectComponent];
-        UIImage *image = [wave.image resize:effectAudioWave.frame.size];
+        CGRect frame = CGRectInset(effectAudioWave.bounds, kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2, kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2);
+        UIImage *image = [wave.image resize:frame.size];
         UIImageView *waveView = [[UIImageView alloc] initWithImage:image];
         waveView.layer.cornerRadius = 10;
         waveView.clipsToBounds = YES;
@@ -450,8 +459,6 @@
         // Add label
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(waveView.frame.origin.x, waveView.frame.origin.y, waveView.frame.size.width / 5, waveView.frame.size.height)];
         label.backgroundColor = [UIColor whiteColor];
-        
-        
         
         // Add wave view and beautify it
         effectAudioWave.contentView = waveView;
@@ -485,6 +492,8 @@
 #pragma mark - Record View
 
 - (IBAction)recordBtnClicked:(id)sender {
+    self.recordBtn.selected = YES;
+    
     [UIView animateWithDuration:0.5 animations:^{
         [self.recordView setFrame:CGRectMake(151, self.recordView.frame.origin.y, self.recordView.frame.size.width, self.recordView.frame.size.height)];
     } completion:^(BOOL finished) {
@@ -552,6 +561,8 @@
 }
 
 - (IBAction)recordAcceptBtnClicked:(id)sender {
+    
+    // Release the player and pop out record menu
     recorderPlayer = nil;
     [UIView animateWithDuration:0.5 animations:^{
         [self.recordView setFrame:CGRectMake(768, self.recordView.frame.origin.y, self.recordView.frame.size.width, self.recordView.frame.size.height)];
@@ -559,18 +570,22 @@
         recorderPlayer = nil;
     }];
     
+    // Add HUD activity indicator
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.labelText = @"Processing Voice...";
     HUD.dimBackground = YES;
     HUD.minSize = CGSizeMake(140.f, 140.f);
     [HUD showAnimated:YES whileExecutingBlock:^{
+        
+        // Initiate voice player
         NSError *error;
         self.voicePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:voiceComponent error:&error];
         [self.voicePlayer setVolume:1];
         [self.voicePlayer prepareToPlay];
+         voiceStartTime = 0;
         
-        // Generate Voice Wave
+       // Audio wave container
         if (voiceAudioWave) {
             [[[self.voiceView subviews] objectAtIndex:0] removeFromSuperview];
         }
@@ -584,18 +599,45 @@
         voiceAudioWave = [[SPUserResizableView alloc] initWithFrame:CGRectMake(0, 0, voiceWidth, self.voiceView.frame
                                                                                .size.height)];
         voiceAudioWave.tag = 2;
+        
+        // Generate Audio Wave
         WaveformImageView *wave = [[WaveformImageView alloc] initWithUrl:voiceComponent];
-        UIImage *image = [wave.image resize:voiceAudioWave.frame.size];
+        CGRect frame = CGRectInset(voiceAudioWave.bounds, kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2, kSPUserResizableViewGlobalInset + kSPUserResizableViewInteractiveBorderSize/2);
+        UIImage *image = [wave.image resize:frame.size];
         UIImageView *waveView = [[UIImageView alloc] initWithImage:image];
+        waveView.layer.cornerRadius = 10;
+        waveView.clipsToBounds = YES;
+        
+        // Add overlay view
+        UIView *overlayView = [[UIView alloc] initWithFrame:waveView.frame];
+        UIColor *overlayColor = [[UIColor alloc]initWithRed: 0.496389 green: 0.223599 blue: 0.815217 alpha:1];
+        [overlayView setBackgroundColor:overlayColor];
+        overlayView.alpha = 0.5;
+        [waveView addSubview:overlayView];
+        
+        // Add wave view and beautify it
         voiceAudioWave.contentView = waveView;
+        voiceAudioWave.layer.shadowColor = [[UIColor blackColor] CGColor];
+        voiceAudioWave.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+        voiceAudioWave.layer.shadowRadius = 1.0f;
+        voiceAudioWave.layer.shadowOpacity = 1.0f;
+        
+        
+    } completionBlock:^{
+        
+        [HUD removeFromSuperview];
+        HUD = nil;
+        
+        // Set delegation and stuffs
         voiceAudioWave.delegate = self;
         currentlyEditingView = voiceAudioWave;
         lastEditedView = voiceAudioWave;
-    } completionBlock:^{
-        [HUD removeFromSuperview];
-        HUD = nil;
+        
+        // Add voice view
         [self.voiceView addSubview:voiceAudioWave];
-        voiceStartTime = 0;
+        
+        self.recordBtn.selected = NO;
+       
     }];
 
     

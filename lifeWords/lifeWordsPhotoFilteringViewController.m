@@ -48,11 +48,6 @@
     // Set the wallpaper
     [self.wallpaper setImage:[UIImage imageNamed:@"leaf_tree.jpg"]];
     
-    // Set background image
-    [self.container setImage:[UIImage imageNamed:@"container_photo.jpg"]];
-    [self.container setAlpha:0.7];
-    [self.container setDisplayAsStack:YES];
-    
     // Set the core photo
     self.photo = [self.photo normalizedImage];
     originalPhoto = self.photo;
@@ -102,16 +97,19 @@
     UIImage *navBarImg = [UIImage imageNamed:[NSString stringWithFormat:@"%@ipad-menubar-right.png", color]];
     [self.navigationController.navigationBar setBackgroundImage:navBarImg forBarMetrics:UIBarMetricsDefault];
     
+    // Set the label for the navigation bar
     UILabel *tv = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 74, 50)];
     [tv setText:@"Photo Effects"];
     [tv setFont:[UIFont fontWithName:@"Zapfino" size:17.0]];
     [tv setTextAlignment:NSTextAlignmentCenter];
     [tv setBackgroundColor:[UIColor clearColor]];
     [tv setTextColor:[UIColor whiteColor]];
-    
     [self.navigationItem setTitleView:tv];
     
-    
+    // Slide up the toolbar
+    [UIView animateWithDuration:0.75 animations:^{
+        [self.toolbar setFrame:CGRectMake(self.toolbar.frame.origin.x, 832, self.toolbar.frame.size.width, self.toolbar.frame.size.height)];
+    }];
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
@@ -136,9 +134,9 @@
     [self setScrollView:nil];
     [self setPhoto:nil];
     [self setCoreDatabase:nil];
-    [self setContainer:nil];
     [self setCorePhoto:nil];
     [self setWallpaper:nil];
+    [self setToolbar:nil];
     [super viewDidUnload];
 }
 
@@ -402,13 +400,13 @@
 
 - (void) backBarPressed
 {
-    [UIView animateWithDuration:1.5
-                     animations:^{
-                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-                         [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.navigationController.view cache:NO];
-                     }];
-    [self.navigationController popViewControllerAnimated:NO];
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.3;
+    transition.type = kCATransitionFade;
+    transition.subtype = kCATransitionFromTop;
     
+    [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void) nextBarPressed
@@ -426,4 +424,8 @@
 }
 
 
+- (IBAction)restore:(id)sender {
+    [self.corePhoto setImage:originalPhoto];
+    filteredPhoto = originalPhoto;
+}
 @end

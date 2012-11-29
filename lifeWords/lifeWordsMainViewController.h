@@ -35,7 +35,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *wallpaper;
 @property (strong, nonatomic) IBOutlet SWSnapshotStackView *profilePhoto;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet SWSnapshotStackView *container;
+@property (strong, nonatomic) IBOutlet UIImageView *container;
 
 @property (strong, nonatomic) NSUserDefaults *coreDatabase;
 @property (strong, nonatomic) JUSSNetworkOperation *downloadOperation;

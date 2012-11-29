@@ -404,14 +404,7 @@
 
       CGContextSaveGState (context);
       
-      // Draw the snapshot shadow using the matte frames path, offset
-      // slightly. Still not 100% happy with the shadow drawing, plan
-      // to tweak eventually to get better end effect
-      colour = [UIColor colorWithRed:0 green:0 blue:0.0 alpha:0.4];
-      CGContextSetShadowWithColor (context, CGSizeMake (0.0, (SWSnapshotStackViewStackShadowYOffset * m_shadowDirSign)),
-                                   SWSnapshotStackViewStackShadowRadius, colour.CGColor);
-      CGContextAddPath (context, matteFramePath); 
-      CGContextFillPath (context);
+     
       
       CGContextRestoreGState (context);
 
