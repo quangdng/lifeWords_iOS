@@ -90,9 +90,14 @@
 @property (strong, nonatomic) IBOutlet UIButton *recordAcceptBtn;
 @property (strong, nonatomic) IBOutlet UIButton *recordRecBtn;
 
+#pragma mark - Operational Bar
+@property (strong, nonatomic) IBOutlet UIButton *playMusicBtn;
+@property (strong, nonatomic) IBOutlet UIButton *stopMusicBtn;
+@property (strong, nonatomic) IBOutlet UIButton *reloadMusicBtn;
+@property (strong, nonatomic) IBOutlet UIButton *previewMusicBtn;
+
 
 #pragma mark - Actions
-- (IBAction)test:(id)sender;
 
 - (IBAction)musicBtnClicked:(id)sender;
 - (IBAction)effectsBtnClicked:(id)sender;
@@ -103,4 +108,11 @@
 - (IBAction)recordPlayBtnClicked:(id)sender;
 - (IBAction)recordAcceptBtnClicked:(id)sender;
 - (IBAction)recordRecBtnClicked:(id)sender;
+
+// Opeartional Bar Actions
+- (IBAction)playTimeLine:(id)sender;
+- (IBAction)stopTimeLine:(id)sender;
+- (IBAction)reloadTimeLine:(id)sender;
+- (IBAction)previewTimeLine:(id)sender;
+
 @end

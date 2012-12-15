@@ -278,4 +278,7 @@
 
 
 
+- (IBAction)friendBtnClicked:(id)sender {
+    self.friendsBtn.selected = YES;
+}
 @end

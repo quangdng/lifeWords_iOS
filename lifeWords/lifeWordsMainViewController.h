@@ -26,6 +26,12 @@
 - (IBAction) showActionSheet:(id)sender;
 - (IBAction)test:(id)sender;
 
+#pragma mark - Core Elements
+@property (strong, nonatomic) NSUserDefaults *coreDatabase;
+@property (strong, nonatomic) IBOutlet SWSnapshotStackView *profilePhoto;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) JUSSNetworkOperation *downloadOperation;
+@property (strong, nonatomic) JUSSNetworkOperation *fetchUserInfo;
 
 #pragma mark - Toolbars
 @property (strong, nonatomic) IBOutlet UIToolbar *myToolBar;
@@ -33,12 +39,10 @@
 
 #pragma mark - Decoration
 @property (strong, nonatomic) IBOutlet UIImageView *wallpaper;
-@property (strong, nonatomic) IBOutlet SWSnapshotStackView *profilePhoto;
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *container;
 
-@property (strong, nonatomic) NSUserDefaults *coreDatabase;
-@property (strong, nonatomic) JUSSNetworkOperation *downloadOperation;
-@property (strong, nonatomic) JUSSNetworkOperation *fetchUserInfo;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
+#pragma mark - Actions
+- (IBAction)friendBtnClicked:(id)sender;
 @end
