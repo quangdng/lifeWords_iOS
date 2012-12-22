@@ -18,6 +18,8 @@
 #import "KSCustomPopoverBackgroundView.h"
 #import "AVAudioPlayer+PGFade.h"
 #import "UIImage+Helpers.h"
+#import "lifeWordsPreviewViewController.h"
+
 @interface lifeWordsTimeLineViewController () {
     MBProgressHUD *HUD;
 }
@@ -221,6 +223,12 @@
 	return session.inputIsAvailable;
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toPreview"]) {
+        lifeWordsPreviewViewController *vc = [segue destinationViewController];
+        [vc setPhoto:self.photo];
+    }
+}
 #pragma mark - Time Line Components
 - (void) displayVolume {
     NSLog(@"Music Volume %f, Effect Volume %f", [self.musicPlayer volume], [self.effectPlayer volume]);
@@ -415,6 +423,7 @@
 }
 
 - (IBAction)previewTimeLine:(id)sender {
+    [self performSegueWithIdentifier:@"toPreview" sender:nil];
 }
 
 - (IBAction)musicBtnClicked:(id)sender {
@@ -1017,8 +1026,6 @@
 }
 
 - (void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    NSLog(@"Fuck");
-    
     CGRect indicatorRect = CGRectMake(self.musicView.frame.origin.x + 7, self.timeLineIndicator.frame.origin.y, self.timeLineIndicator.frame.size.width, self.timeLineIndicator.frame.size.height);
     
     [UIView animateWithDuration:0.5 animations:^{

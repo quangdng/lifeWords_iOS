@@ -172,7 +172,7 @@
                 // Download the profile photo
                 NSString *profilePhotoURL = [@"http://" stringByAppendingString:ApplicationDelegate.hostName];
                 
-                profilePhotoURL = [profilePhotoURL stringByAppendingString:@"/storage/users/"];
+                profilePhotoURL = [profilePhotoURL stringByAppendingString:@"/lifewords/app/webroot/storage/users/"];
                 
                 profilePhotoURL = [profilePhotoURL stringByAppendingString:useremail];
                                    
