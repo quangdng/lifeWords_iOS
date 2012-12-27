@@ -154,6 +154,7 @@
 - (IBAction)test:(id)sender {
     // Push View Controller
     lifeWordsPhotoFilteringViewController *nextView = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"photoFilteringView"];
+    [nextView setPhoto:[UIImage imageNamed:@"dog.jpg"]];
     [UIView animateWithDuration:0.75
                      animations:^{
                          [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];

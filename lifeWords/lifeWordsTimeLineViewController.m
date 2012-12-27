@@ -109,6 +109,11 @@
     // Set timeline container
     self.timeLineBackground.layer.cornerRadius = 10;
     self.timeLineBackground.clipsToBounds =  YES;
+    
+    // Set buttons
+    self.playMusicBtn.enabled = NO;
+    self.reloadMusicBtn.enabled = NO;
+    self.previewMusicBtn.enabled = NO;
 
 }
 
@@ -227,6 +232,22 @@
     if ([segue.identifier isEqualToString:@"toPreview"]) {
         lifeWordsPreviewViewController *vc = [segue destinationViewController];
         [vc setPhoto:self.photo];
+
+        NSNumber *musicS = [NSNumber numberWithFloat:musicStartTime];
+        NSNumber *musicL = [NSNumber numberWithFloat:musicLength];
+        NSArray *musicInfo = [[NSArray alloc] initWithObjects:musicComponent, musicS, musicL, nil];
+        
+        NSNumber *effectS = [NSNumber numberWithFloat:effectStartTime];
+        NSNumber *effectL = [NSNumber numberWithFloat:effectLength];
+        NSArray *effectInfo = [[NSArray alloc] initWithObjects:soundEffectComponent, effectS, effectL, nil];
+        
+        NSNumber *voiceS = [NSNumber numberWithFloat:voiceStartTime];
+        NSNumber *voiceL = [NSNumber numberWithFloat:voiceLength];
+        NSArray *voiceInfo = [[NSArray alloc] initWithObjects:voiceComponent, voiceS, voiceL, nil];
+        
+        [vc setMusicInfo:musicInfo];
+        [vc setEffectInfo:effectInfo];
+        [vc setVoiceInfo:voiceInfo];
     }
 }
 #pragma mark - Time Line Components
@@ -266,12 +287,12 @@
 }
 
 - (void) stopVoice {
-    [self.voicePlayer stopWithFadeDuration:1];
+    [self.voicePlayer stopWithFadeDuration:3];
     [voiceStopTimer invalidate];
     voiceStopTimer = nil;
 }
 
-- (IBAction)playTimeLine:(id)senderr {
+- (IBAction)playTimeLine:(id)sender {
     
     [self updateTimeLineIndicator];
     
@@ -300,17 +321,22 @@
     
     // Set timers
     musicTimer = [NSTimer scheduledTimerWithTimeInterval:musicStartTime target:self selector:@selector(playMusic) userInfo:nil repeats:NO];
-    effectTimer = [NSTimer scheduledTimerWithTimeInterval:effectStartTime target:self selector:@selector(playEffect) userInfo:nil repeats:NO];
-    voiceTimer = [NSTimer scheduledTimerWithTimeInterval:voiceStartTime target:self selector:@selector(playVoice) userInfo:nil repeats:NO];
-    
     musicStopTimer = [NSTimer scheduledTimerWithTimeInterval:musicStartTime + musicLength target:self selector:@selector(stopMusic) userInfo:nil repeats:NO];
+    
+    effectTimer = [NSTimer scheduledTimerWithTimeInterval:effectStartTime target:self selector:@selector(playEffect) userInfo:nil repeats:NO];
     effectStopTimer = [NSTimer scheduledTimerWithTimeInterval:effectStartTime + effectLength target:self selector:@selector(stopEffect) userInfo:nil repeats:NO];
+    
+    voiceTimer = [NSTimer scheduledTimerWithTimeInterval:voiceStartTime target:self selector:@selector(playVoice) userInfo:nil repeats:NO];
     voiceStopTimer = [NSTimer scheduledTimerWithTimeInterval:voiceStartTime + voiceLength target:self selector:@selector(stopVoice) userInfo:nil repeats:NO];
     
-    self.playMusicBtn.hidden = YES;
+    
+    // Unhide stop button
     self.stopMusicBtn.hidden = NO;
     
     // Disable Editing
+    self.musicBtn.enabled = NO;
+    self.effectsBtn.enabled = NO;
+    self.recordBtn.enabled = NO;
     musicAudioWave.userInteractionEnabled = NO;
     effectAudioWave.userInteractionEnabled = NO;
     voiceAudioWave.userInteractionEnabled = NO;
@@ -366,12 +392,12 @@
     self.stopMusicBtn.hidden = YES;
     
     // Enable Editting
+    self.musicBtn.enabled = YES;
+    self.effectsBtn.enabled = YES;
+    self.recordBtn.enabled = YES;
     musicAudioWave.userInteractionEnabled = YES;
     effectAudioWave.userInteractionEnabled = YES;
     voiceAudioWave.userInteractionEnabled = YES;
-    
-    // Reveal Play Btn
-    self.playMusicBtn.hidden = NO;
     
     // Enable Reload, Preview
     self.reloadMusicBtn.enabled = YES;
@@ -471,7 +497,7 @@
     }
     else {
         if (MAX(music, effect) == music) {
-            CGRect convertedRect = [self.musicView convertRect:musicAudioWave.frame toView:self.view];
+            CGRect convertedRect = musicAudioWave.frame;
             float startSpace = musicStartTime * self.musicView.frame.size.width / 180;
             
             CGPoint position = self.timeLineIndicator.layer.position;
@@ -964,14 +990,14 @@
             break;
         case 1:
             NSLog(@"%f", userResizableView.frame.origin.x);
-            effectStartTime = userResizableView.frame.origin.x * 180.f / self.musicView.frame.size.width;
-            effectLength = userResizableView.frame.size.width * 180.f / self.musicView.frame.size.width;
+            effectStartTime = userResizableView.frame.origin.x * 180.f / self.effectView.frame.size.width;
+            effectLength = userResizableView.frame.size.width * 180.f / self.effectView.frame.size.width;
                         break;
         case 2:
             NSLog(@"%f", userResizableView.frame.origin.x);
-            voiceStartTime = userResizableView.frame.origin.x * 180.f / self.musicView.frame.size.width;
+            voiceStartTime = userResizableView.frame.origin.x * 180.f / self.voiceView.frame.size.width;
             if (!self.voiceView.frame.size.width <= 48.f) {
-                voiceLength = userResizableView.frame.size.width * 180.f / self.musicView.frame.size.width;
+                voiceLength = userResizableView.frame.size.width * 180.f / self.voiceView.frame.size.width;
             }
             
             break;
@@ -1026,11 +1052,7 @@
 }
 
 - (void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    CGRect indicatorRect = CGRectMake(self.musicView.frame.origin.x + 7, self.timeLineIndicator.frame.origin.y, self.timeLineIndicator.frame.size.width, self.timeLineIndicator.frame.size.height);
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        self.timeLineIndicator.frame = indicatorRect;
-    }];
+    [self stopTimeLine:nil];
     
     // Enable Editting
     musicAudioWave.userInteractionEnabled = YES;

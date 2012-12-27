@@ -21,14 +21,14 @@
     NSTimer *recorderPlayerTimer;
     NSURL *recordURL;
     
+    // User Information
+    NSString *userEmail;
+    NSString *color;
+    
     // Card TimeLine Components
     NSURL *musicComponent;
     NSURL *soundEffectComponent;
     NSURL *voiceComponent;
-    
-    // User Information
-    NSString *userEmail;
-    NSString *color;
     
     // Timeline Constant
     SPUserResizableView *musicAudioWave;
