@@ -31,6 +31,15 @@
     return op;
 }
 
+- (JUSSNetworkOperation *) fetchNotifications:(NSString *)userID
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:userID forKey:@"userid"];
+    JUSSNetworkOperation *op = [self operationWithPath:@"fetchNotifications.php" params:params httpMethod:@"POST"];
+    [self enqueueOperation:op];
+    return op;
+}
+
 - (JUSSNetworkOperation *) signUp: (NSString *)email andPassword: (NSString *)password andNickname: (NSString*)nickname withProfilePhoto:(NSData *) photo
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];

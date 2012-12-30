@@ -29,11 +29,26 @@
 {
     [super viewDidLoad];
     
+    // Prevent the view to dim
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
+    // Set card title
+    if ([self.cardTitle isEqualToString:@""]) {
+        self.titleLbl.text = @"No Title";
+    }
+    else {
+        self.titleLbl.text = self.cardTitle;
+    }
+    
+    
     // Set the photo
     [self.corePhoto setImage:self.photo];
     
     // Set progress bar
     [self.progressBar setProgressTintColor:[UIColor greenColor]];
+    
+    // Start the audio session
+    [self startAudioSession];
     
     // Set the variables
     if ([self.musicInfo count] > 0) {
@@ -53,6 +68,31 @@
         voiceStartTime = [[self.voiceInfo objectAtIndex:1] floatValue];
         voiceLength = [[self.voiceInfo objectAtIndex:2] floatValue];
     }
+    
+    // Set boolean SHOW
+    show = TRUE;
+    
+    // Calculate play time
+    music = musicStartTime + musicLength;
+    effect = effectStartTime + effectLength;
+    voice = voiceStartTime + voiceLength;
+    
+    if (MAX(music, effect) <= voice) {
+        max = voice;
+    }
+    else {
+        if (MAX(music, effect) == music) {
+            max = music;
+        }
+        else {
+            max = effect;
+        }
+    }
+    
+    // Set time label
+    self.currentTimeLbl.text = [self formattedStringForDuration:0];
+    NSString *minus = @"-";
+    self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:max]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,7 +106,40 @@
     [self setPlayMusicBtn:nil];
     [self setStopMusicBtn:nil];
     [self setProgressBar:nil];
+    [self setMusicInfo:nil];
+    [self setEffectInfo:nil];
+    [self setVoiceInfo:nil];
+    [self setMusicPlayer:nil];
+    [self setEffectPlayer:nil];
+    [self setVoicePlayer:nil];
+    [self setTransparentView:nil];
+    [self setHolderView:nil];
+    [self setCurrentTimeLbl:nil];
+    [self setLeftTimeLbl:nil];
+    [self setCardTitle:nil];
+    [self setTitleLbl:nil];
     [super viewDidUnload];
+}
+
+- (BOOL) startAudioSession
+{
+	// Prepare the audio session
+	NSError *error;
+	AVAudioSession *session = [AVAudioSession sharedInstance];
+	
+	if (![session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error])
+	{
+		NSLog(@"Error setting session category: %@", error.localizedFailureReason);
+		return NO;
+	}
+	
+	if (![session setActive:YES error:&error])
+	{
+		NSLog(@"Error activating audio session: %@", error.localizedFailureReason);
+		return NO;
+	}
+	
+	return session.inputIsAvailable;
 }
 
 #pragma mark - Play & Stop
@@ -106,23 +179,7 @@
     self.stopMusicBtn.hidden = NO;
     
     // Set progress timer
-    music = musicStartTime + musicLength;
-    effect = effectStartTime + effectLength;
-    voice = voiceStartTime + voiceLength;
-    
-    if (MAX(music, effect) <= voice) {
-        max = voice;
-    }
-    else {
-        if (MAX(music, effect) == music) {
-            max = music;
-        }
-        else {
-            max = effect;
-        }
-    }
-    
-    progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
+    progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.3f target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
     [progressTimer fire];
 }
 
@@ -150,7 +207,31 @@
     // Set play & stop btn
     self.playMusicBtn.hidden = NO;
     self.stopMusicBtn.hidden = YES;
+    
+    // Set progress bar
+    self.progressBar.progress = 0;
 
+}
+
+- (IBAction)hideMenu:(id)sender {
+    if (show == TRUE) {
+        [self fadeOut:self.transparentView withDuration:0.5f andWait:0];
+        [self fadeOut:self.holderView withDuration:0.5f andWait:0];
+        show = FALSE;
+    }
+    else {
+        [self fadeIn:self.transparentView withDuration:0.5f andWait:0];
+        [self fadeIn:self.holderView withDuration:0.5f andWait:0];
+        show = TRUE;
+    }
+}
+
+- (IBAction)dismiss:(id)sender {
+    [self stop:nil];
+    [self setMusicPlayer:nil];
+    [self setEffectPlayer:nil];
+    [self setVoicePlayer:nil];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void) playMusic{
@@ -194,6 +275,9 @@
     if (MAX(music, effect) <= voice) {
         if ((self.voicePlayer.currentTime / max) < 1) {
             self.progressBar.progress = self.voicePlayer.currentTime / max;
+            self.currentTimeLbl.text = [self formattedStringForDuration:self.voicePlayer.currentTime];
+            NSString *minus = @"-";
+            self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:max-self.voicePlayer.currentTime]];
         }
         else {
             [progressTimer invalidate];
@@ -201,12 +285,19 @@
             self.progressBar.progress = 1;
             self.stopMusicBtn.hidden = YES;
             self.playMusicBtn.hidden = NO;
+            self.currentTimeLbl.text = [self formattedStringForDuration:max];
+            NSString *minus = @"-";
+            self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:0]];
         }
     }
     else {
         if (MAX(music, effect) == music) {
             if ((self.musicPlayer.currentTime / max) < 1) {
                 self.progressBar.progress = self.musicPlayer.currentTime / max;
+                self.currentTimeLbl.text = [self formattedStringForDuration:self.musicPlayer.currentTime];
+                NSString *minus = @"-";
+                self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:max-self.musicPlayer.currentTime]];
+
             }
             else {
                 [progressTimer invalidate];
@@ -214,11 +305,17 @@
                 self.progressBar.progress = 1;
                 self.stopMusicBtn.hidden = YES;
                 self.playMusicBtn.hidden = NO;
+                self.currentTimeLbl.text = [self formattedStringForDuration:max];
+                NSString *minus = @"-";
+                self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:0]];
             }
         }
         else {
             if ((self.effectPlayer.currentTime / max) < 1) {
                 self.progressBar.progress = self.effectPlayer.currentTime / max;
+                self.currentTimeLbl.text = [self formattedStringForDuration:self.effectPlayer.currentTime];
+                NSString *minus = @"-";
+                self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:max-self.effectPlayer.currentTime]];
             }
             else {
                 [progressTimer invalidate];
@@ -226,8 +323,34 @@
                 self.progressBar.progress = 1;
                 self.stopMusicBtn.hidden = YES;
                 self.playMusicBtn.hidden = NO;
+                self.currentTimeLbl.text = [self formattedStringForDuration:max];
+                NSString *minus = @"-";
+                self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:0]];
             }
         }
     }    
 }
+
+#pragma mark - Helpers
+-(void)fadeOut:(UIView*)viewToDissolve withDuration:(NSTimeInterval)duration   andWait:(NSTimeInterval)wait
+{
+    [UIView animateWithDuration:duration delay:wait options:UIViewAnimationOptionCurveLinear animations:^{
+        viewToDissolve.alpha = 0;
+    } completion:nil];
+}
+
+-(void)fadeIn:(UIView*)viewToFadeIn withDuration:(NSTimeInterval)duration         andWait:(NSTimeInterval)wait
+{
+    [UIView animateWithDuration:duration delay:wait options:UIViewAnimationOptionCurveLinear animations:^{
+        viewToFadeIn.alpha = 1;
+    } completion:nil];
+}
+
+- (NSString*)formattedStringForDuration:(NSTimeInterval)duration
+{
+    NSInteger minutes = floor(duration/60);
+    NSInteger seconds = round(duration - minutes * 60);
+    return [NSString stringWithFormat:@"%d:%02d", minutes, seconds];
+}
+
 @end

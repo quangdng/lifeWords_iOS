@@ -11,6 +11,7 @@
 @interface lifeWordsNetworkOperations : JUSSNetworkEngine
 - (JUSSNetworkOperation *) basicAuthentication: (NSString *)userEmail andUserPassword: (NSString *)userPassword;
 - (JUSSNetworkOperation *) fetchUserInfo: (NSString *)userEmail;
+- (JUSSNetworkOperation *) fetchNotifications: (NSString *)userEmail;
 - (JUSSNetworkOperation *) signUp: (NSString *)email andPassword: (NSString *)password andNickname: (NSString*)nickname withProfilePhoto:(NSData *) photo;
 - (JUSSNetworkOperation *) downloadFile:(NSString *)remoteURL toFile:(NSString *)filePath;
 @end

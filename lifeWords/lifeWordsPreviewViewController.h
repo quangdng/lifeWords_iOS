@@ -38,12 +38,16 @@
     float voice;
     float max;
     NSTimer *progressTimer;
+    
+    // Show/Hide Menu
+    BOOL show;
 }
 
 @property (strong, nonatomic) UIImage *photo;
 @property (strong, nonatomic) IBOutlet UIImageView *corePhoto;
 
 // Card's Info
+@property (strong, nonatomic) NSString *cardTitle;
 @property (strong, nonatomic) NSArray *musicInfo;
 @property (strong, nonatomic) NSArray *effectInfo;
 @property (strong, nonatomic) NSArray *voiceInfo;
@@ -57,9 +61,15 @@
 @property (strong, nonatomic) IBOutlet UIButton *playMusicBtn;
 @property (strong, nonatomic) IBOutlet UIButton *stopMusicBtn;
 @property (strong, nonatomic) IBOutlet YLProgressBar *progressBar;
+@property (strong, nonatomic) IBOutlet UIView *transparentView;
+@property (strong, nonatomic) IBOutlet UIView *holderView;
+@property (strong, nonatomic) IBOutlet UILabel *currentTimeLbl;
+@property (strong, nonatomic) IBOutlet UILabel *leftTimeLbl;
+@property (strong, nonatomic) IBOutlet UILabel *titleLbl;
 
 // Actions
 - (IBAction)play:(id)sender;
 - (IBAction)stop:(id)sender;
-
+- (IBAction)hideMenu:(id)sender;
+- (IBAction)dismiss:(id)sender;
 @end

@@ -96,6 +96,12 @@
         [self performSegueWithIdentifier:@"toMainView" sender:self];
     }
     
+    // Restore to default state
+    self.userEmail.text = @"";
+    self.userPassword.text = @"";
+    self.loginButton.enabled = YES;
+    [self.activityIndicator stopAnimating];
+    
 }
 - (void)didReceiveMemoryWarning
 {

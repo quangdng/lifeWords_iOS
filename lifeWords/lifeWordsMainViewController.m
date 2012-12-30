@@ -40,8 +40,9 @@
     userEmail = [self.coreDatabase objectForKey:@"Current_User_Email"];
     color = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", userEmail]];
     
-    // Customize toolbar
-    [self.friendsBtn setImage:[UIImage imageNamed:@"icon-friends.png"] forState:UIControlStateNormal];
+    
+    NSLog(@"%@", [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] description]);
+    
     
     // Add UI refresh control
     refreshControl = [[ODRefreshControl alloc] initInScrollView:self.scrollView];
@@ -91,6 +92,7 @@
     [self setMyToolBar:nil];
     [self setWallpaper:nil];
     [self setContainer:nil];
+    [self setFetchNotifications:nil];
     [super viewDidUnload];
 }
 
@@ -269,7 +271,6 @@
         [ghastly show];
     }];
     
-    
     // Dislay the notifications
     JSBadgeView *friendsBadge = [[JSBadgeView alloc] initWithParentView:self.friendsBtn
                                                               alignment:JSBadgeViewAlignmentTopRight];
@@ -280,6 +281,10 @@
 
 
 - (IBAction)friendBtnClicked:(id)sender {
-    self.friendsBtn.selected = YES;
+}
+
+- (IBAction)logoutBtnClicked:(id)sender {
+    [self.coreDatabase removeObjectForKey:@"Current_User_Email"];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end

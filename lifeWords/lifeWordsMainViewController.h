@@ -32,6 +32,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) JUSSNetworkOperation *downloadOperation;
 @property (strong, nonatomic) JUSSNetworkOperation *fetchUserInfo;
+@property (strong, nonatomic) JUSSNetworkOperation *fetchNotifications;
 
 #pragma mark - Toolbars
 @property (strong, nonatomic) IBOutlet UIToolbar *myToolBar;
@@ -45,4 +46,5 @@
 
 #pragma mark - Actions
 - (IBAction)friendBtnClicked:(id)sender;
+- (IBAction)logoutBtnClicked:(id)sender;
 @end

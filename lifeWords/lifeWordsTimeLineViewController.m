@@ -70,6 +70,14 @@
     // and put the button in the nav bar
     [self.navigationItem setLeftBarButtonItem:barbutton];
     
+    //Create a new barbutton with an action
+    UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Share"
+                                                                      style:UIBarButtonItemStylePlain target:self action:@selector(shareBarPressed)];
+    UIImage *nextBtnImg = [UIImage imageNamed:[NSString stringWithFormat:@"%@ipad-done.png", color]];
+    [nextBarButton setBackgroundImage:nextBtnImg forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    // and put the button in the nav bar
+    [self.navigationItem setRightBarButtonItem:nextBarButton];
     
     // Set current date for date textbox
     NSDate *date = [NSDate date];
@@ -153,9 +161,6 @@
 
 
 - (void)viewDidUnload {
-    [self setStopMusicBtn:nil];
-    [self setReloadMusicBtn:nil];
-    [self setPreviewMusicBtn:nil];
     [super viewDidUnload];
     
     [self setTimeLineIndicator:nil];
@@ -186,7 +191,10 @@
     [self setMusicPlayer:nil];
     [self setEffectPlayer:nil];
     [self setVoicePlayer:nil];
-    
+    [self setStopMusicBtn:nil];
+    [self setReloadMusicBtn:nil];
+    [self setPreviewMusicBtn:nil];
+    [self setDismissKeyboardBtn:nil];
 }
 
 
@@ -200,11 +208,6 @@
 
 - (NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;
-}
-
-- (void) backBarPressed
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL) startAudioSession
@@ -244,7 +247,7 @@
         NSNumber *voiceS = [NSNumber numberWithFloat:voiceStartTime];
         NSNumber *voiceL = [NSNumber numberWithFloat:voiceLength];
         NSArray *voiceInfo = [[NSArray alloc] initWithObjects:voiceComponent, voiceS, voiceL, nil];
-        
+        [vc setCardTitle:self.cardTitle.text];
         [vc setMusicInfo:musicInfo];
         [vc setEffectInfo:effectInfo];
         [vc setVoiceInfo:voiceInfo];
@@ -449,6 +452,10 @@
 }
 
 - (IBAction)previewTimeLine:(id)sender {
+    
+    // Remove editting handle
+    [lastEditedView hideEditingHandles];
+    
     [self performSegueWithIdentifier:@"toPreview" sender:nil];
 }
 
@@ -468,13 +475,67 @@
     self.popover.delegate = self;
 }
 
+- (IBAction)dismissKeyboard:(id)sender {
+    [self.cardTitle resignFirstResponder];
+}
+
+- (IBAction)saveCard:(id)sender {
+    int numberOfCards = [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count];
+    
+    NSString *cardPhotoPath = [self.currentCardPath stringByAppendingPathComponent:@"card_photo.jpg"];
+    [UIImageJPEGRepresentation(self.photo, 0.8) writeToFile:cardPhotoPath atomically:YES];
+    
+    NSNumber *musicS = [NSNumber numberWithFloat:musicStartTime];
+    NSNumber *musicL = [NSNumber numberWithFloat:musicLength];
+    NSArray *musicInfo = [[NSArray alloc] initWithObjects:musicString, musicS, musicL, nil];
+    
+    NSNumber *effectS = [NSNumber numberWithFloat:effectStartTime];
+    NSNumber *effectL = [NSNumber numberWithFloat:effectLength];
+    NSArray *effectInfo = [[NSArray alloc] initWithObjects:soundEffectString, effectS, effectL, nil];
+    
+    NSNumber *voiceS = [NSNumber numberWithFloat:voiceStartTime];
+    NSNumber *voiceL = [NSNumber numberWithFloat:voiceLength];
+    NSArray *voiceInfo = [[NSArray alloc] initWithObjects:voiceString, voiceS, voiceL, nil];
+    
+    NSArray *currentCard = [[NSArray alloc] initWithObjects:self.cardTitle.text, cardPhotoPath, self.cardDate.text, musicInfo, effectInfo, voiceInfo, nil];
+    
+    if (numberOfCards == 0) {
+        
+        NSArray *myCards = [[NSArray alloc] initWithObjects:currentCard, nil];
+        [self.coreDatabase setObject:myCards forKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
+        NSLog(@"Number of Cards %d", [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count]);
+        
+    }
+    else {
+
+        NSArray *myCards = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
+        myCards = [myCards arrayByAddingObject:currentCard];
+        [self.coreDatabase setObject:myCards forKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
+        NSLog(@"Number of Cards %d", [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count]);
+        
+    }
+    
+    [self.coreDatabase synchronize];
+    
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void) textFieldDidBeginEditing:(UITextField *)textField {
+    self.dismissKeyboardBtn.hidden = NO;
+}
+
+- (void) textFieldDidEndEditing:(UITextField *)textField
+{
+    self.dismissKeyboardBtn.hidden = YES;
+}
+
 #pragma mark - Time Line Actions
 
 - (void) updateTimeLineIndicator
 {
-    float music = musicStartTime + musicLength;
-    float effect = effectStartTime + effectLength;
-    float voice = voiceStartTime + voiceLength;
+    music = musicStartTime + musicLength;
+    effect = effectStartTime + effectLength;
+    voice = voiceStartTime + voiceLength;
     
     if (MAX(music, effect) <= voice) {
         CGRect convertedRect = [self.voiceView convertRect:voiceAudioWave.frame toView:self.view];
@@ -551,7 +612,7 @@
     [HUD showAnimated:YES whileExecutingBlock:^{
         
         // Get info from notification object
-        NSString *musicString = [[pNotification object] objectAtIndex:0];
+        musicString = [[pNotification object] objectAtIndex:0];
        
         
         // Set music variables & initiate music player
@@ -613,6 +674,26 @@
         // Enable Play, Preview Button
         self.playMusicBtn.enabled = YES;
         self.previewMusicBtn.enabled = YES;
+        
+        // Calculate max var
+        music = musicStartTime + musicLength;
+        effect = effectStartTime + effectLength;
+        voice = voiceStartTime + voiceLength;
+        
+        if (MAX(music, effect) <= voice) {
+            max = voice;
+        }
+        else {
+            if (MAX(music, effect) == music) {
+                max = music;
+            }
+            else {
+                max = effect;
+            }
+        }
+        
+        self.cardLength.text = [self formattedStringForDuration:max];
+        
     }];
 }
 
@@ -629,7 +710,7 @@
     [HUD showAnimated:YES whileExecutingBlock:^{
         
         // Get info from notification object
-        NSString *soundEffectString = [[pNotification object] objectAtIndex:0];
+        soundEffectString = [[pNotification object] objectAtIndex:0];
         
         // Set music variables & initiate music player
         effectLength = [self convertTimeToSec:[[pNotification object] objectAtIndex:1]];
@@ -690,6 +771,26 @@
         // Enable Play, Preview Button
         self.playMusicBtn.enabled = YES;
         self.previewMusicBtn.enabled = YES;
+        
+        // Calculate max var
+        music = musicStartTime + musicLength;
+        effect = effectStartTime + effectLength;
+        voice = voiceStartTime + voiceLength;
+        
+        if (MAX(music, effect) <= voice) {
+            max = voice;
+        }
+        else {
+            if (MAX(music, effect) == music) {
+                max = music;
+            }
+            else {
+                max = effect;
+            }
+        }
+        
+        self.cardLength.text = [self formattedStringForDuration:max];
+        
     }];
         
 }
@@ -713,6 +814,7 @@
 - (NSURL *) recordURL
 {
     NSString *outputPath = [self.currentCardPath stringByAppendingPathComponent:@"voice.wav"];
+    voiceString = outputPath;
     NSURL *outputURL = [[NSURL alloc] initFileURLWithPath:outputPath];
     NSFileManager *manager = [[NSFileManager alloc] init];
     if ([manager fileExistsAtPath:outputPath])
@@ -846,6 +948,25 @@
         // Enable Play, Preview Button
         self.playMusicBtn.enabled = YES;
         self.previewMusicBtn.enabled = YES;
+        
+        // Calculate max var
+        music = musicStartTime + musicLength;
+        effect = effectStartTime + effectLength;
+        voice = voiceStartTime + voiceLength;
+        
+        if (MAX(music, effect) <= voice) {
+            max = voice;
+        }
+        else {
+            if (MAX(music, effect) == music) {
+                max = music;
+            }
+            else {
+                max = effect;
+            }
+        }
+        
+        self.cardLength.text = [self formattedStringForDuration:max];
     }];
 
     
@@ -987,12 +1108,53 @@
             musicStartTime = userResizableView.frame.origin.x * 180.f / self.musicView.frame.size.width;
             musicLength = userResizableView.frame.size.width * 180.f / self.musicView.frame.size.width;
             
+            // Calculate max var
+            music = musicStartTime + musicLength;
+            effect = effectStartTime + effectLength;
+            voice = voiceStartTime + voiceLength;
+            
+            if (MAX(music, effect) <= voice) {
+                max = voice;
+            }
+            else {
+                if (MAX(music, effect) == music) {
+                    max = music;
+                }
+                else {
+                    max = effect;
+                }
+            }
+            
+            self.cardLength.text = [self formattedStringForDuration:max];
+            
             break;
         case 1:
             NSLog(@"%f", userResizableView.frame.origin.x);
             effectStartTime = userResizableView.frame.origin.x * 180.f / self.effectView.frame.size.width;
             effectLength = userResizableView.frame.size.width * 180.f / self.effectView.frame.size.width;
-                        break;
+                        
+            
+            // Calculate max var
+            music = musicStartTime + musicLength;
+            effect = effectStartTime + effectLength;
+            voice = voiceStartTime + voiceLength;
+            
+            if (MAX(music, effect) <= voice) {
+                max = voice;
+            }
+            else {
+                if (MAX(music, effect) == music) {
+                    max = music;
+                }
+                else {
+                    max = effect;
+                }
+            }
+            
+            self.cardLength.text = [self formattedStringForDuration:max];
+            
+            break;
+            
         case 2:
             NSLog(@"%f", userResizableView.frame.origin.x);
             voiceStartTime = userResizableView.frame.origin.x * 180.f / self.voiceView.frame.size.width;
@@ -1000,7 +1162,27 @@
                 voiceLength = userResizableView.frame.size.width * 180.f / self.voiceView.frame.size.width;
             }
             
+            // Calculate max var
+            music = musicStartTime + musicLength;
+            effect = effectStartTime + effectLength;
+            voice = voiceStartTime + voiceLength;
+            
+            if (MAX(music, effect) <= voice) {
+                max = voice;
+            }
+            else {
+                if (MAX(music, effect) == music) {
+                    max = music;
+                }
+                else {
+                    max = effect;
+                }
+            }
+            
+            self.cardLength.text = [self formattedStringForDuration:max];
+            
             break;
+            
         default:
             break;
     }
@@ -1020,6 +1202,17 @@
     // We only want the gesture recognizer to end the editing session on the last
     // edited view. We wouldn't want to dismiss an editing session in progress.
     [lastEditedView hideEditingHandles];
+}
+
+#pragma mark - Navigation Bar
+- (void) backBarPressed
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) shareBarPressed
+{
+    
 }
 
 #pragma mark - Helpers
@@ -1072,6 +1265,13 @@
     [UIView animateWithDuration:duration delay:wait options:UIViewAnimationOptionCurveLinear animations:^{
         viewToFadeIn.alpha = 1;
     } completion:nil];    
+}
+
+- (NSString*)formattedStringForDuration:(NSTimeInterval)duration
+{
+    NSInteger minutes = floor(duration/60);
+    NSInteger seconds = round(duration - minutes * 60);
+    return [NSString stringWithFormat:@"%d:%02d", minutes, seconds];
 }
 
 @end

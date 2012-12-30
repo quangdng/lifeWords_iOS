@@ -12,7 +12,7 @@
 #import "YLProgressBar.h"
 #import "SWSnapshotStackView.h"
 
-@interface lifeWordsTimeLineViewController : UIViewController <UIGestureRecognizerDelegate, UIPopoverControllerDelegate, AVAudioPlayerDelegate, AVAudioRecorderDelegate, SPUserResizableViewDelegate> {
+@interface lifeWordsTimeLineViewController : UIViewController <UIGestureRecognizerDelegate, UIPopoverControllerDelegate, AVAudioPlayerDelegate, AVAudioRecorderDelegate, SPUserResizableViewDelegate, UITextFieldDelegate> {
     
     // Record View Variables
     AVAudioRecorder *recorder;
@@ -32,16 +32,19 @@
     
     // Timeline Constant
     SPUserResizableView *musicAudioWave;
+    NSString *musicString;
     float musicStartTime;
     float musicLength;
     NSTimer *musicTimer;
     NSTimer *musicStopTimer;
     SPUserResizableView *effectAudioWave;
+    NSString *soundEffectString;
     float effectStartTime;
     float effectLength;
     NSTimer *effectTimer;
     NSTimer *effectStopTimer;
     SPUserResizableView *voiceAudioWave;
+    NSString *voiceString;
     float voiceStartTime;
     float voiceLength;
     NSTimer *voiceTimer;
@@ -49,7 +52,11 @@
     SPUserResizableView *currentlyEditingView;
     SPUserResizableView *lastEditedView;
     
-    NSTimer *indicatorTimer;
+    // Progress Vars
+    float music;
+    float effect;
+    float voice;
+    float max;
 }
 
 @property (nonatomic, strong) UIPopoverController *popover;
@@ -57,6 +64,7 @@
 
 #pragma mark - Decoration
 @property (strong, nonatomic) IBOutlet UIImageView *wallpaper;
+@property (strong, nonatomic) IBOutlet UIButton *dismissKeyboardBtn;
 
 
 #pragma mark - Data Elements
@@ -101,6 +109,8 @@
 
 - (IBAction)musicBtnClicked:(id)sender;
 - (IBAction)effectsBtnClicked:(id)sender;
+- (IBAction)dismissKeyboard:(id)sender;
+- (IBAction)saveCard:(id)sender;
 
 // Record View Actions
 - (IBAction)recordBtnClicked:(id)sender;
