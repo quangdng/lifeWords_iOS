@@ -9,6 +9,7 @@
 #import "lifeWordsMainViewController.h"
 #import "lifeWordsPhotoFilteringViewController.h"
 #import "KSCustomPopoverBackgroundView.h"
+#import "lifeWordsPreviewViewController.h"
 
 @interface lifeWordsMainViewController () {
     NSDictionary *userInfo;
@@ -39,7 +40,7 @@
     self.coreDatabase = [NSUserDefaults standardUserDefaults];
     userEmail = [self.coreDatabase objectForKey:@"Current_User_Email"];
     color = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", userEmail]];
-    
+    cards = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
     
     NSLog(@"%@", [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] description]);
     
@@ -49,6 +50,12 @@
     [refreshControl setTintColor:[UIColor colorWithRed:0.597058 green:0.815217 blue:0.107755 alpha:1]];
     [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [refreshControl setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    // Fill up scroll views
+    [self.yourCards setAlwaysBounceVertical:NO];
+    [self.yourCards setPagingEnabled:YES];
+    [self.yourCards setContentSize:CGSizeMake(574, 128)];
+    [self fillScrollView:cards withScrollView:self.yourCards];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -93,6 +100,8 @@
     [self setWallpaper:nil];
     [self setContainer:nil];
     [self setFetchNotifications:nil];
+    [self setYourCards:nil];
+    [self setReceivedCards:nil];
     [super viewDidUnload];
 }
 
@@ -286,5 +295,113 @@
 - (IBAction)logoutBtnClicked:(id)sender {
     [self.coreDatabase removeObjectForKey:@"Current_User_Email"];
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+#pragma mark - Scroll Views
+
+- (void)fillScrollView:(NSArray *)cardsArray withScrollView:(UIScrollView *)scrollView {
+    
+    int lastX = 10;
+    int index = 0;
+    
+    for (NSArray *card in [cardsArray reverseObjectEnumerator])
+    {
+        
+        UIImage *cardPhoto = [UIImage imageWithContentsOfFile:[card objectAtIndex:1]];
+        
+        CGRect thumRect;
+        
+        SWSnapshotStackView *thImage;
+        UIButton *previewBtn;
+        UILabel *tv;
+        
+        thumRect = CGRectMake(lastX, 10, 110, 190);
+        thImage = [[SWSnapshotStackView alloc] initWithFrame:CGRectMake(0, 0, 110, 160)];
+        previewBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 110, 160)];
+        previewBtn.tag = index;
+        [previewBtn addTarget:self action:@selector(viewCard:) forControlEvents:UIControlEventTouchUpInside];
+        
+        tv = [[UILabel alloc] initWithFrame:CGRectMake(0, 145, 110, 25)];
+        
+        UIControl *thumbImageButton = [[UIControl alloc] initWithFrame:thumRect];
+        thumbImageButton.backgroundColor = [UIColor clearColor];
+        
+        thumbImageButton.tag = index;
+        
+        thImage.image = cardPhoto;
+        
+        if ([[card objectAtIndex:0] isEqualToString:@""]) {
+            [tv setText:@"No Title"];
+        }
+        else {
+            [tv setText:[card objectAtIndex:0]];
+        }
+        [tv setFont:[UIFont fontWithName:@"Noteworthy" size:15.0]];
+        [tv setTextAlignment:NSTextAlignmentCenter];
+        [tv setBackgroundColor:[UIColor clearColor]];
+        [tv setTextColor:[UIColor blackColor]];
+        
+        
+        
+        [thumbImageButton addSubview:thImage];
+        [thumbImageButton addSubview:tv];
+        [thumbImageButton addSubview:previewBtn];
+        [thumbImageButton addTarget:self action:@selector(viewCard:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [scrollView addSubview:thumbImageButton];
+        
+        
+        lastX = lastX + 120;
+        [scrollView setContentSize:CGSizeMake(lastX, 120)];
+
+        index += 1;
+        
+    }
+    
+}
+
+- (void) viewCard:(UIControl *)selectedControl
+{
+    int index = [cards count] - selectedControl.tag - 1;
+    previewCard = [cards objectAtIndex:index];
+    [self performSegueWithIdentifier:@"toPreview" sender:nil];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"toPreview"]) {
+        lifeWordsPreviewViewController *vc = [segue destinationViewController];
+        
+        UIImage *photo = [UIImage imageWithContentsOfFile:[previewCard objectAtIndex:1]];
+        [vc setPhoto:photo];
+        
+        NSArray *musicInfo = nil;
+        NSArray *effectInfo = nil;
+        NSArray *voiceInfo = nil;
+        
+        NSArray *musicArray = [previewCard objectAtIndex:3];
+        if ([musicArray count] > 0) {
+        NSURL *musicComponent = [[NSBundle mainBundle] URLForResource:[musicArray objectAtIndex:0] withExtension:@"mp3"];
+        musicInfo = [[NSArray alloc] initWithObjects:musicComponent, [musicArray objectAtIndex:1], [musicArray objectAtIndex:2], nil];
+        }
+        
+        NSArray *effectArray = [previewCard objectAtIndex:4];
+        if ([effectArray count] > 0) {
+        NSURL *soundEffectComponent = [[NSBundle mainBundle] URLForResource:[effectArray objectAtIndex:0] withExtension:@"mp3"];
+        effectInfo = [[NSArray alloc] initWithObjects:soundEffectComponent, [effectArray objectAtIndex:1], [effectArray objectAtIndex:2], nil];
+        }
+        
+        
+        NSArray *voiceArray = [previewCard objectAtIndex:5];
+        if ([voiceArray count] > 0) {
+        NSURL *voiceComponent = [[NSURL alloc] initFileURLWithPath:[voiceArray objectAtIndex:0]];
+        voiceInfo = [[NSArray alloc] initWithObjects:voiceComponent, [voiceArray objectAtIndex:1], [voiceArray objectAtIndex:2], nil];
+        }
+        
+        [vc setCardTitle:[previewCard objectAtIndex:0]];
+        [vc setMusicInfo:musicInfo];
+        [vc setEffectInfo:effectInfo];
+        [vc setVoiceInfo:voiceInfo];
+        
+    }
 }
 @end

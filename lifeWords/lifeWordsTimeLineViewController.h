@@ -11,6 +11,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "YLProgressBar.h"
 #import "SWSnapshotStackView.h"
+#import "JUSSNetworkEngine.h"
+#import "lifeWordsAppDelegate.h"
+#import "OLGhostAlertView.h"
 
 @interface lifeWordsTimeLineViewController : UIViewController <UIGestureRecognizerDelegate, UIPopoverControllerDelegate, AVAudioPlayerDelegate, AVAudioRecorderDelegate, SPUserResizableViewDelegate, UITextFieldDelegate> {
     
@@ -67,6 +70,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *dismissKeyboardBtn;
 
 
+
 #pragma mark - Data Elements
 @property (strong, nonatomic) NSUserDefaults *coreDatabase;
 @property (strong, nonatomic) NSString *currentCardPath;
@@ -75,6 +79,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *cardTitle;
 @property (strong, nonatomic) IBOutlet UITextField *cardDate;
 @property (strong, nonatomic) IBOutlet UITextField *cardLength;
+@property (strong, nonatomic) JUSSNetworkOperation *sharingOperation;
 
 #pragma mark - The Time Line
 @property (strong, nonatomic) IBOutlet UIView *timeLineIndicator;
@@ -98,6 +103,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *recordAcceptBtn;
 @property (strong, nonatomic) IBOutlet UIButton *recordRecBtn;
 
+// Share View
+@property (strong, nonatomic) IBOutlet UIView *shareView;
+@property (strong, nonatomic) IBOutlet UITextField *lifeWordsID;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *cardCategory;
+
+
 #pragma mark - Operational Bar
 @property (strong, nonatomic) IBOutlet UIButton *playMusicBtn;
 @property (strong, nonatomic) IBOutlet UIButton *stopMusicBtn;
@@ -118,6 +129,10 @@
 - (IBAction)recordPlayBtnClicked:(id)sender;
 - (IBAction)recordAcceptBtnClicked:(id)sender;
 - (IBAction)recordRecBtnClicked:(id)sender;
+
+// Share View Actions
+- (IBAction)shareCard:(id)sender;
+- (IBAction)cancelShare:(id)sender;
 
 // Opeartional Bar Actions
 - (IBAction)playTimeLine:(id)sender;

@@ -127,6 +127,9 @@
     
     [self.loginButton setEnabled:NO];
     
+    [self.userEmail resignFirstResponder];
+    [self.userPassword resignFirstResponder];
+    
     NSString *useremail = self.userEmail.text;
     
     NSString *password = self.userPassword.text;

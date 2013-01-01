@@ -41,6 +41,7 @@
     
     // Show/Hide Menu
     BOOL show;
+    BOOL stop;
 }
 
 @property (strong, nonatomic) UIImage *photo;

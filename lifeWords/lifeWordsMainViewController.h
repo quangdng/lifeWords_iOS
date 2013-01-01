@@ -18,6 +18,8 @@
 @interface lifeWordsMainViewController : UIViewController <UIImagePickerControllerDelegate, UIPopoverControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate> {
     NSString *userEmail;
     NSString *color;
+    NSArray *cards;
+    NSArray *previewCard;
 }
 
 #pragma mark - Photo
@@ -33,6 +35,8 @@
 @property (strong, nonatomic) JUSSNetworkOperation *downloadOperation;
 @property (strong, nonatomic) JUSSNetworkOperation *fetchUserInfo;
 @property (strong, nonatomic) JUSSNetworkOperation *fetchNotifications;
+@property (strong, nonatomic) IBOutlet UIScrollView *yourCards;
+@property (strong, nonatomic) IBOutlet UIScrollView *receivedCards;
 
 #pragma mark - Toolbars
 @property (strong, nonatomic) IBOutlet UIToolbar *myToolBar;
@@ -41,7 +45,6 @@
 #pragma mark - Decoration
 @property (strong, nonatomic) IBOutlet UIImageView *wallpaper;
 @property (strong, nonatomic) IBOutlet UIImageView *container;
-
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 #pragma mark - Actions

@@ -142,7 +142,7 @@
 
 #pragma mark - PhotoFX Effects
 
--(void)fillScrollView:(NSArray *)_array {
+- (void)fillScrollView:(NSArray *)_array {
     
     int lastX = 10;
     int index = 1;

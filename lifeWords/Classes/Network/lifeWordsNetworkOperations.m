@@ -40,6 +40,113 @@
     return op;
 }
 
+- (JUSSNetworkOperation *) shareCard: (NSArray *)aCard byUser:(NSString *)email withUsers:(NSString *)users withPhoto:(NSData *) photo withVoice:(NSData *) voice withLength:(NSString *)length
+{
+    
+    NSString *cardTitle = [aCard objectAtIndex:0];
+
+    NSString *cardDate = [aCard objectAtIndex:2];
+   
+    NSArray *musicInfo = [aCard objectAtIndex:3];
+    NSArray *effectInfo = [aCard objectAtIndex:4];
+    NSArray *voiceInfo = [aCard objectAtIndex:5];
+    
+    NSString *musicString = nil;
+    NSString *musicS = nil;
+    NSString *musicL = nil;
+    if ([musicInfo count] > 0) {
+        musicString = [musicInfo objectAtIndex:0];
+        musicS = [[musicInfo objectAtIndex:1] stringValue];
+        musicL = [[musicInfo objectAtIndex:2] stringValue];
+    }
+    
+    NSString *effectString = nil;
+    NSString * effectS = nil;
+    NSString * effectL = nil;
+    if ([effectInfo count] > 0) {
+        effectString = [effectInfo objectAtIndex:0];
+        effectS = [[effectInfo objectAtIndex:1] stringValue];
+        effectL = [[effectInfo objectAtIndex:2] stringValue];
+    }
+    
+    NSString *voiceString = nil;
+    NSString *voiceS = nil;
+    NSString *voiceL = nil;
+    if ([voiceInfo count] > 0) {
+        voiceString = [voiceInfo objectAtIndex:0];
+        voiceS = [[voiceInfo objectAtIndex:1] stringValue];
+        voiceL = [[voiceInfo objectAtIndex:2] stringValue];
+    }
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    if (cardTitle) {
+        [params setObject:cardTitle forKey:@"Card_Text"];
+    }
+    
+    if (musicString) {
+        [params setObject:musicString  forKey:@"Card_Music"];
+    }
+    
+    if (musicS) {
+        [params setObject:musicS forKey:@"Card_Music_StartTime"];
+    }
+    
+    if (musicL) {
+        [params setObject:musicL forKey:@"Card_Music_Length"];
+    }
+    
+    if (effectString) {
+        [params setObject:effectString forKey:@"Card_Effect"];
+    }
+    
+    if (effectS) {
+        [params setObject:effectS forKey:@"Card_Effect_StartTime"];
+    }
+    
+    if (effectL) {
+        [params setObject:effectL forKey:@"Card_Effect_Length"];
+    }
+    
+    if (voiceString) {
+        [params setObject:voiceString forKey:@"Card_Voice"];
+    }
+    
+    if (voiceS) {
+        [params setObject:voiceS forKey:@"Card_Voice_StartTime"];
+    }
+    
+    if (voiceL) {
+        [params setObject:voiceL forKey:@"Card_Voice_Length"];
+    }
+    
+    
+    
+    [params setObject:cardDate forKey:@"Card_Date"];
+    
+    [params setObject:length forKey:@"Card_Length"];
+    NSLog(@"My length %@", length);
+    
+    [params setObject:users forKey:@"users"];
+    
+    [params setObject:email forKey:@"useremail"];
+    
+    
+    
+    JUSSNetworkOperation *op = [self operationWithPath:@"shareCard.php" params:params httpMethod:@"POST"];
+    
+    if (photo != nil) {
+        [op addData:photo forKey:@"photo" mimeType:@"image/jpeg" fileName:@"card_photo.jpg"];
+    }
+    
+    if (voice) {
+        [op addData:voice forKey:@"voice" mimeType:@"" fileName:@"voice.wav"];
+    }
+    
+    [self enqueueOperation:op];
+    return op;
+}
+
 - (JUSSNetworkOperation *) signUp: (NSString *)email andPassword: (NSString *)password andNickname: (NSString*)nickname withProfilePhoto:(NSData *) photo
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];

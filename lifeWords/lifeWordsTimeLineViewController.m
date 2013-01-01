@@ -92,6 +92,11 @@
     [self.recordView.layer setShadowRadius:5.0f];
     [self.recordMeter1 setProgressTintColor:[UIColor greenColor]];
     [self.recordMeter2 setProgressTintColor:[UIColor redColor]];
+    
+    // Beautify Share View View
+    [self.shareView.layer setCornerRadius:10.0f];
+    [self.shareView setAlpha:0.95f];
+    [self.shareView.layer setShadowRadius:5.0f];
 
     // Decorate TimeLine View
     self.musicView.layer.cornerRadius = 10;
@@ -161,6 +166,7 @@
 
 
 - (void)viewDidUnload {
+    
     [super viewDidUnload];
     
     [self setTimeLineIndicator:nil];
@@ -195,6 +201,10 @@
     [self setReloadMusicBtn:nil];
     [self setPreviewMusicBtn:nil];
     [self setDismissKeyboardBtn:nil];
+    [self setShareView:nil];
+    [self setLifeWordsID:nil];
+    [self setCardCategory:nil];
+    [self setSharingOperation:nil];
 }
 
 
@@ -477,47 +487,97 @@
 
 - (IBAction)dismissKeyboard:(id)sender {
     [self.cardTitle resignFirstResponder];
+    [self.lifeWordsID resignFirstResponder];
 }
 
 - (IBAction)saveCard:(id)sender {
-    int numberOfCards = [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count];
     
-    NSString *cardPhotoPath = [self.currentCardPath stringByAppendingPathComponent:@"card_photo.jpg"];
-    [UIImageJPEGRepresentation(self.photo, 0.8) writeToFile:cardPhotoPath atomically:YES];
-    
-    NSNumber *musicS = [NSNumber numberWithFloat:musicStartTime];
-    NSNumber *musicL = [NSNumber numberWithFloat:musicLength];
-    NSArray *musicInfo = [[NSArray alloc] initWithObjects:musicString, musicS, musicL, nil];
-    
-    NSNumber *effectS = [NSNumber numberWithFloat:effectStartTime];
-    NSNumber *effectL = [NSNumber numberWithFloat:effectLength];
-    NSArray *effectInfo = [[NSArray alloc] initWithObjects:soundEffectString, effectS, effectL, nil];
-    
-    NSNumber *voiceS = [NSNumber numberWithFloat:voiceStartTime];
-    NSNumber *voiceL = [NSNumber numberWithFloat:voiceLength];
-    NSArray *voiceInfo = [[NSArray alloc] initWithObjects:voiceString, voiceS, voiceL, nil];
-    
-    NSArray *currentCard = [[NSArray alloc] initWithObjects:self.cardTitle.text, cardPhotoPath, self.cardDate.text, musicInfo, effectInfo, voiceInfo, nil];
-    
-    if (numberOfCards == 0) {
-        
-        NSArray *myCards = [[NSArray alloc] initWithObjects:currentCard, nil];
-        [self.coreDatabase setObject:myCards forKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
-        NSLog(@"Number of Cards %d", [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count]);
-        
+    if ([self.lifeWordsID.text isEqualToString:@""]) {
+        [self shakeView:self.shareView];
     }
     else {
-
-        NSArray *myCards = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
-        myCards = [myCards arrayByAddingObject:currentCard];
-        [self.coreDatabase setObject:myCards forKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
-        NSLog(@"Number of Cards %d", [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count]);
+        int numberOfCards = [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count];
         
+        NSString *cardPhotoPath = [self.currentCardPath stringByAppendingPathComponent:@"card_photo.jpg"];
+        [UIImageJPEGRepresentation(self.photo, 0.8) writeToFile:cardPhotoPath atomically:YES];
+        
+        NSNumber *musicS = [NSNumber numberWithFloat:musicStartTime];
+        NSNumber *musicL = [NSNumber numberWithFloat:musicLength];
+        NSArray *musicInfo = [[NSArray alloc] initWithObjects:musicString, musicS, musicL, nil];
+        
+        NSNumber *effectS = [NSNumber numberWithFloat:effectStartTime];
+        NSNumber *effectL = [NSNumber numberWithFloat:effectLength];
+        NSArray *effectInfo = [[NSArray alloc] initWithObjects:soundEffectString, effectS, effectL, nil];
+        
+        NSNumber *voiceS = [NSNumber numberWithFloat:voiceStartTime];
+        NSNumber *voiceL = [NSNumber numberWithFloat:voiceLength];
+        NSArray *voiceInfo = [[NSArray alloc] initWithObjects:voiceString, voiceS, voiceL, nil];
+        
+        NSString *cardCategory;
+        switch (self.cardCategory.selectedSegmentIndex) {
+            case 0:
+                cardCategory = @"Family";
+                break;
+            case 1:
+                cardCategory = @"Friends";
+                break;
+            case 2:
+                cardCategory = @"Love";
+                break;
+            default:
+                break;
+        }
+        
+        NSArray *currentCard = [[NSArray alloc] initWithObjects:self.cardTitle.text, cardPhotoPath, self.cardDate.text, musicInfo, effectInfo, voiceInfo, cardCategory,  nil];
+        
+        NSString *sharedUsers = [self.lifeWordsID.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+        
+        NSData *photoData = [NSData dataWithContentsOfFile:cardPhotoPath];
+        NSData *voiceData = [NSData dataWithContentsOfFile:voiceString];
+        
+        int length = max;
+        NSString *cardLength = [NSString stringWithFormat:@"%d", length];
+        NSLog(@"Show card length %@", cardLength);
+        
+        self.sharingOperation = [ApplicationDelegate.networkOperations shareCard:currentCard byUser:userEmail withUsers:sharedUsers withPhoto:photoData withVoice:voiceData withLength:cardLength];
+        [self.sharingOperation onCompletion:^(JUSSNetworkOperation *completedOperation) {
+            
+            NSLog(@"%@", [completedOperation responseString]);
+            
+            if (numberOfCards == 0) {
+                
+                NSArray *myCards = [[NSArray alloc] initWithObjects:currentCard, nil];
+                [self.coreDatabase setObject:myCards forKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
+                NSLog(@"Number of Cards %d", [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count]);
+                
+            }
+            else {
+                
+                NSArray *myCards = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
+                myCards = [myCards arrayByAddingObject:currentCard];
+                [self.coreDatabase setObject:myCards forKey:[NSString stringWithFormat:@"%@_Cards", userEmail]];
+                NSLog(@"Number of Cards %d", [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count]);
+                
+            }
+            
+            [self.coreDatabase synchronize];
+            
+            HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            HUD.mode = MBProgressHUDModeCustomView;
+            HUD.labelText = @"Completed";
+            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(popToRootView) userInfo:nil repeats:NO];
+            
+        } onError:^(NSError *error) {
+            OLGhostAlertView *ghastly = [[OLGhostAlertView alloc] initWithTitle:@"Connection Error" message: @"Please check your internet connection" timeout:1 dismissible:YES];
+            [ghastly show];
+        }];
     }
     
-    [self.coreDatabase synchronize];
     
-    //[self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void) popToRootView {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void) textFieldDidBeginEditing:(UITextField *)textField {
@@ -1212,10 +1272,28 @@
 
 - (void) shareBarPressed
 {
-    
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.shareView setFrame:CGRectMake(self.shareView.frame.origin.x, 393, self.shareView.frame.size.width, self.shareView.frame.size.height)];
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 #pragma mark - Helpers
+
+- (void) shakeView: (UIView *)aView {
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+    [animation setDuration:0.05];
+    [animation setRepeatCount:4];
+    [animation setAutoreverses:YES];
+    [animation setFromValue:[NSValue valueWithCGPoint:
+                             CGPointMake([aView center].x - 10.0f, [aView center].y)]];
+    [animation setToValue:[NSValue valueWithCGPoint:
+                           CGPointMake([aView center].x + 10.0f, [aView center].y)]];
+    [[aView layer] addAnimation:animation forKey:@"position"];
+}
+
+
 - (float) convertTimeToSec: (NSString *)time
 {
     NSArray *sec = [time componentsSeparatedByString:@":"];
@@ -1274,4 +1352,25 @@
     return [NSString stringWithFormat:@"%d:%02d", minutes, seconds];
 }
 
+#pragma mark - Sharing Features
+- (IBAction)shareCard:(id)sender {
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = @"Uploading...";
+    HUD.dimBackground = YES;
+    HUD.minSize = CGSizeMake(140.f, 140.f);
+    [HUD show:YES];
+    [self cancelShare:nil];
+    [self dismissKeyboard:nil];
+    [self saveCard:nil];
+}
+
+- (IBAction)cancelShare:(id)sender {
+    [self dismissKeyboard:nil];
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.shareView setFrame:CGRectMake(self.shareView.frame.origin.x, -393, self.shareView.frame.size.width, self.shareView.frame.size.height)];
+    } completion:^(BOOL finished) {
+        
+    }];
+}
 @end

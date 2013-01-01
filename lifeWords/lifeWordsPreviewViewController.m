@@ -145,6 +145,8 @@
 #pragma mark - Play & Stop
 - (IBAction)play:(id)sender {
     
+    stop = FALSE;
+    
     // Set progress bar
     self.progressBar.progress = 0;
     
@@ -185,6 +187,8 @@
 
 - (IBAction)stop:(id)sender {
     
+    stop = TRUE;
+    
     // Remove all timers
     [musicTimer invalidate];
     musicTimer = nil;
@@ -207,21 +211,18 @@
     // Set play & stop btn
     self.playMusicBtn.hidden = NO;
     self.stopMusicBtn.hidden = YES;
-    
-    // Set progress bar
-    self.progressBar.progress = 0;
 
 }
 
 - (IBAction)hideMenu:(id)sender {
     if (show == TRUE) {
-        [self fadeOut:self.transparentView withDuration:0.5f andWait:0];
-        [self fadeOut:self.holderView withDuration:0.5f andWait:0];
+        [self fadeOut:self.transparentView withDuration:0.3f andWait:0];
+        [self fadeOut:self.holderView withDuration:0.3f andWait:0];
         show = FALSE;
     }
     else {
-        [self fadeIn:self.transparentView withDuration:0.5f andWait:0];
-        [self fadeIn:self.holderView withDuration:0.5f andWait:0];
+        [self fadeIn:self.transparentView withDuration:0.3f andAlpha:0.5 andWait:0];
+        [self fadeIn:self.holderView withDuration:0.3f andAlpha:1 andWait:0];
         show = TRUE;
     }
 }
@@ -328,7 +329,13 @@
                 self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:0]];
             }
         }
-    }    
+    }
+    
+    if (stop == TRUE) {
+        // Set progress bar
+        self.progressBar.progress = 0;
+        self.currentTimeLbl.text = [self formattedStringForDuration:0];
+    }
 }
 
 #pragma mark - Helpers
@@ -339,10 +346,10 @@
     } completion:nil];
 }
 
--(void)fadeIn:(UIView*)viewToFadeIn withDuration:(NSTimeInterval)duration         andWait:(NSTimeInterval)wait
+-(void)fadeIn:(UIView*)viewToFadeIn withDuration:(NSTimeInterval)duration  andAlpha:(float)alpha      andWait:(NSTimeInterval)wait
 {
     [UIView animateWithDuration:duration delay:wait options:UIViewAnimationOptionCurveLinear animations:^{
-        viewToFadeIn.alpha = 1;
+        viewToFadeIn.alpha = alpha;
     } completion:nil];
 }
 
