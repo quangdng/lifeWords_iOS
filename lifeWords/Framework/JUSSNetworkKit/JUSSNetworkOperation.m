@@ -2,7 +2,7 @@
 //  JUSSNetworkOperation.m
 //  JUSSNetworkKit
 //
-//  Created by JustaLiar on 08/10/12.
+//  Created by Thiên Phong on 08/10/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 

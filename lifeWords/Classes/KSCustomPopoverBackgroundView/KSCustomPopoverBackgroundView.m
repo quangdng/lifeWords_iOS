@@ -1,7 +1,7 @@
 //
 //  KSCustomPopoverBackgroundView.m
 //
-//  Created by JustaLiar on 7/11/12.
+//  Created by Thiên Phong on 7/11/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 
@@ -87,16 +87,17 @@
         NSUserDefaults *coreDatabase = [NSUserDefaults standardUserDefaults];
         
         NSString *topArrow = [NSString stringWithFormat:@"%@popover-arrow-top.png", [coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", [coreDatabase objectForKey:@"Current_User_Email"]]]];
-        
-        NSLog(@"%@", topArrow);
+        NSString *leftArrow = [NSString stringWithFormat:@"%@popover-arrow-left.png", [coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", [coreDatabase objectForKey:@"Current_User_Email"]]]];
+        NSString *bottomArrow = [NSString stringWithFormat:@"%@popover-arrow-bottom.png", [coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", [coreDatabase objectForKey:@"Current_User_Email"]]]];
+        NSString *rightArrow = [NSString stringWithFormat:@"%@popover-arrow-right.png", [coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", [coreDatabase objectForKey:@"Current_User_Email"]]]];
         
         _topArrowImage = [UIImage imageNamed:topArrow];
-        _leftArrowImage = [UIImage imageNamed:@"popover-arrow-left.png"];
-        _bottomArrowImage = [UIImage imageNamed:@"popover-arrow-bottom.png"];
-        _rightArrowImage = [UIImage imageNamed:@"popover-arrow-right.png"];
+        _leftArrowImage = [UIImage imageNamed:leftArrow];
+        _bottomArrowImage = [UIImage imageNamed:bottomArrow];
+        _rightArrowImage = [UIImage imageNamed:rightArrow];
         
-        
-        UIImage *popoverBackgroundImage = [[UIImage imageNamed:@"popover-background.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(49, 46, 49, 45)];
+        NSString *popBackground = [NSString stringWithFormat:@"%@popover-background.png", [coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", [coreDatabase objectForKey:@"Current_User_Email"]]]];
+        UIImage *popoverBackgroundImage = [[UIImage imageNamed:popBackground] resizableImageWithCapInsets:UIEdgeInsetsMake(49, 46, 49, 45)];
         self.popoverBackgroundImageView = [[UIImageView alloc] initWithImage:popoverBackgroundImage];
         [self addSubview:self.popoverBackgroundImageView];
         

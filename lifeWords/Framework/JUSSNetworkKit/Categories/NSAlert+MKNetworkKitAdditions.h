@@ -2,7 +2,7 @@
 //  NSAlert+JUSSNetworkKitAdditions.h
 //  JUSSNetworkKitDemo
 //
-//  Created by JustaLiar on 08/10/12.
+//  Created by Thiên Phong on 08/10/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 #if !TARGET_OS_IPHONE

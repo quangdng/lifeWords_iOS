@@ -2,7 +2,7 @@
 //  lifeWordsLoginViewController.m
 //  lifeWords
 //
-//  Created by JustaLiar on 2/10/12.
+//  Created by Thiên Phong on 2/10/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 
@@ -170,6 +170,7 @@
                 NSString *currentUsersPath = [usersPath stringByAppendingPathComponent:useremail];
                 
                 NSString *currentCardPath = [currentUsersPath stringByAppendingPathComponent:@"Cards"];
+                NSString *receivedCardPath = [currentUsersPath stringByAppendingPathComponent:@"ReceivedCards"];
                 
                 NSError *error;
                 if (![[NSFileManager defaultManager] fileExistsAtPath:currentUsersPath])
@@ -177,6 +178,9 @@
                 
                 if (![[NSFileManager defaultManager] fileExistsAtPath:currentCardPath])
                     [[NSFileManager defaultManager] createDirectoryAtPath:currentCardPath withIntermediateDirectories:NO attributes:nil error:&error];
+                
+                if (![[NSFileManager defaultManager] fileExistsAtPath:receivedCardPath])
+                    [[NSFileManager defaultManager] createDirectoryAtPath:receivedCardPath withIntermediateDirectories:NO attributes:nil error:&error];
                 
                 // Download the profile photo
                 NSString *profilePhotoURL = [@"http://" stringByAppendingString:ApplicationDelegate.hostName];
@@ -224,10 +228,13 @@
                         
                         [coreDatabase setObject:currentUsersPath forKey:[NSString stringWithFormat:@"%@_User_Path", useremail]];
                         [coreDatabase setObject:currentCardPath forKey:[NSString stringWithFormat:@"%@_Card_Path", useremail]];
+                        [coreDatabase setObject:receivedCardPath forKey:[NSString stringWithFormat:@"%@_Received_Card_Path", useremail]];
                         [coreDatabase setObject:profilePhotoURL forKey:[NSString stringWithFormat:@"%@_profilePhotoURL", useremail]];
                         [coreDatabase setObject:profilePhotoPath forKey:[NSString stringWithFormat:@"%@_profilePhotoPath", useremail]];
                         [coreDatabase setObject:profileBackupPhotoPath forKey:[NSString stringWithFormat:@"%@_profileBackupPhotoPath", useremail]];
-                        [coreDatabase setObject:@"" forKey:[NSString stringWithFormat:@"%@_Color", useremail]];
+                        if (![coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", useremail]]) {
+                            [coreDatabase setObject:@"green_" forKey:[NSString stringWithFormat:@"%@_Color", useremail]];
+                        }
                         [coreDatabase synchronize];
                         
                         [self performSegueWithIdentifier:@"toMainView" sender:self];

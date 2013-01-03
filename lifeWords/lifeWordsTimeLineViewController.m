@@ -2,7 +2,7 @@
 //  lifeWordsTimeLineViewController.m
 //  lifeWords
 //
-//  Created by JustaLiar on 7/11/12.
+//  Created by Thiên Phong on 7/11/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 
@@ -50,9 +50,7 @@
     // Set photo
     [self.cardPhoto setImage:self.photo];
     
-    // Set the wallpaper
-    [self.wallpaper setImage:[UIImage imageNamed:@"leaf_tree.jpg"]];
-    
+        
     // Prevent the view to dim
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
@@ -60,6 +58,32 @@
     self.coreDatabase = [NSUserDefaults standardUserDefaults];
     userEmail = [self.coreDatabase objectForKey:@"Current_User_Email"];
     color = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", userEmail]];
+    
+    
+    // Set background image
+    if ([color isEqualToString:@"blue_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Blue Sky.jpg"]];
+    }
+    else if ([color isEqualToString:@"green_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Green Leaf.jpg"]];
+    }
+    else if ([color isEqualToString:@"indigo_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Indigo Horizon.jpg"]];
+    }
+    else if ([color isEqualToString:@"orange_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Orange Sunset.jpg"]];
+        
+    }
+    else if ([color isEqualToString:@"red_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Red Sunrise.jpg"]];
+    }
+    else if ([color isEqualToString:@"violet_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Violet Silk.jpg"]];
+    }
+    else {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Yellow Autumn.jpg"]];
+    }
+
     
     //Create a new barbutton with an action
     UIBarButtonItem *barbutton = [[UIBarButtonItem alloc] initWithTitle:@"Back"
@@ -453,6 +477,12 @@
     voiceComponent = nil;
     voiceStartTime = 0;
     voiceLength = 0;
+    NSFileManager *manager = [[NSFileManager alloc] init];
+    if ([manager fileExistsAtPath:voiceString])
+    {
+        [manager removeItemAtPath:voiceString error:nil];
+    }
+    voiceString = nil;
     [voiceTimer invalidate];
     voiceTimer = nil;
     [voiceStopTimer invalidate];
@@ -499,7 +529,7 @@
         int numberOfCards = [[self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Cards", userEmail]] count];
         
         NSString *cardPhotoPath = [self.currentCardPath stringByAppendingPathComponent:@"card_photo.jpg"];
-        [UIImageJPEGRepresentation(self.photo, 0.8) writeToFile:cardPhotoPath atomically:YES];
+        [UIImageJPEGRepresentation(self.photo, 0.2) writeToFile:cardPhotoPath atomically:YES];
         
         NSNumber *musicS = [NSNumber numberWithFloat:musicStartTime];
         NSNumber *musicL = [NSNumber numberWithFloat:musicLength];
@@ -511,6 +541,12 @@
         
         NSNumber *voiceS = [NSNumber numberWithFloat:voiceStartTime];
         NSNumber *voiceL = [NSNumber numberWithFloat:voiceLength];
+        NSFileManager *manager = [[NSFileManager alloc] init];
+        
+        if (![manager fileExistsAtPath:voiceString])
+        {
+            voiceString = @"";
+        }
         NSArray *voiceInfo = [[NSArray alloc] initWithObjects:voiceString, voiceS, voiceL, nil];
         
         NSString *cardCategory;
@@ -1216,9 +1252,9 @@
             break;
             
         case 2:
-            NSLog(@"%f", userResizableView.frame.origin.x);
+            NSLog(@"Voice Size %f", userResizableView.frame.size.width);
             voiceStartTime = userResizableView.frame.origin.x * 180.f / self.voiceView.frame.size.width;
-            if (!self.voiceView.frame.size.width <= 48.f) {
+            if (userResizableView.frame.size.width > 48.f) {
                 voiceLength = userResizableView.frame.size.width * 180.f / self.voiceView.frame.size.width;
             }
             
@@ -1273,7 +1309,7 @@
 - (void) shareBarPressed
 {
     [UIView animateWithDuration:0.5 animations:^{
-        [self.shareView setFrame:CGRectMake(self.shareView.frame.origin.x, 393, self.shareView.frame.size.width, self.shareView.frame.size.height)];
+        [self.shareView setFrame:CGRectMake(self.shareView.frame.origin.x, 365, self.shareView.frame.size.width, self.shareView.frame.size.height)];
     } completion:^(BOOL finished) {
         
     }];
@@ -1368,7 +1404,7 @@
 - (IBAction)cancelShare:(id)sender {
     [self dismissKeyboard:nil];
     [UIView animateWithDuration:0.5 animations:^{
-        [self.shareView setFrame:CGRectMake(self.shareView.frame.origin.x, -393, self.shareView.frame.size.width, self.shareView.frame.size.height)];
+        [self.shareView setFrame:CGRectMake(self.shareView.frame.origin.x, -365, self.shareView.frame.size.width, self.shareView.frame.size.height)];
     } completion:^(BOOL finished) {
         
     }];

@@ -37,6 +37,7 @@
     float effect;
     float voice;
     float max;
+    float currentTime;
     NSTimer *progressTimer;
     
     // Show/Hide Menu
@@ -52,7 +53,8 @@
 @property (strong, nonatomic) NSArray *musicInfo;
 @property (strong, nonatomic) NSArray *effectInfo;
 @property (strong, nonatomic) NSArray *voiceInfo;
-
+@property (strong, nonatomic) NSString *cardDate;
+@property (strong, nonatomic) NSString *cardOwner;
 // Players
 @property (strong, nonatomic) AVAudioPlayer *musicPlayer;
 @property (strong, nonatomic) AVAudioPlayer *effectPlayer;
@@ -67,6 +69,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *currentTimeLbl;
 @property (strong, nonatomic) IBOutlet UILabel *leftTimeLbl;
 @property (strong, nonatomic) IBOutlet UILabel *titleLbl;
+@property (strong, nonatomic) IBOutlet UILabel *senderLbl;
+@property (strong, nonatomic) IBOutlet UILabel *cardDateLbl;
+
 
 // Actions
 - (IBAction)play:(id)sender;

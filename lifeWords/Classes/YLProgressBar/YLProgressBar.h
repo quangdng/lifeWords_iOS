@@ -1,7 +1,7 @@
 //
 //  YLProgressBar.h
 //
-//  Created by JustaLiar on 10/11/12.
+//  Created by Thiên Phong on 10/11/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 

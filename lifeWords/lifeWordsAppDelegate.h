@@ -2,7 +2,7 @@
 //  lifeWordsAppDelegate.h
 //  lifeWords
 //
-//  Created by JustaLiar on 3/10/12.
+//  Created by Thiên Phong on 3/10/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 

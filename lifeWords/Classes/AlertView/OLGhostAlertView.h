@@ -1,7 +1,7 @@
 //
 //  OLGhostAlertView.h
 //
-//  Created by JustaLiar on 09/10/12.
+//  Created by Thiên Phong on 09/10/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 

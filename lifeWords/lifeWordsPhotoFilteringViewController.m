@@ -2,7 +2,7 @@
 //  lifeWordsPhotoFilteringViewController.m
 //  lifeWords
 //
-//  Created by JustaLiar on 23/10/12.
+//  Created by Thiên Phong on 23/10/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 
@@ -45,8 +45,29 @@
     userEmail = [self.coreDatabase objectForKey:@"Current_User_Email"];
     color = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Color", userEmail]];
     
-    // Set the wallpaper
-    [self.wallpaper setImage:[UIImage imageNamed:@"leaf_tree.jpg"]];
+    // Set background image
+    if ([color isEqualToString:@"blue_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Blue Sky.jpg"]];
+    }
+    else if ([color isEqualToString:@"green_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Green Leaf.jpg"]];
+    }
+    else if ([color isEqualToString:@"indigo_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Indigo Horizon.jpg"]];
+    }
+    else if ([color isEqualToString:@"orange_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Orange Sunset.jpg"]];
+        
+    }
+    else if ([color isEqualToString:@"red_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Red Sunrise.jpg"]];
+    }
+    else if ([color isEqualToString:@"violet_"]) {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Violet Silk.jpg"]];
+    }
+    else {
+        [self.wallpaper setImage:[UIImage imageNamed:@"Yellow Autumn.jpg"]];
+    }
     
     // Set the core photo
     self.photo = [self.photo normalizedImage];
@@ -68,7 +89,7 @@
     //Create a new barbutton with an action
     UIBarButtonItem *nextBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Next"
                                                                   style:UIBarButtonItemStylePlain target:self action:@selector(nextBarPressed)];
-    UIImage *nextBtnImg = [UIImage imageNamed:@"ipad-next.png"];
+    UIImage *nextBtnImg = [UIImage imageNamed:[NSString stringWithFormat:@"%@ipad-next.png", color]];
     [nextBarButton setBackgroundImage:nextBtnImg forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     // and put the button in the nav bar

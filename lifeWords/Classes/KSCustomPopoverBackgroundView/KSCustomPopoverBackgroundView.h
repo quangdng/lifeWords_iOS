@@ -1,7 +1,7 @@
 //
 //  KSCustomPopoverBackgroundView.h
 //
-//  Created by JustaLiar on 7/11/12.
+//  Created by Thiên Phong on 7/11/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 

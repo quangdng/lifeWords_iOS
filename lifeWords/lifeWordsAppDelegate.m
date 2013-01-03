@@ -2,7 +2,7 @@
 //  lifeWordsAppDelegate.m
 //  lifeWords
 //
-//  Created by JustaLiar on 3/10/12.
+//  Created by Thiên Phong on 3/10/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    self.hostName = @"192.168.0.116";
+    self.hostName = @"192.168.0.110";
     self.networkOperations = [[lifeWordsNetworkOperations alloc] initWithHostName:self.hostName];
     self.downloadOperation = [[lifeWordsNetworkDownload alloc] initWithHostName:self.hostName];
     return YES;

@@ -2,7 +2,7 @@
 //  lifeWordsNetworkOperations.m
 //  lifeWords
 //
-//  Created by JustaLiar on 10/10/12.
+//  Created by Thiên Phong on 10/10/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 
@@ -31,11 +31,11 @@
     return op;
 }
 
-- (JUSSNetworkOperation *) fetchNotifications:(NSString *)userID
+- (JUSSNetworkOperation *) fetchCards:(NSString *)userEmail
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:userID forKey:@"userid"];
-    JUSSNetworkOperation *op = [self operationWithPath:@"fetchNotifications.php" params:params httpMethod:@"POST"];
+    [params setObject:userEmail forKey:@"useremail"];
+    JUSSNetworkOperation *op = [self operationWithPath:@"fetchCards.php" params:params httpMethod:@"POST"];
     [self enqueueOperation:op];
     return op;
 }

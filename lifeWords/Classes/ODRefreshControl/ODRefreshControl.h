@@ -2,7 +2,7 @@
 //  ODRefreshControl.h
 //  ODRefreshControl
 //
-//  Created by JustaLiar on 03/11/12.
+//  Created by Thiên Phong on 03/11/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 

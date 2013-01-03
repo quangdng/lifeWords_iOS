@@ -2,7 +2,7 @@
 //  lifeWordsPhotoFilteringViewController.h
 //  lifeWords
 //
-//  Created by JustaLiar on 23/10/12.
+//  Created by Thiên Phong on 23/10/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 

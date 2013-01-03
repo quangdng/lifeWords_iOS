@@ -440,6 +440,9 @@
                                         <state key="highlighted" backgroundImage="ipad-button-blue-pressed.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="collectionBtnClicked:" destination="NuC-TK-w6q" eventType="touchUpInside" id="aOf-uK-A9d"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" id="L8G-SI-Xnb" customClass="SWSnapshotStackView">
                                         <rect key="frame" x="284" y="48" width="200" height="200"/>
@@ -453,21 +456,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AwM-d4-DAM">
-                                        <rect key="frame" x="136" y="162" width="73" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="test:" destination="NuC-TK-w6q" eventType="touchUpInside" id="epj-i2-i4s"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cardbox.png" id="oa5-Ve-4Y4">
                                         <rect key="frame" x="97" y="427" width="574" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -495,14 +483,29 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5BT-7A-0w0">
-                                        <rect key="frame" x="97" y="696" width="574" height="190"/>
+                                        <rect key="frame" x="102" y="696" width="563" height="190"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </scrollView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qMy-dX-d8T">
+                                        <rect key="frame" x="158" y="170" width="73" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="test:" destination="NuC-TK-w6q" eventType="touchUpInside" id="gHV-V7-jHe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <gestureRecognizers/>
                             </scrollView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="27O-3C-Gw2">
-                                <rect key="frame" x="0.0" y="0.0" width="779" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" id="IUC-Uj-MtP">
@@ -522,25 +525,10 @@
                                             </connections>
                                         </button>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="U3z-Cp-xBt"/>
-                                    <barButtonItem style="plain" id="VDU-Od-oEi">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="6nL-Aw-K6I" userLabel="Cards Btn">
-                                            <rect key="frame" x="372" y="5" width="35" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" image="icon-cards.png">
-                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted" image="icon-cards-highlight.png">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="0fu-Py-Hol"/>
                                     <barButtonItem style="plain" id="wpq-cC-rdK">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ia0-Mg-9BX" userLabel="Config Btn">
-                                            <rect key="frame" x="736" y="7" width="31" height="31"/>
+                                            <rect key="frame" x="725" y="7" width="31" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" image="icon-config.png">
@@ -550,6 +538,9 @@
                                             <state key="highlighted" image="icon-config-highlight.png">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="configBtnClicked:" destination="NuC-TK-w6q" eventType="touchUpInside" id="5ep-VQ-rT7"/>
+                                            </connections>
                                         </button>
                                     </barButtonItem>
                                 </items>
@@ -559,22 +550,62 @@
                     </view>
                     <navigationItem key="navigationItem" title="lifeWords" id="44r-dt-1We"/>
                     <connections>
+                        <outlet property="configBtn" destination="ia0-Mg-9BX" id="aEp-4a-Keh"/>
                         <outlet property="container" destination="aKQ-IJ-BWP" id="5jW-0A-krB"/>
                         <outlet property="makeCardButton" destination="IpF-Id-4Ki" id="X14-5l-zS6"/>
                         <outlet property="myToolBar" destination="27O-3C-Gw2" id="VTg-Pz-8jn"/>
                         <outlet property="nameLabel" destination="XLI-ss-qb2" id="BsV-HA-4UM"/>
                         <outlet property="profilePhoto" destination="L8G-SI-Xnb" id="74U-gN-Ago"/>
-                        <outlet property="receivedCards" destination="5BT-7A-0w0" id="GKl-hU-TuT"/>
+                        <outlet property="receivedCard" destination="5BT-7A-0w0" id="obT-nA-9JC"/>
                         <outlet property="scrollView" destination="Xgm-HN-Cec" id="C9b-LL-t1v"/>
                         <outlet property="wallpaper" destination="BwK-VJ-6hj" id="Iea-Fa-khE"/>
                         <outlet property="yourCards" destination="7RD-x1-272" id="PxJ-bL-tot"/>
                         <segue destination="KUu-KQ-dCW" kind="push" identifier="toPhotoFiltering" id="No4-8d-OVw"/>
                         <segue destination="G64-mQ-wpB" kind="modal" identifier="toPreview" id="f44-3N-78I"/>
+                        <segue destination="d3H-UN-2qE" kind="modal" identifier="to3D" modalTransitionStyle="crossDissolve" id="LoC-Wp-Fg4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p7w-2w-nv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2790" y="-1810"/>
+        </scene>
+        <!--Life Words Color Select View Controller - Theme Select-->
+        <scene sceneID="1j5-v3-WXG">
+            <objects>
+                <viewController id="5oq-gg-VYe" customClass="lifeWordsColorSelectViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BOY-oJ-H1Z">
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1En-K0-DKI">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="Color_Cell" id="h2S-1W-2Je">
+                                        <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5oq-gg-VYe" id="Zvc-ds-QCa"/>
+                                    <outlet property="delegate" destination="5oq-gg-VYe" id="YQn-08-Epn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Theme Select" id="M9e-zU-yXt"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="350" height="308"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCU-iK-PCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3763" y="-204"/>
         </scene>
         <!--Life Words Photo Filtering View Controller-->
         <scene sceneID="IBA-5H-f0s">
@@ -657,21 +688,6 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZrN-9c-o8f" userLabel="Dismiss Keyboard">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismissKeyboard:" destination="VRI-i5-bIo" eventType="touchUpInside" id="u1U-Vu-hTA"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="4j7-6J-Siu">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -745,21 +761,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VsK-ez-EWR">
-                                        <rect key="frame" x="278" y="107" width="60" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveCard:" destination="VRI-i5-bIo" eventType="touchUpInside" id="g89-8O-6lQ"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -900,6 +901,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80000007152557373" green="0.87450987100601196" blue="0.054901964962482452" alpha="1" colorSpace="deviceRGB"/>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZrN-9c-o8f" userLabel="Dismiss Keyboard">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissKeyboard:" destination="VRI-i5-bIo" eventType="touchUpInside" id="u1U-Vu-hTA"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" id="0N8-Yw-Vgd" userLabel="Record View">
                                 <rect key="frame" x="768" y="393" width="467" height="174"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -985,7 +1001,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="eZO-dU-WJz" userLabel="Share View">
-                                <rect key="frame" x="150" y="-393" width="467" height="230"/>
+                                <rect key="frame" x="150" y="-365" width="467" height="230"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Share Your Cards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="emS-wH-Jhz">
@@ -1000,6 +1016,9 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="VRI-i5-bIo" id="Iwf-z7-Qk4"/>
+                                        </connections>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="OT0-Ri-0t7">
                                         <rect key="frame" x="104" y="106" width="259" height="44"/>
@@ -1114,96 +1133,114 @@
                             <view alpha="0.5" contentMode="scaleToFill" id="9Cy-GW-bTY" userLabel="Transparent View">
                                 <rect key="frame" x="0.0" y="879" width="768" height="125"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="fM0-EP-3rr" userLabel="Holder View">
-                                <rect key="frame" x="0.0" y="879" width="768" height="125"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="OtO-Pj-xdo" userLabel="Stop Button">
-                                        <rect key="frame" x="313" y="49" width="70" height="70"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Button" image="icon-stop.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="icon-stop-highlight.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="stop:" destination="G64-mQ-wpB" eventType="touchUpInside" id="Gpm-jr-UNF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="tUw-Uh-6nA" userLabel="Play Button">
-                                        <rect key="frame" x="313" y="49" width="70" height="70"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="icon-play.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="icon-play-highlight.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="play:" destination="G64-mQ-wpB" eventType="touchUpInside" id="MgQ-1Z-qEp"/>
-                                            <action selector="playTimeLine:" destination="VRI-i5-bIo" eventType="touchUpInside" id="MgY-VB-o2v"/>
-                                        </connections>
-                                    </button>
-                                    <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="iIu-gn-bIA" customClass="YLProgressBar">
-                                        <rect key="frame" x="228" y="42" width="312" height="9"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </progressView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="nXG-8r-upu" userLabel="Close">
-                                        <rect key="frame" x="404" y="59" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="icon-close.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted" image="icon-close-highlight.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="dismiss:" destination="G64-mQ-wpB" eventType="touchUpInside" id="kw6-UW-Kqy"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mpk-qA-Tog" userLabel="Current Time">
-                                        <rect key="frame" x="178" y="36" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zfc-6J-vEx" userLabel="Time Left">
-                                        <rect key="frame" x="548" y="36" width="44" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WtE-lh-w1a" userLabel="Title">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" id="fM0-EP-3rr" userLabel="Holder View">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="125"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="OtO-Pj-xdo" userLabel="Stop Button">
+                                                <rect key="frame" x="313" y="49" width="70" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Button" image="icon-stop.png">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="icon-stop-highlight.png">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="stop:" destination="G64-mQ-wpB" eventType="touchUpInside" id="Gpm-jr-UNF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="tUw-Uh-6nA" userLabel="Play Button">
+                                                <rect key="frame" x="313" y="49" width="70" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" image="icon-play.png">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="icon-play-highlight.png">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="play:" destination="G64-mQ-wpB" eventType="touchUpInside" id="MgQ-1Z-qEp"/>
+                                                    <action selector="playTimeLine:" destination="VRI-i5-bIo" eventType="touchUpInside" id="MgY-VB-o2v"/>
+                                                </connections>
+                                            </button>
+                                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="iIu-gn-bIA" customClass="YLProgressBar">
+                                                <rect key="frame" x="228" y="42" width="312" height="9"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </progressView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="nXG-8r-upu" userLabel="Close">
+                                                <rect key="frame" x="404" y="59" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" image="icon-close.png">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted" image="icon-close-highlight.png">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="dismiss:" destination="G64-mQ-wpB" eventType="touchUpInside" id="kw6-UW-Kqy"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mpk-qA-Tog" userLabel="Current Time">
+                                                <rect key="frame" x="178" y="36" width="42" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zfc-6J-vEx" userLabel="Time Left">
+                                                <rect key="frame" x="548" y="36" width="44" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WtE-lh-w1a" userLabel="Title">
+                                                <rect key="frame" x="0.0" y="0.0" width="768" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ziT-Fm-a46" userLabel="Time Left">
+                                                <rect key="frame" x="506" y="88" width="242" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RE4-7o-hw5" userLabel="Time Left">
+                                                <rect key="frame" x="20" y="84" width="242" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="cardDateLbl" destination="RE4-7o-hw5" id="lGe-ty-oq2"/>
                         <outlet property="corePhoto" destination="AJA-rH-P7P" id="g28-YJ-A0Z"/>
                         <outlet property="currentTimeLbl" destination="Mpk-qA-Tog" id="Xuz-vq-vs1"/>
                         <outlet property="holderView" destination="fM0-EP-3rr" id="bYd-WM-RnL"/>
                         <outlet property="leftTimeLbl" destination="Zfc-6J-vEx" id="37D-3J-ZJ1"/>
                         <outlet property="playMusicBtn" destination="tUw-Uh-6nA" id="6Rt-Lo-rvt"/>
                         <outlet property="progressBar" destination="iIu-gn-bIA" id="Nsx-rR-v2u"/>
+                        <outlet property="senderLbl" destination="ziT-Fm-a46" id="F8j-lo-aeY"/>
                         <outlet property="stopMusicBtn" destination="OtO-Pj-xdo" id="7kj-fK-Mgt"/>
                         <outlet property="titleLbl" destination="WtE-lh-w1a" id="FiN-5c-fFw"/>
                         <outlet property="transparentView" destination="9Cy-GW-bTY" id="T1R-UU-BaQ"/>
@@ -1212,6 +1249,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKo-mF-C8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5815" y="-1810"/>
+        </scene>
+        <!--Life Words3D View Controller-->
+        <scene sceneID="MNU-ny-zTe">
+            <objects>
+                <viewController id="d3H-UN-2qE" customClass="lifeWords3DViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VyJ-9m-7xD">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="woodentable.png" id="hc3-2W-vGS">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="KYq-M4-qF0">
+                                <rect key="frame" x="0.0" y="759" width="768" height="245"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aQ1-9X-3FA">
+                                        <rect key="frame" x="287" y="20" width="194" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="35"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="p3o-gV-RYm">
+                                        <rect key="frame" x="20" y="181" width="73" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Close" backgroundImage="ipad-button-red.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" backgroundImage="ipad-button-red-pressed.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissView:" destination="d3H-UN-2qE" eventType="touchUpInside" id="AUK-MQ-Chw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="bookName" destination="aQ1-9X-3FA" id="hN3-Ja-dR7"/>
+                        <outlet property="closeBtn" destination="p3o-gV-RYm" id="cAA-my-EoT"/>
+                        <outlet property="operationBar" destination="KYq-M4-qF0" id="n3S-L3-0nO"/>
+                        <outlet property="wallpaper" destination="hc3-2W-vGS" id="sLZ-Ug-N2D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HjH-MR-Ugu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4903" y="-644"/>
         </scene>
         <!--Life Words Music Select View Controller - Category-->
         <scene sceneID="8Ih-aN-JQ0">
@@ -1443,12 +1536,28 @@
             </objects>
             <point key="canvasLocation" x="4790" y="-5500"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dqS-s7-uaF">
+            <objects>
+                <navigationController storyboardIdentifier="colorSelectView" id="44Z-m8-6WI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mtc-Mh-7NU">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5oq-gg-VYe" kind="relationship" relationship="rootViewController" id="tm5-PV-iI6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="97S-G2-uOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2789" y="-204"/>
+        </scene>
     </scenes>
     <resources>
         <image name="binder.png" width="2400" height="453"/>
         <image name="cardbox.png" width="1113" height="221"/>
-        <image name="icon-cards-highlight.png" width="70" height="70"/>
-        <image name="icon-cards.png" width="70" height="70"/>
         <image name="icon-close-highlight.png" width="128" height="128"/>
         <image name="icon-close.png" width="128" height="128"/>
         <image name="icon-config-highlight.png" width="62" height="62"/>
@@ -1488,6 +1597,7 @@
         <image name="separator.png" width="200" height="1"/>
         <image name="soundboard.png" width="2532" height="1997"/>
         <image name="stack.png" width="1450" height="1650"/>
+        <image name="woodentable.png" width="1000" height="625"/>
     </resources>
     <classes>
         <class className="SWSnapshotStackView" superclassName="UIView">
@@ -1498,6 +1608,19 @@
         </class>
         <class className="YLProgressBar" superclassName="UIProgressView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/YLProgressBar.h"/>
+        </class>
+        <class className="lifeWords3DViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWords3DViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissView:"/>
+                <relationship kind="outlet" name="bookName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="closeBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="operationBar" candidateClass="UIView"/>
+                <relationship kind="outlet" name="wallpaper" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="lifeWordsColorSelectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsColorSelectViewController.h"/>
         </class>
         <class className="lifeWordsLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsLoginViewController.h"/>
@@ -1514,17 +1637,18 @@
         <class className="lifeWordsMainViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/lifeWordsMainViewController.h"/>
             <relationships>
-                <relationship kind="action" name="friendBtnClicked:"/>
+                <relationship kind="action" name="collectionBtnClicked:"/>
+                <relationship kind="action" name="configBtnClicked:"/>
                 <relationship kind="action" name="logoutBtnClicked:"/>
                 <relationship kind="action" name="showActionSheet:"/>
                 <relationship kind="action" name="test:"/>
+                <relationship kind="outlet" name="configBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="container" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="friendsBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="makeCardButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="myToolBar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="profilePhoto" candidateClass="SWSnapshotStackView"/>
-                <relationship kind="outlet" name="receivedCards" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="receivedCard" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="wallpaper" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="yourCards" candidateClass="UIScrollView"/>
@@ -1560,12 +1684,14 @@
                 <relationship kind="action" name="hideMenu:"/>
                 <relationship kind="action" name="play:"/>
                 <relationship kind="action" name="stop:"/>
+                <relationship kind="outlet" name="cardDateLbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="corePhoto" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="currentTimeLbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="holderView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="leftTimeLbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="playMusicBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="progressBar" candidateClass="YLProgressBar"/>
+                <relationship kind="outlet" name="senderLbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="stopMusicBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="titleLbl" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="transparentView" candidateClass="UIView"/>
@@ -1650,6 +1776,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="JSK-Yx-TbF"/>
+        <segue reference="f44-3N-78I"/>
     </inferredMetricsTieBreakers>
 </document>
