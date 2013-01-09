@@ -1,7 +1,7 @@
 //
 //  MyPageBaseView.m
 //
-//  Created by JustaLiar on 26/4/12.
+//  Created by Thiên Phong on 26/4/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 
@@ -27,7 +27,7 @@
     
     //We are given the entire frame including EDGE_PADDING space, so we need to compensate for it
     int margin = 0;
-    CGRect imageFrame = CGRectMake(margin, margin+EDGE_PADDING, frame.size.width-2*margin, frame.size.height-2*EDGE_PADDING-2*margin);
+    CGRect imageFrame = CGRectMake(margin + 10, margin+EDGE_PADDING + 10, frame.size.width-2*margin - 20, frame.size.height-2*EDGE_PADDING-2*margin - 20);
     
     self.imageView = [[UIImageView alloc] initWithFrame:imageFrame];
     self.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;

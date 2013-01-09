@@ -1,12 +1,9 @@
 //
 //  MyImageCache.m
 //
-//  Created by JustaLiar on 14/6/12.
+//  Created by Thiên Phong on 14/6/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
-//  This is a very simple image caching cache for demo purpose.
-//  It is not production-grade cache library.
-//  Please use SDImageCahe library or equivalent in your production code.
 //
 
 

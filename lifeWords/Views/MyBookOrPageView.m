@@ -1,7 +1,7 @@
 //
 //  MyBookOrPageView.m
 //
-//  Created by JustaLiar on 26/4/12.
+//  Created by Thiên Phong on 26/4/12.
 //  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
 

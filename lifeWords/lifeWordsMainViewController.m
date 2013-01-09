@@ -64,10 +64,10 @@
     }
     // Fill up scroll views
     if ([receivedCards count] >0) {
-    [self.receivedCard setAlwaysBounceVertical:NO];
-    [self.receivedCard setPagingEnabled:YES];
-    [self.receivedCard setContentSize:CGSizeMake(574, 128)];
-    [self fillSharedScrollView:receivedCards withScrollView:self.receivedCard];
+        [self.receivedCard setAlwaysBounceVertical:NO];
+        [self.receivedCard setPagingEnabled:YES];
+        [self.receivedCard setContentSize:CGSizeMake(574, 128)];
+        [self fillSharedScrollView:receivedCards withScrollView:self.receivedCard];
     }
     
     
@@ -288,6 +288,7 @@
         }
         
     } onError:^(NSError *error) {
+        [refreshControl endRefreshing];
         OLGhostAlertView *ghastly = [[OLGhostAlertView alloc] initWithTitle:@"Connection Error" message: @"Please check your internet connection" timeout:1 dismissible:YES];
         [ghastly show];
     }];
@@ -312,6 +313,7 @@
             [self.profilePhoto setImage:[UIImage imageWithContentsOfFile:profileBackupPhotoPath]];
         }
     } onError:^(NSError *error) {
+        [refreshControl endRefreshing];
         OLGhostAlertView *ghastly = [[OLGhostAlertView alloc] initWithTitle:@"Connection Error" message: @"Please check your internet connection" timeout:1 dismissible:YES];
         [ghastly show];
     }];
@@ -425,7 +427,7 @@
                     }
                     
                 } onError:^(NSError *error) {
-                    
+                    [refreshControl endRefreshing];
                     OLGhostAlertView *ghastly = [[OLGhostAlertView alloc] initWithTitle:@"Connection Error" message: @"Please check your internet connection" timeout:1 dismissible:YES];
                     [ghastly show];
                 }];
@@ -435,7 +437,7 @@
                     [self.downloadOperation onCompletion:^(JUSSNetworkOperation *completedOperation) {
                         
                     } onError:^(NSError *error) {
-                        
+                        [refreshControl endRefreshing];
                         OLGhostAlertView *ghastly = [[OLGhostAlertView alloc] initWithTitle:@"Connection Error" message: @"Please check your internet connection" timeout:1 dismissible:YES];
                         [ghastly show];
                     }];
@@ -461,7 +463,7 @@
         receivedCards = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Received_Cards", userEmail]];
         
     } onError:^(NSError *error) {
-        
+        [refreshControl endRefreshing];
     }];
     
     receivedCards = [self.coreDatabase objectForKey:[NSString stringWithFormat:@"%@_Received_Cards", userEmail]];
@@ -670,7 +672,7 @@
         [thumbImageButton addSubview:thImage];
         [thumbImageButton addSubview:tv];
         [thumbImageButton addSubview:previewBtn];
-        [thumbImageButton addTarget:self action:@selector(viewCard:) forControlEvents:UIControlEventTouchUpInside];
+        [thumbImageButton addTarget:self action:@selector(viewSharedCard:) forControlEvents:UIControlEventTouchUpInside];
         
         [scrollView addSubview:thumbImageButton];
         
@@ -712,21 +714,24 @@
             NSArray *effectInfo = nil;
             NSArray *voiceInfo = nil;
             
-            NSArray *musicArray = [previewCard objectAtIndex:3];
-            if ([musicArray count] > 0) {
+            
+            if ([[previewCard objectAtIndex:3] count] > 0) {
+                NSArray *musicArray = [previewCard objectAtIndex:3];
                 NSURL *musicComponent = [[NSBundle mainBundle] URLForResource:[musicArray objectAtIndex:0] withExtension:@"mp3"];
                 musicInfo = [[NSArray alloc] initWithObjects:musicComponent, [musicArray objectAtIndex:1], [musicArray objectAtIndex:2], nil];
             }
             
-            NSArray *effectArray = [previewCard objectAtIndex:4];
-            if ([effectArray count] > 0) {
+            
+            if ([[previewCard objectAtIndex:4] count] > 0) {
+                NSArray *effectArray = [previewCard objectAtIndex:4];
                 NSURL *soundEffectComponent = [[NSBundle mainBundle] URLForResource:[effectArray objectAtIndex:0] withExtension:@"mp3"];
                 effectInfo = [[NSArray alloc] initWithObjects:soundEffectComponent, [effectArray objectAtIndex:1], [effectArray objectAtIndex:2], nil];
             }
             
             
-            NSArray *voiceArray = [previewCard objectAtIndex:5];
-            if ([voiceArray count] > 0) {
+            
+            if ([[previewCard objectAtIndex:5] count] > 0) {
+                NSArray *voiceArray = [previewCard objectAtIndex:5];
                 NSURL *voiceComponent = [[NSURL alloc] initFileURLWithPath:[voiceArray objectAtIndex:0]];
                 voiceInfo = [[NSArray alloc] initWithObjects:voiceComponent, [voiceArray objectAtIndex:1], [voiceArray objectAtIndex:2], nil];
             }

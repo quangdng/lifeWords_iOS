@@ -170,6 +170,7 @@
     // Start Players
     NSError *error;
     
+    
     self.musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:musicComponent error:&error];
     [self.musicPlayer setVolume:1];
     [self.musicPlayer prepareToPlay];

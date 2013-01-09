@@ -7,8 +7,7 @@
 //
 
 #import "lifeWords3DViewController.h"
-#import "MyBookOrPageView.h"
-#import "MyPageViewDetail.h"
+
 
 @interface lifeWords3DViewController ()
 
@@ -25,9 +24,38 @@
     return self;
 }
 
+- (BOOL) startAudioSession
+{
+	// Prepare the audio session
+	NSError *error;
+	AVAudioSession *session = [AVAudioSession sharedInstance];
+    
+	if (![session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error])
+	{
+		NSLog(@"Error setting session category: %@", error.localizedFailureReason);
+		return NO;
+	}
+    
+	if (![session setActive:YES error:&error])
+	{
+		NSLog(@"Error activating audio session: %@", error.localizedFailureReason);
+		return NO;
+	}
+    
+	return session.inputIsAvailable;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];    
+    
+    // Prevent the view to dim
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
+    // Start the audio session
+    [self startAudioSession];
+    
     
     //Basic setup
     self.pepperViewController = [[PPPepperViewController alloc] init];
@@ -88,12 +116,18 @@
     NSLog (@"Number of book %d", [bookArray count]);
     [self initializeBookData];
     [self.view bringSubviewToFront:self.operationBar];
+    [self.view bringSubviewToFront:self.transparentView];
+    [self.view bringSubviewToFront:self.holderView];
+    [self.view bringSubviewToFront:self.dismissBtn];
     
-    Book *theBook = [self.bookDataArray objectAtIndex:0];
-    self.bookName.text = theBook.bookName;
     [self.pepperViewController reload];
     
+    // Set progress bar
+    [self.progressBar setProgressTintColor:[UIColor greenColor]];
     
+    // Set hide transparent view and holder view
+    [self.transparentView setHidden:YES];
+    [self.holderView setHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -135,39 +169,36 @@
     myBook.pages = [[NSMutableArray alloc] init];
     myBook.bookName = bookName;
     
-    int numberOfPages = [pagesArray count];
+    int loopTimes = 2;
     
-    if (!((numberOfPages % 2) == 0)) {
-        numberOfPages += 1;
-    }
     
-    NSLog(@"Number of Pages %d", numberOfPages);
-    
-    for (int j=0; j<numberOfPages; j++) {
+    for (int j=0; j<loopTimes; j++) {
         if (bookName == @"Family" && j == 0) {
             Page *myPage = [[Page alloc] init];
-            myPage.halfsizeURL = @"family.jpg";
+            myPage.halfsizeURL = @"family.png";
             myPage.fullsizeURL = myPage.halfsizeURL;
             [myBook.pages addObject:myPage];
         }
         else if (bookName == @"Friends" && j == 0) {
             Page *myPage = [[Page alloc] init];
-            myPage.halfsizeURL = @"friends.jpg";
+            myPage.halfsizeURL = @"friends.png";
             myPage.fullsizeURL = myPage.halfsizeURL;
             [myBook.pages addObject:myPage];
         }
     
         else if (j == 0 && bookName == @"Love") {
             Page *myPage = [[Page alloc] init];
-            myPage.halfsizeURL = @"love.jpg";
+            myPage.halfsizeURL = @"love.png";
             myPage.fullsizeURL = myPage.halfsizeURL;
             [myBook.pages addObject:myPage];
         }
         else {
             for (NSArray *card in pagesArray) {
+                NSLog(@"%d", [pagesArray count]);
                 Page *myPage = [[Page alloc] init];
                 myPage.halfsizeURL = [card objectAtIndex:1];
-                NSLog(@"%@", [card objectAtIndex:1]);
+                myPage.cardData = card;
+                NSLog(@"%@", [card objectAtIndex:0]);
                 myPage.fullsizeURL = myPage.halfsizeURL;
                 [myBook.pages addObject:myPage];
             }
@@ -279,8 +310,8 @@
 {
     NSLog(@"%@", [NSString stringWithFormat:@"didSnapToBookIndex:%d", bookIndex]);
     
-    Book *theBook = [self.bookDataArray objectAtIndex:bookIndex];
-    self.bookName.text = theBook.bookName;
+    
+    
 }
 
 /*
@@ -300,7 +331,6 @@
     
     //This is mandatory in version 1.3.0 and above
     [scrollList openCurrentBookAtPageIndex:pageIndex];
-    self.bookName.hidden = YES;
 }
 
 /*
@@ -315,14 +345,20 @@
 - (void)ppPepperViewController:(PPPepperViewController*)scrollList didOpenBookIndex:(int)bookIndex atPageIndex:(int)pageIndex
 {
     NSLog(@"%@", [NSString stringWithFormat:@"didOpenBookIndex:%d atPageIndex:%d", bookIndex, pageIndex]);
-    self.bookName.hidden = YES;
+    self.closeBtn.hidden = YES;
+    self.operationBar.hidden = YES;
+    
+    // Set current card
+    Book *theBook = [self.bookDataArray objectAtIndex:bookIndex];
+    currentBook = theBook;
+    
 }
 
 - (void)ppPepperViewController:(PPPepperViewController*)scrollList didCloseBookIndex:(int)bookIndex
 {
     NSLog(@"%@", [NSString stringWithFormat:@"didCloseBookIndex:%d", bookIndex]);
-    self.bookName.hidden = NO;
-    
+    self.operationBar.hidden = NO;
+    self.closeBtn.hidden = NO;
     
 }
 
@@ -356,6 +392,8 @@
 {
     //This is mandatory in version 1.3.0 and above
     [scrollList openPageIndex:pageIndex];
+    
+    
     
     NSLog(@"%@", [NSString stringWithFormat:@"didTapOnPageIndex:%d", pageIndex]);
 }
@@ -413,9 +451,90 @@
 {
     NSLog(@"%@", [NSString stringWithFormat:@"didSnapToPageIndex:%d", pageIndex]);
     
-    //Built-in demo content
-    if (self.pepperViewController.dataSource != self)
-        return;
+    currentCard = ((Page*)[currentBook.pages objectAtIndex:pageIndex]).cardData;
+    
+    // Set date, title
+    if ([[currentCard objectAtIndex:0] isEqualToString:@""]) {
+        self.titleLbl.text = @"No Title";
+    }
+    else {
+        self.titleLbl.text = [currentCard objectAtIndex:0];
+    }
+    
+    self.cardDateLbl.text = [currentCard objectAtIndex:2];
+    
+    NSArray *musicInfo = nil;
+    NSArray *effectInfo = nil;
+    NSArray *voiceInfo = nil;
+    
+    NSArray *musicArray = [currentCard objectAtIndex:3];
+    if ([musicArray count] > 0) {
+        musicComponent = [[NSBundle mainBundle] URLForResource:[musicArray objectAtIndex:0] withExtension:@"mp3"];
+        musicInfo = [[NSArray alloc] initWithObjects:musicComponent, [musicArray objectAtIndex:1], [musicArray objectAtIndex:2], nil];
+    }
+    
+    NSArray *effectArray = [currentCard objectAtIndex:4];
+    if ([effectArray count] > 0) {
+        soundEffectComponent = [[NSBundle mainBundle] URLForResource:[effectArray objectAtIndex:0] withExtension:@"mp3"];
+        effectInfo = [[NSArray alloc] initWithObjects:soundEffectComponent, [effectArray objectAtIndex:1], [effectArray objectAtIndex:2], nil];
+    }
+    
+    
+    NSArray *voiceArray = [currentCard objectAtIndex:5];
+    if ([voiceArray count] > 0) {
+        voiceComponent = [[NSURL alloc] initFileURLWithPath:[voiceArray objectAtIndex:0]];
+        voiceInfo = [[NSArray alloc] initWithObjects:voiceComponent, [voiceArray objectAtIndex:1], [voiceArray objectAtIndex:2], nil];
+    }
+    
+    
+    
+    // Set the variables
+    if ([musicInfo count] > 0) {
+        musicComponent = [musicInfo objectAtIndex:0];
+        musicStartTime = [[musicInfo objectAtIndex:1] floatValue];
+        musicLength = [[musicInfo objectAtIndex:2] floatValue];
+    }
+    
+    if ([effectInfo count] > 0) {
+        soundEffectComponent = [effectInfo objectAtIndex:0];
+        effectStartTime = [[effectInfo objectAtIndex:1] floatValue];
+        effectLength = [[effectInfo objectAtIndex:2] floatValue];
+    }
+    
+    if ([voiceInfo count] > 0) {
+        voiceComponent = [voiceInfo objectAtIndex:0];
+        voiceStartTime = [[voiceInfo objectAtIndex:1] floatValue];
+        voiceLength = [[voiceInfo objectAtIndex:2] floatValue];
+    }
+    
+    // Set boolean SHOW
+    show = TRUE;
+    
+    // Calculate play time
+    music = musicStartTime + musicLength;
+    effect = effectStartTime + effectLength;
+    voice = voiceStartTime + voiceLength;
+    
+    if (MAX(music, effect) <= voice) {
+        max = voice;
+    }
+    else {
+        if (MAX(music, effect) == music) {
+            max = music;
+        }
+        else {
+            max = effect;
+        }
+    }
+    
+    self.currentTimeLbl.text = [self formattedStringForDuration:0];
+    NSString *minus = @"-";
+    self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:max]];
+    
+    // Unhide View
+    [self.transparentView setHidden:NO];
+    [self.holderView setHidden:NO];
+    [self.dismissBtn setHidden:NO];
  
 }
 
@@ -426,35 +545,328 @@
 {
     //Commented out for performance reason
     //NSLog(@"%@", [NSString stringWithFormat:@"didZoomWithPageIndex:%d zoomScale:%.2f", pageIndex, zoomScale]);
+    
 }
 
 - (void)ppPepperViewController:(PPPepperViewController*)scrollList didEndZoomingWithPageIndex:(int)pageIndex zoomScale:(float)zoomScale
 {
     NSLog(@"%@", [NSString stringWithFormat:@"didEndZoomingWithPageIndex:%d zoomScale:%.2f", pageIndex, zoomScale]);
+    [self.transparentView setHidden:NO];
+    [self.holderView setHidden:NO];
 }
 
 - (void)ppPepperViewController:(PPPepperViewController*)scrollList willOpenPageIndex:(int)pageIndex
 {
+    
+    
     NSLog(@"%@", [NSString stringWithFormat:@"willOpenPageIndex:%d", pageIndex]);
+    
+
+    
 }
 
 - (void)ppPepperViewController:(PPPepperViewController*)scrollList didOpenPageIndex:(int)pageIndex
 {
     NSLog(@"%@", [NSString stringWithFormat:@"didOpenPageIndex:%d", pageIndex]);
+    
+    currentCard = ((Page*)[currentBook.pages objectAtIndex:pageIndex]).cardData;
+    
+    // Set date, title
+    if ([[currentCard objectAtIndex:0] isEqualToString:@""]) {
+        self.titleLbl.text = @"No Title";
+    }
+    else {
+        self.titleLbl.text = [currentCard objectAtIndex:0];
+    }
+    
+    self.cardDateLbl.text = [currentCard objectAtIndex:2];
+    
+    NSArray *musicInfo = nil;
+    NSArray *effectInfo = nil;
+    NSArray *voiceInfo = nil;
+    
+    NSArray *musicArray = [currentCard objectAtIndex:3];
+    if ([musicArray count] > 0) {
+        musicComponent = [[NSBundle mainBundle] URLForResource:[musicArray objectAtIndex:0] withExtension:@"mp3"];
+        musicInfo = [[NSArray alloc] initWithObjects:musicComponent, [musicArray objectAtIndex:1], [musicArray objectAtIndex:2], nil];
+    }
+    
+    NSArray *effectArray = [currentCard objectAtIndex:4];
+    if ([effectArray count] > 0) {
+        soundEffectComponent = [[NSBundle mainBundle] URLForResource:[effectArray objectAtIndex:0] withExtension:@"mp3"];
+        effectInfo = [[NSArray alloc] initWithObjects:soundEffectComponent, [effectArray objectAtIndex:1], [effectArray objectAtIndex:2], nil];
+    }
+    
+    
+    NSArray *voiceArray = [currentCard objectAtIndex:5];
+    if ([voiceArray count] > 0) {
+        voiceComponent = [[NSURL alloc] initFileURLWithPath:[voiceArray objectAtIndex:0]];
+        voiceInfo = [[NSArray alloc] initWithObjects:voiceComponent, [voiceArray objectAtIndex:1], [voiceArray objectAtIndex:2], nil];
+    }
+    
+    
+    
+    // Set the variables
+    if ([musicInfo count] > 0) {
+        musicComponent = [musicInfo objectAtIndex:0];
+        musicStartTime = [[musicInfo objectAtIndex:1] floatValue];
+        musicLength = [[musicInfo objectAtIndex:2] floatValue];
+    }
+    
+    if ([effectInfo count] > 0) {
+        soundEffectComponent = [effectInfo objectAtIndex:0];
+        effectStartTime = [[effectInfo objectAtIndex:1] floatValue];
+        effectLength = [[effectInfo objectAtIndex:2] floatValue];
+    }
+    
+    if ([voiceInfo count] > 0) {
+        voiceComponent = [voiceInfo objectAtIndex:0];
+        voiceStartTime = [[voiceInfo objectAtIndex:1] floatValue];
+        voiceLength = [[voiceInfo objectAtIndex:2] floatValue];
+    }
+    
+    // Set boolean SHOW
+    show = TRUE;
+    
+    // Calculate play time
+    music = musicStartTime + musicLength;
+    effect = effectStartTime + effectLength;
+    voice = voiceStartTime + voiceLength;
+    
+    if (MAX(music, effect) <= voice) {
+        max = voice;
+    }
+    else {
+        if (MAX(music, effect) == music) {
+            max = music;
+        }
+        else {
+            max = effect;
+        }
+    }
+    
+    self.currentTimeLbl.text = [self formattedStringForDuration:0];
+    NSString *minus = @"-";
+    self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:max]];
+    
+    // Unhide View
+    [self.transparentView setHidden:NO];
+    [self.holderView setHidden:NO];
+    [self.dismissBtn setHidden:NO];
 }
 
 - (void)ppPepperViewController:(PPPepperViewController*)scrollList didClosePageIndex:(int)pageIndex
 {
     NSLog(@"%@", [NSString stringWithFormat:@"didClosePageIndex:%d", pageIndex]);
+    
+    [self.transparentView setHidden:YES];
+    [self.holderView setHidden:YES];
+    [self.dismissBtn setHidden:YES];
+    [self stop:nil];
+    [self setMusicPlayer:nil];
+    [self setEffectPlayer:nil];
+    [self setVoicePlayer:nil];
+    [self.closeBtn setHidden:NO];
 }
 - (void)viewDidUnload {
+    
+    [self setHolderView:nil];
+    [self setTransparentView:nil];
+    [self setCloseBtn:nil];
+    [self setDismissBtn:nil];
+    [super viewDidUnload];
+    [self setMusicPlayer:nil];
+    [self setEffectPlayer:nil];
+    [self setVoicePlayer:nil];
+    [self setBookDataArray:nil];
+    [self setCards:nil];
     [self setOperationBar:nil];
     [self setBookName:nil];
     [self setWallpaper:nil];
     [self setCloseBtn:nil];
-    [super viewDidUnload];
+    [self setPlayMusicBtn:nil];
+    [self setStopMusicBtn:nil];
+    [self setProgressBar:nil];
+    [self setCurrentTimeLbl:nil];
+    [self setLeftTimeLbl:nil];
+    [self setTitleLbl:nil];
+    [self setCardDateLbl:nil];
 }
 - (IBAction)dismissView:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
 }
+
+
+#pragma mark - Audio Players
+
+- (IBAction)play:(id)sender {
+    
+    
+    // Set time label
+    currentTime = -1;
+    self.currentTimeLbl.text = [self formattedStringForDuration:0];
+    NSString *minus = @"-";
+    self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:max]];
+    
+    currentTime = -1;
+    
+    // Set progress timer
+    progressTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateProgressBar) userInfo:nil repeats:YES];
+    [progressTimer fire];
+    
+    
+    // Set progress bar
+    self.progressBar.progress = 0;
+    
+    // Start Players
+    NSError *error;
+    
+    self.musicPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:musicComponent error:&error];
+    [self.musicPlayer setVolume:1];
+    [self.musicPlayer prepareToPlay];
+    
+    self.effectPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundEffectComponent error:&error];
+    [self.effectPlayer setVolume:0.5];
+    [self.effectPlayer prepareToPlay];
+    
+    self.voicePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:voiceComponent error:&error];
+    [self.voicePlayer setVolume:1];
+    [self.voicePlayer prepareToPlay];
+    
+    
+    // Set timers
+    musicTimer = [NSTimer scheduledTimerWithTimeInterval:musicStartTime target:self selector:@selector(playMusic) userInfo:nil repeats:NO];
+    musicStopTimer = [NSTimer scheduledTimerWithTimeInterval:musicStartTime + musicLength target:self selector:@selector(stopMusic) userInfo:nil repeats:NO];
+    
+    effectTimer = [NSTimer scheduledTimerWithTimeInterval:effectStartTime target:self selector:@selector(playEffect) userInfo:nil repeats:NO];
+    effectStopTimer = [NSTimer scheduledTimerWithTimeInterval:effectStartTime + effectLength target:self selector:@selector(stopEffect) userInfo:nil repeats:NO];
+    
+    voiceTimer = [NSTimer scheduledTimerWithTimeInterval:voiceStartTime target:self selector:@selector(playVoice) userInfo:nil repeats:NO];
+    voiceStopTimer = [NSTimer scheduledTimerWithTimeInterval:voiceStartTime + voiceLength target:self selector:@selector(stopVoice) userInfo:nil repeats:NO];
+    
+    // Unhide stop button
+    self.playMusicBtn.hidden = YES;
+    self.stopMusicBtn.hidden = NO;
+}
+
+- (IBAction)stop:(id)sender {
+    // Remove all timers
+    [musicTimer invalidate];
+    musicTimer = nil;
+    [effectTimer invalidate];
+    effectTimer = nil;
+    [voiceTimer invalidate];
+    voiceTimer = nil;
+    [musicStopTimer invalidate];
+    musicStopTimer = nil;
+    [effectStopTimer invalidate];
+    effectStopTimer = nil;
+    [voiceStopTimer invalidate];
+    voiceStopTimer = nil;
+    [progressTimer invalidate];
+    progressTimer = nil;
+    
+    // Stop all players
+    [self.musicPlayer stopWithFadeDuration:1];
+    [self.effectPlayer stopWithFadeDuration:1];
+    [self.voicePlayer stopWithFadeDuration:1];
+    
+    // Set play & stop btn
+    self.playMusicBtn.hidden = NO;
+    self.stopMusicBtn.hidden = YES;
+
+}
+
+- (void) playMusic{
+    [self.musicPlayer playWithFadeDuration:3];
+    [musicTimer invalidate];
+    musicTimer = nil;
+    
+}
+
+- (void) playEffect {
+    [self.effectPlayer playWithFadeDuration:3];
+    [effectTimer invalidate];
+    effectTimer = nil;
+}
+
+- (void) playVoice{
+    [self.voicePlayer playWithFadeDuration:3];
+    [voiceTimer invalidate];
+    voiceTimer = nil;
+}
+
+- (void) stopMusic {
+    [self.musicPlayer stopWithFadeDuration:1];
+    [musicStopTimer invalidate];
+    musicStopTimer = nil;
+}
+
+- (void) stopEffect {
+    [self.effectPlayer stopWithFadeDuration:1];
+    [effectStopTimer invalidate];
+    effectStopTimer = nil;
+}
+
+- (void) stopVoice {
+    [self.voicePlayer stopWithFadeDuration:3];
+    [voiceStopTimer invalidate];
+    voiceStopTimer = nil;
+}
+
+- (void) updateProgressBar {
+    if ((int)currentTime < (int)max) {
+        currentTime += 1;
+        self.currentTimeLbl.text = [self formattedStringForDuration:currentTime];
+        NSString *minus = @"-";
+        self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:max-currentTime]];
+        self.progressBar.progress = currentTime/max;
+    }
+    else {
+        self.currentTimeLbl.text = [self formattedStringForDuration:max];
+        NSString *minus = @"-";
+        self.leftTimeLbl.text = [minus stringByAppendingString:[self formattedStringForDuration:0]];
+        [self stop:nil];
+        self.progressBar.progress = 1;
+    }
+    
+}
+
+- (IBAction)hideMenu:(id)sender {
+    if (show == TRUE) {
+        [self.dismissBtn setImage:[UIImage imageNamed:@"up.png"] forState:UIControlStateNormal];
+        [self fadeOut:self.transparentView withDuration:0.3f andWait:0];
+        [self fadeOut:self.holderView withDuration:0.3f andWait:0];
+        show = FALSE;
+    }
+    else {
+        [self.dismissBtn setImage:[UIImage imageNamed:@"down.png"] forState:UIControlStateNormal];
+        [self fadeIn:self.transparentView withDuration:0.3f andAlpha:0.5 andWait:0];
+        [self fadeIn:self.holderView withDuration:0.3f andAlpha:1 andWait:0];
+        show = TRUE;
+    }
+}
+
+#pragma mark - Helpers
+-(void)fadeOut:(UIView*)viewToDissolve withDuration:(NSTimeInterval)duration   andWait:(NSTimeInterval)wait
+{
+    [UIView animateWithDuration:duration delay:wait options:UIViewAnimationOptionCurveLinear animations:^{
+        viewToDissolve.alpha = 0;
+    } completion:nil];
+}
+
+-(void)fadeIn:(UIView*)viewToFadeIn withDuration:(NSTimeInterval)duration  andAlpha:(float)alpha      andWait:(NSTimeInterval)wait
+{
+    [UIView animateWithDuration:duration delay:wait options:UIViewAnimationOptionCurveLinear animations:^{
+        viewToFadeIn.alpha = alpha;
+    } completion:nil];
+}
+
+- (NSString*)formattedStringForDuration:(NSTimeInterval)duration
+{
+    NSInteger minutes = floor(duration/60);
+    NSInteger seconds = round(duration - minutes * 60);
+    return [NSString stringWithFormat:@"%d:%02d", minutes, seconds];
+}
+
 @end

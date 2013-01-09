@@ -32,11 +32,11 @@
     
     categoryArray = [[NSMutableArray alloc] init];
     
-    NSArray *classical = [NSArray arrayWithObjects:@"Classical", @"Classical sound for classical moments", @"category-classical.jpg", nil];
-    NSArray *easeful = [NSArray arrayWithObjects:@"Easeful", @"Easeful sound, ease your soul", @"category-easeful.jpg", nil];
-    NSArray *joyful = [NSArray arrayWithObjects:@"Joyful", @"Rock your life with joyful sound", @"category-joyful.jpg", nil];
-    NSArray *memories = [NSArray arrayWithObjects:@"Memories", @"Bring back the old time", @"category-memories.jpg", nil];
-    NSArray *romantic = [NSArray arrayWithObjects:@"Romatic", @"Use for lovers, created by lovers", @"category-romantic.jpg", nil];
+    NSArray *classical = [NSArray arrayWithObjects:@"Classical", @"", @"category-classical.jpg", nil];
+    NSArray *easeful = [NSArray arrayWithObjects:@"Easeful", @"", @"category-easeful.jpg", nil];
+    NSArray *joyful = [NSArray arrayWithObjects:@"Joyful", @"", @"category-joyful.jpg", nil];
+    NSArray *memories = [NSArray arrayWithObjects:@"Memories", @"", @"category-memories.jpg", nil];
+    NSArray *romantic = [NSArray arrayWithObjects:@"Romatic", @"", @"category-romantic.jpg", nil];
     
     [categoryArray addObject:classical];
     [categoryArray addObject:easeful];

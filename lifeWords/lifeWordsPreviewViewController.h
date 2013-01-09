@@ -55,6 +55,7 @@
 @property (strong, nonatomic) NSArray *voiceInfo;
 @property (strong, nonatomic) NSString *cardDate;
 @property (strong, nonatomic) NSString *cardOwner;
+
 // Players
 @property (strong, nonatomic) AVAudioPlayer *musicPlayer;
 @property (strong, nonatomic) AVAudioPlayer *effectPlayer;
